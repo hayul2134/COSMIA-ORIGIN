@@ -1,75 +1,754 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#04060f">
 <title>COSMIA: ORIGIN</title>
+<meta name="theme-color" content="#050E24">
+<link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20role%3D%22img%22%20aria-label%3D%22LHY%20Space%22%3E%0A%3Cdefs%3E%0A%3CradialGradient%20id%3D%22arm%22%20gradientUnits%3D%22userSpaceOnUse%22%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%22.4%22%20stop-color%3D%22%23A9D6FF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232F6BFF%22%2F%3E%3C%2FradialGradient%3E%0A%3CradialGradient%20id%3D%22core%22%20cx%3D%2250%25%22%20cy%3D%2250%25%22%20r%3D%2250%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%22.3%22%20stop-color%3D%22%23CFE6FF%22%20stop-opacity%3D%22.9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232F6BFF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%0A%3CradialGradient%20id%3D%22halo%22%20cx%3D%2250%25%22%20cy%3D%2250%25%22%20r%3D%2250%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234C86FF%22%20stop-opacity%3D%22.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234C86FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%0A%3C%2Fdefs%3E%0A%3Cg%20transform%3D%22translate(256%20256)%20rotate(-24)%20scale(1%2C.8)%20translate(-256%20-256)%22%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22240%22%20fill%3D%22url(%23halo)%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2258%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.12%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2258%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.12%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2234%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.28%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2234%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.28%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2218%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2218%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%221%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22306.5%22%20cy%3D%22266.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22230%22%20cy%3D%22251.3%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22237.5%22%20cy%3D%22205.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22213.2%22%20cy%3D%22179.7%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22268.6%22%20cy%3D%22303%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22359.7%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22303.9%22%20cy%3D%22267.5%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22259.6%22%20cy%3D%22370.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22261.9%22%20cy%3D%22269.3%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22241.2%22%20cy%3D%22282%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22186%22%20cy%3D%22253.1%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22421.7%22%20cy%3D%22240.4%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22184.7%22%20cy%3D%22244.9%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%2271.1%22%20cy%3D%22312.3%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22280.9%22%20cy%3D%22204.7%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22200.7%22%20cy%3D%22295.1%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2270%22%20fill%3D%22url(%23core)%22%2F%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2214%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap">
 <style>
-:root{--fg:#e8eeff;--mut:#8b97c4;--ln:#26336a;--cd:rgba(10,16,44,.84);--up:#5eead4;--dn:#ff6b81;--ac:#8f9bff;--ac2:#3f6bff}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#04060f;color:var(--fg);font:14px/1.45 system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+:root{
+  --ice:#EAF4FF; --sky:#6FB3FF; --muted:rgba(234,244,255,.66); --line:rgba(255,255,255,.22);
+  --body:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --display:'Sora','Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#050E24;color:var(--ice);font-family:var(--body);color-scheme:dark}
+body{background:
+  radial-gradient(70% 60% at 50% 55%, rgba(30,70,190,.34), transparent 70%),
+  radial-gradient(50% 40% at 85% 10%, rgba(47,107,255,.2), transparent 70%),
+  linear-gradient(180deg,#050E24,#07142F 60%,#050E24)}
+#sky{position:fixed;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:manipulation}
+#sky.go{cursor:pointer}
+
+#welcome{
+  position:fixed;left:0;right:0;top:calc(7vh + env(safe-area-inset-top));text-align:center;pointer-events:none;
+  font-weight:700;font-size:clamp(24px,3.4vw,40px);letter-spacing:.5em;text-indent:.5em;
+  text-shadow:0 0 28px rgba(111,179,255,.75),0 0 4px rgba(255,255,255,.4);
+  opacity:0;transform:translateY(-6px);
+  transition:opacity 1.6s ease 1.9s, transform 1.6s ease 1.9s, letter-spacing 2.2s cubic-bezier(.2,.7,.2,1) 1.9s, text-indent 2.2s cubic-bezier(.2,.7,.2,1) 1.9s;
+}
+#welcome.show{opacity:1;transform:none;letter-spacing:.1em;text-indent:.1em}
+#welcome.hide{opacity:0;transform:translateY(-10px);transition:opacity .6s ease, transform .6s ease}
+
+#bar{
+  position:fixed;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;
+  padding:calc(22px + env(safe-area-inset-top)) clamp(18px,3.4vw,52px) 0;pointer-events:none;
+  opacity:0;animation:fadein 1.4s ease 1.6s forwards;
+}
+@keyframes fadein{to{opacity:1}}
+@keyframes draw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+#back{opacity:0;pointer-events:none;transition:opacity .8s ease,background .25s}
+#bar.on #back{opacity:1;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit;pointer-events:auto}
+.mk{position:relative;display:block;width:34px;height:34px;font-style:normal}
+.mk img{position:absolute;left:2px;top:2px;width:30px;height:30px;filter:drop-shadow(0 0 14px rgba(80,140,255,.7))}
+.wm{height:16px;width:auto;display:block;color:#fff;overflow:visible;filter:drop-shadow(0 0 10px rgba(110,165,255,.6))}
+.lhy{font:italic 700 20px/1 var(--display);letter-spacing:.02em;padding-right:.1em;color:#fff;filter:drop-shadow(0 0 10px rgba(110,165,255,.6))}
+
+
+
+#tag{
+  position:fixed;left:clamp(18px,3.4vw,52px);top:clamp(120px,17vh,190px);display:flex;gap:12px;align-items:flex-start;pointer-events:none;
+  opacity:0;animation:fadein 1.6s ease 2.4s forwards;
+}
+#tag svg{width:26px;height:100px;overflow:visible;flex:none}
+#tag path{fill:none;stroke:rgba(170,212,255,.7);stroke-width:1.1;stroke-dasharray:130;stroke-dashoffset:130;animation:trace 1.6s ease 2.4s forwards}
+@keyframes trace{to{stroke-dashoffset:0}}
+@keyframes tw{0%,100%{opacity:.5}50%{opacity:1}}
+#tag circle{fill:#fff;filter:drop-shadow(0 0 4px rgba(140,190,255,1)) drop-shadow(0 0 9px rgba(110,170,255,.6));animation:tw 3.6s ease-in-out infinite}
+
+#tag circle{transform-box:fill-box;transform-origin:center}
+#tag circle.lit{opacity:0;animation:starin .8s ease-out both, tw 3.6s ease-in-out infinite;animation-delay:calc(2.4s + var(--r,0)*.32s), calc(3.3s + var(--r,0)*.32s)}
+#tag circle.off{opacity:0;filter:none;animation:dimin .7s ease both;animation-delay:calc(2.4s + var(--r,0)*.32s)}
+@keyframes starin{0%{opacity:0;transform:scale(.2)}55%{opacity:1;transform:scale(2.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes dimin{from{opacity:0}to{opacity:.3}}
+#tag circle.pop{animation:popstar 1.4s ease-out, tw 3.6s ease-in-out 1.4s infinite}
+@keyframes popstar{0%{transform:scale(1)}30%{transform:scale(3.4)}100%{transform:scale(1)}}
+#tag p em{display:block;margin-top:2px;font:400 10px/1.4 var(--body);letter-spacing:.14em;font-style:normal;opacity:.65}
+#tag p span{display:block}
+#tag p{margin:6px 0 0;font:500 11px/28px var(--display);letter-spacing:.38em;color:rgba(222,238,255,.88);text-shadow:0 0 12px rgba(111,179,255,.65)}
+.glass{
+  font:500 14px/1 var(--body);color:var(--ice);padding:10px 16px;border-radius:999px;cursor:pointer;
+  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));border:1px solid var(--line);
+  backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 30px rgba(2,8,30,.4);
+}
+.glass:hover{background:linear-gradient(145deg,rgba(255,255,255,.24),rgba(255,255,255,.1))}
+
+#labels{position:fixed;inset:0;pointer-events:none}
+.label{
+  position:absolute;transform:translate(-50%,10px);text-align:center;pointer-events:none;
+  padding:10px 18px 11px;border-radius:22px;border:1px solid var(--line);color:var(--ice);font-family:var(--body);cursor:pointer;
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.05));
+  backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 14px 34px rgba(2,8,30,.45);
+  opacity:0;transition:opacity .9s ease,transform .9s ease,background .25s;
+}
+.label b{display:block;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.label small{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)}
+#labels.on .label{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#labels.on .label:nth-child(2){transition-delay:.12s}
+#labels.on .label:nth-child(3){transition-delay:.24s}
+#labels.on .label:nth-child(4){transition-delay:.36s}
+.label:hover{background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.1))}
+
+#tag{transition:opacity .6s ease}
+#tag.off{opacity:0!important;pointer-events:none}
+#sub{position:fixed;left:0;right:0;top:calc(7vh + env(safe-area-inset-top));text-align:center;pointer-events:none;opacity:0;transition:opacity 1.2s ease .5s}
+#sub.on{opacity:1}
+#sub b{display:block;font:600 12px/1 var(--display);letter-spacing:.42em;text-indent:.42em;color:rgba(222,238,255,.92);text-shadow:0 0 14px rgba(111,179,255,.7)}
+#sub small{display:block;margin-top:10px;font:300 14px/1 var(--body);letter-spacing:.24em;text-indent:.24em;color:rgba(222,238,255,.7)}
+#me{position:fixed;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .5s ease;will-change:transform}
+#me span{display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:500 11px/1 var(--body);letter-spacing:.1em;color:var(--ice);white-space:nowrap}
+#me i{width:7px;height:7px;border-radius:50%;background:#8FD3FF}
+#me.hot{pointer-events:auto}
+#me button{display:none;margin-left:2px;padding:4px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);color:var(--ice);font:500 10.5px/1 var(--body);cursor:pointer}
+#me.hot button{display:inline-block}
+.acts{display:flex;gap:8px;align-items:center;pointer-events:none}
+#login{pointer-events:auto;display:flex;align-items:center;gap:8px;white-space:nowrap}
+#login img{width:22px;height:22px;border-radius:50%}
+#bar:not(.on) #back{display:none}
+#umenu{position:fixed;right:clamp(18px,3.4vw,52px);top:calc(74px + env(safe-area-inset-top));padding:12px 14px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:none;flex-direction:column;gap:10px;font:400 12px var(--body);color:var(--muted);box-shadow:0 18px 40px rgba(2,8,30,.45);z-index:5}
+#umenu.on{display:flex}
+#umenu button{padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:var(--ice);font:500 13px var(--body);cursor:pointer}
+#plp{position:fixed;right:clamp(14px,3vw,40px);top:96px;width:min(360px,calc(100vw - 28px));max-height:calc(100vh - 130px);overflow:auto;padding:16px 16px 18px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.05));backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 24px 50px rgba(2,8,30,.45);opacity:0;pointer-events:none;transform:translateX(18px);transition:opacity .6s ease .5s,transform .6s ease .5s}
+#plp.on{opacity:1;pointer-events:auto;transform:none}
+#plp .tabs{display:flex;gap:6px;margin-bottom:14px;padding:4px;border-radius:999px;background:rgba(255,255,255,.07)}
+#plp .tab{flex:1;padding:8px 0;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 13px var(--body);cursor:pointer}
+#plp .tab.on{background:rgba(255,255,255,.18);color:var(--ice)}
+#plp .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:13px 0}
+#plp .row>span{font:500 12.5px var(--body);color:var(--muted);flex:none;width:48px}
+#plp .opts{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+#plp .chip{width:24px;height:24px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+#plp .chip.on{border-color:#fff;box-shadow:0 0 0 2px rgba(111,179,255,.6)}
+#plp .sg{padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:var(--ice);font:500 12px var(--body);cursor:pointer}
+#plp .sg.on{background:rgba(111,179,255,.35);border-color:rgba(160,205,255,.8)}
+#plp input{width:100%;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:var(--ice);font:500 14px var(--body);outline:none}
+#plp input:focus{border-color:rgba(160,205,255,.8)}
+#plp .note{margin-top:14px;font:400 11.5px/1.6 var(--body);color:var(--muted)}
+#plp .sub{margin:16px 0 6px;font:600 12px var(--body);color:var(--muted)}
+#plp .vt{font:700 15px var(--body);margin-bottom:4px}
+#plp .list{display:flex;flex-direction:column;gap:6px;max-height:190px;overflow:auto;margin-bottom:10px}
+#plp .li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.07)}
+#plp .li b{display:block;font:600 13px var(--body)}
+#plp .li small{display:block;margin-top:2px;font:400 11.5px var(--body);color:var(--muted)}
+#plp .li button{padding:6px 12px;border-radius:999px;border:1px solid rgba(160,205,255,.6);background:rgba(111,179,255,.25);color:var(--ice);font:500 12px var(--body);cursor:pointer;flex:none}
+#pane-pl input+.sub,#pane-pl .row+input{margin-top:6px}
+#plp .bx{display:flex;gap:6px;flex:none}
+#plp .li button.ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+#plp .vrow{display:flex;gap:8px;margin:6px 0 2px}
+#plp:not(.on){transition-delay:0s;transition-duration:.35s}
+#plin{position:relative;display:flex;align-items:center;gap:12px;width:100%;margin:0 0 14px;padding:12px 14px 12px 12px;border-radius:20px;border:1px solid rgba(170,215,255,.55);cursor:pointer;text-align:left;color:var(--ice);overflow:hidden;
+  background:radial-gradient(120% 140% at 0% 0%,rgba(140,200,255,.38),rgba(90,110,255,.18) 55%,rgba(255,140,200,.16));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 28px rgba(40,90,220,.35);transition:transform .25s ease,box-shadow .25s ease}
+#plin::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-110%);animation:plsh 4.2s ease-in-out 1.2s infinite;pointer-events:none}
+@keyframes plsh{0%,62%{transform:translateX(-110%)}100%{transform:translateX(110%)}}
+#plin:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 14px 34px rgba(60,110,255,.5)}
+#plin:active{transform:scale(.985)}
+#plin .pi{flex:none;width:48px;height:48px;border-radius:15px;background:rgba(8,20,60,.45);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+#plin .pi svg{width:40px;height:40px;filter:drop-shadow(0 0 6px rgba(120,190,255,.6))}
+#plin .pt{flex:1;min-width:0}
+#plin .pt b{display:block;font:700 15.5px/1.2 var(--body);letter-spacing:-.01em}
+#plin .pt small{display:block;margin-top:4px;font:400 11.5px/1.35 var(--body);color:rgba(230,240,255,.8)}
+#plin .pa{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);font:600 15px/1 var(--body);transition:transform .25s ease}
+#plin:hover .pa{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){#plin::after{animation:none}}
+#plp .sec{margin:18px 0 2px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font:600 11px var(--body);letter-spacing:.18em;color:rgba(190,215,255,.75)}
+#plp .rg{display:flex;align-items:center;gap:10px;margin:12px 0}
+#plp .rg>span{flex:none;width:68px;font:500 12.5px var(--body);color:var(--muted)}
+#plp .rg em{flex:none;width:38px;text-align:right;font:600 12px var(--body);font-style:normal;color:var(--ice)}
+#plp input[type=range]{flex:1;width:auto;padding:0;height:22px;border:0;background:transparent;-webkit-appearance:none;appearance:none}
+#plp input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,rgba(111,179,255,.25),rgba(160,205,255,.7),rgba(111,179,255,.25))}
+#plp input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border-radius:50%;background:#EAF4FF;box-shadow:0 0 0 3px rgba(111,179,255,.45),0 2px 6px rgba(0,0,0,.4)}
+#plp input[type=range]::-moz-range-track{height:4px;border-radius:4px;background:rgba(160,205,255,.5)}
+#plp input[type=range]::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:#EAF4FF;box-shadow:0 0 0 3px rgba(111,179,255,.45)}
+#plp .tab{font-size:12.5px}
+#rep,#mk{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,8,30,.5);z-index:20}
+#rep.on,#mk.on{display:flex}
+#rep .rbox,#mk .rbox{width:min(320px,calc(100vw - 40px));padding:20px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.07));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 50px rgba(2,8,30,.55)}
+#rep .rbox>b,#mk .rbox>b{font:700 15px var(--body);text-align:center}
+#mk p{font:400 12.5px/1.6 var(--body);color:var(--muted);text-align:center;margin:0}
+#mk input{width:100%;padding:11px 13px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:var(--ice);font:500 15px var(--body);outline:none;text-align:center}
+#mk input::placeholder{color:rgba(226,236,255,.74)}
+#mk .mkr{display:flex;flex-direction:column;align-items:center;gap:6px}
+#mk .mkr button{padding:7px 14px;font-size:12.5px}
+#mk small{display:block;min-height:17px;font:400 11.5px/1.5 var(--body);color:rgba(222,236,255,.8);text-align:center}
+#mk .mkh{display:flex;gap:8px;justify-content:center}
+#mk .mkh button{width:38px;height:34px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:var(--ice);font-size:16px;cursor:pointer}
+#mk .mkh button.on{background:rgba(111,179,255,.35);border-color:rgba(160,205,255,.85)}
+#mk input:focus{border-color:rgba(160,205,255,.85)}
+#mk .mkc{display:flex;gap:10px;justify-content:center}
+#mk .mkc button{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+#mk .mkc button.on{border-color:#fff;box-shadow:0 0 0 3px rgba(111,179,255,.6)}
+#galtitle{position:fixed;left:50%;top:21%;transform:translate(-50%,10px);text-align:center;pointer-events:none;opacity:0}
+#galtitle small{display:block;font:500 11px var(--body);letter-spacing:.42em;color:rgba(190,215,255,.85);margin-bottom:10px}
+#galtitle em{display:block;margin-top:14px;font:400 13px/1.5 var(--body);font-style:normal;letter-spacing:.04em;color:rgba(222,236,255,.78);text-shadow:0 0 12px rgba(2,8,30,.8)}
+#galtitle b{display:block;font:300 28px/1.2 var(--display);letter-spacing:.14em;color:#fff;text-shadow:0 0 24px rgba(120,170,255,.55)}
+#galhud{position:fixed;left:50%;bottom:calc(34px + env(safe-area-inset-bottom));transform:translate(-50%,12px);display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;box-shadow:0 20px 44px rgba(2,8,30,.45);max-width:calc(100vw - 24px)}
+#galhud.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+#galhud .gi{min-width:170px;text-align:center}
+#galhud .gi b{display:block;font:700 16px var(--body)}
+#galhud .gi small{display:block;margin-top:3px;font:400 12px var(--body);color:var(--muted)}
+#galhud .glass{padding:9px 14px;font-size:13px;white-space:nowrap}
+@media (max-width:700px){#galhud{gap:8px;padding:10px 12px}#galhud .gi{min-width:100px}#galhud .gi b{font-size:14px}#intinfo{top:112px}}
+#intinfo{position:fixed;left:clamp(18px,3.4vw,52px);top:96px;max-width:min(420px,60vw);pointer-events:none;opacity:0;transition:opacity .6s ease}
+#intinfo.on{opacity:1}
+#intinfo b{display:block;font:700 22px var(--body);text-shadow:0 0 16px rgba(2,8,30,.7)}
+#intinfo small{display:block;margin-top:5px;font:400 13px/1.5 var(--body);color:rgba(236,244,255,.88);text-shadow:0 0 10px rgba(2,8,30,.8)}
+#decbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,12px);width:min(860px,calc(100vw - 20px));padding:12px 14px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;box-shadow:0 20px 44px rgba(2,8,30,.45)}
+#decbar.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+#decbar .dr{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+#decbar .dr2{display:flex;gap:6px}
+#decbar .dl{font:500 12px var(--body);color:var(--muted)}
+#decbar button{padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:var(--ice);font:500 12px var(--body);cursor:pointer}
+#decbar button.on{background:rgba(111,179,255,.38);border-color:rgba(160,205,255,.85)}
+#decbar #dec-ok{padding:8px 18px;font-size:13px;margin-left:auto}
+#decbar input{flex:1;min-width:130px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:var(--ice);font:500 12.5px var(--body);outline:none}
+#decbar #dec-cnt{font:500 12px var(--body);color:var(--muted)}
+#st{position:fixed;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .25s ease;will-change:transform}
+#st span{display:flex;align-items:center;gap:8px;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:500 11.5px/1 var(--body);color:var(--ice);white-space:nowrap}
+#st em{font-style:normal;opacity:.55}
+#rep .ra{display:flex;flex-direction:column;gap:8px}
+#rep .ra button{padding:11px 0;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:var(--ice);font:500 14px var(--body);cursor:pointer}
+#plp .big{width:100%;margin-top:16px;padding:13px 0;font-size:14px}
+#plname{position:fixed;transform:translate(-50%,0);text-align:center;pointer-events:none;opacity:0;transition:opacity .6s ease .6s}
+#plname b{display:block;font:700 18px var(--body);text-shadow:0 0 14px rgba(111,179,255,.6)}
+#plname small{display:block;margin-top:3px;font:400 12px var(--body);color:var(--muted)}
+#plhint{position:fixed;left:clamp(14px,3.4vw,52px);bottom:calc(26px + env(safe-area-inset-bottom));padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:400 12px var(--body);color:var(--muted);opacity:0;pointer-events:none;transition:opacity .6s ease .8s}
+#plhint.on{opacity:1}
+@media (max-width:700px){#plp{top:auto;bottom:12px;left:14px;right:14px;width:auto;max-height:48vh}#plhint{display:none}}
+#toast{
+  position:fixed;left:50%;top:calc(15vh + env(safe-area-inset-top));transform:translate(-50%,-10px);
+  padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.07));border:1px solid var(--line);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+@media (max-width:700px){.wm{height:13px}.lhy{font-size:16px}.label{padding:8px 14px 9px}.label b{font-size:15px}.label small{font-size:11.5px}}
+@media (prefers-reduced-motion:reduce){#welcome,#bar,.label{transition-duration:.01s;transition-delay:0s!important}}
+/* 좁은 화면: 위쪽 버튼이 줄바꿈되거나 부제목과 겹치지 않게 */
+@media (max-width:700px){.acts{gap:6px}.acts .glass{padding:8px 11px;font-size:12.5px;white-space:nowrap}#login img{width:18px;height:18px}#login span{max-width:72px;overflow:hidden;text-overflow:ellipsis}#sub{top:calc(78px + env(safe-area-inset-top))}#sub b{font-size:10px;letter-spacing:.3em;text-indent:.3em}#sub small{margin-top:7px;font-size:12px}#welcome{top:calc(86px + env(safe-area-inset-top))}}
+#galtitle{width:max-content;max-width:calc(100vw - 32px)}
+@media (max-width:360px){.brand{gap:6px}.mk{width:28px;height:28px}.mk img{width:24px;height:24px}.lhy{font-size:14px}#galtitle em{font-size:12px}.wm{height:11px}.acts .glass{padding:7px 9px;font-size:12px}}
+/* 작업 공간: 도구 행성에 들어간 뒤 열리는 서비스 화면 */
+#work{position:fixed;left:50%;top:calc(21% + 118px);bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,14px);width:min(760px,calc(100vw - 32px));display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease}
+#work.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+#wtr,#wpn{display:none}
+#work.k-tr #wtr{display:flex}#work.k-pn #wpn{display:flex}
+#wtr{flex-direction:column;gap:10px;min-height:0;flex:1}
+#wtr .tb{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:8px;align-items:center}
+#wtr select{appearance:none;-webkit-appearance:none;font:700 14px var(--body);color:var(--ice);background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-align:center;cursor:pointer}
+#wtr select option{color:#121826;background:#fff}
+#work .sw{width:40px;height:40px;padding:0;border-radius:50%}
+#wtr .ps{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0}
+#wtr .pn{display:flex;flex-direction:column;border-radius:20px;border:1px solid var(--line);background:rgba(8,20,52,.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);overflow:hidden;min-height:150px}
+#wtr textarea,#wtr .out{flex:1;width:100%;border:0;background:transparent;color:var(--ice);font:400 16px/1.6 var(--body);padding:16px 18px;resize:none;outline:none;white-space:pre-wrap;word-break:break-word;overflow:auto}
+#wtr textarea::placeholder,#wtr .out:empty::before{color:var(--muted)}
+#wtr .out:empty::before{content:"번역 결과가 여기에 표시돼요"}
+#wtr .out.busy{opacity:.5}
+#wtr .ft{display:flex;align-items:center;gap:8px;padding:8px 10px 10px 18px;font-size:12px;color:var(--muted)}
+#wtr .ft .sp{flex:1}
+#wtr .ft button{padding:6px 12px;font-size:12px}
+#wtr .er{color:#FF8A8A}
+#wpn{flex-direction:column;align-items:center;gap:14px;margin-top:4vh;text-align:center}
+#wpn p{font:400 14px/1.7 var(--body);color:var(--muted);max-width:340px}
+#wpn .row2{display:flex;gap:10px}
+#wpn .row2>*{padding:11px 18px;font-size:14px;text-decoration:none;color:var(--ice)}
+@media (max-width:700px){#work{top:calc(21% + 104px)}#wtr .ps{grid-template-columns:1fr}}
+
+:root{--up:#8FF0D0;--dn:#FF8FA3;--cd:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.05))}
+button{font:inherit;color:inherit;border:0;cursor:pointer;background:none}
 #ui{position:fixed;inset:0;pointer-events:none}
 .scr{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-.scr.on{display:flex}
-.scr>*,#top{pointer-events:auto}
+.scr.on{display:flex}.scr>*,#top{pointer-events:auto}
+.cxo{font:600 10.5px var(--display);letter-spacing:.42em;color:rgba(222,238,255,.85);margin-left:2px;text-shadow:0 0 10px rgba(110,165,255,.6)}
+.hint{margin-bottom:calc(8vh + env(safe-area-inset-bottom));padding:13px 24px;animation:pl 2.2s ease-in-out infinite}
+@keyframes pl{50%{opacity:.4}}
+#s-galaxy{justify-content:flex-end}
 .wrap{width:100%;max-width:520px;padding:0 12px}
-button{font:inherit;color:inherit;border:0;cursor:pointer}
-.btn{padding:12px 16px;border-radius:12px;background:linear-gradient(135deg,var(--ac2),#7a5cff);font-weight:700;color:#fff;box-shadow:0 4px 18px #3f6bff55}
-.btn.sub{background:#162052;box-shadow:none;border:1px solid var(--ln)}
-.btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
-.btn:disabled{opacity:.35;cursor:default}
-.up{color:var(--up)}.dn{color:var(--dn)}.mut{color:var(--mut)}
-.card{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:12px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.gap{gap:10px}.col{display:flex;flex-direction:column;gap:8px}
-.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#18235a;border:1px solid var(--ln)}
+.card{background:var(--cd);border:1px solid var(--line);border-radius:22px;padding:14px;backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 14px 34px rgba(2,8,30,.45)}
+.btn{padding:12px 18px;border-radius:999px;font:600 14px var(--body);color:#fff;background:linear-gradient(145deg,rgba(111,179,255,.6),rgba(110,100,255,.45));border:1px solid rgba(170,215,255,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 8px 24px rgba(40,90,220,.35)}
+.btn.sub{background:var(--cd);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.btn.sm{padding:7px 13px;font-size:12.5px}
+.btn:disabled{opacity:.38;cursor:default}
+.up{color:var(--up)}.dn{color:var(--dn)}.mut{color:var(--muted)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}.gap{gap:10px}.col{display:flex;flex-direction:column;gap:8px}
+.tag{font:500 12px var(--body);padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--line)}
 .mods{display:flex;flex-direction:column;gap:2px;margin-top:6px;font-weight:600}
-#s-galaxy{justify-content:space-between;text-align:center}
-.ttl{margin-top:7vh}.ttl h1{margin:0;font-size:clamp(34px,9vw,54px);letter-spacing:.28em;font-weight:800;background:linear-gradient(180deg,#fff,#9fb4ff);-webkit-background-clip:text;background-clip:text;color:transparent;padding-left:.28em}
-.ttl div{letter-spacing:.5em;color:var(--ac);font-weight:700;padding-left:.5em}
-.hint{margin-bottom:9vh;padding:10px 18px;color:#cfd9ff;background:transparent;animation:pl 2.2s infinite}
-@keyframes pl{50%{opacity:.35}}
-#s-planet{justify-content:flex-end;padding-bottom:14px}
+#s-planet{justify-content:flex-end;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
 #s-race{justify-content:flex-start}
-#race-scroll{width:100%;max-width:520px;flex:1;overflow-y:auto;padding:0 12px 8px;-webkit-overflow-scrolling:touch}
+#race-scroll{width:100%;max-width:520px;flex:1;overflow-y:auto;padding:0 12px 8px;margin-top:158px;-webkit-overflow-scrolling:touch}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.opt{text-align:left;background:var(--cd);border:1.5px solid var(--ln);border-radius:12px;padding:9px 10px;font-size:13px}
-.opt.sel{border-color:var(--ac);background:#16226a;box-shadow:0 0 0 2px #8f9bff44}
+.opt{text-align:left;background:var(--cd);border:1.5px solid var(--line);border-radius:18px;padding:10px 12px;font-size:13px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.opt.sel{border-color:rgba(160,205,255,.9);background:linear-gradient(145deg,rgba(111,179,255,.4),rgba(110,100,255,.22))}
 .opt b{font-size:14px}.opt .mods{font-size:12px;margin-top:4px}
-h3{margin:14px 0 6px;font-size:14px;color:#cfd9ff}
-.sw{width:30px;height:30px;border-radius:50%;border:2px solid transparent}.sw.sel{border-color:#fff}
-input#rname{background:#0d1640;border:1px solid var(--ln);color:#fff;border-radius:10px;padding:10px 12px;font:inherit;width:100%;user-select:text;-webkit-user-select:text}
-#sum{width:100%;max-width:520px;padding:8px 12px 12px}
-.st{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:6px 0;font-size:12px;text-align:center}
-.st div{background:#0d1640;border-radius:8px;padding:4px 2px}.st b{display:block;font-size:14px}
-#top{position:absolute;left:0;right:0;top:0;display:none;justify-content:center;padding:calc(env(safe-area-inset-top) + 8px) 10px 0}
+h3{margin:16px 0 7px;font:600 12.5px var(--body);letter-spacing:.14em;color:rgba(190,215,255,.85)}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}.sw.sel{border-color:#fff;box-shadow:0 0 0 3px rgba(111,179,255,.6)}
+input#rname{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:14px;padding:11px 13px;font:500 15px var(--body);width:100%;user-select:text;-webkit-user-select:text;outline:none}
+input#rname:focus{border-color:rgba(160,205,255,.85)}
+#sum{width:100%;max-width:520px;padding:10px 14px 14px;border-radius:24px 24px 0 0}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:6px 0;font-size:12px;text-align:center}
+.st div{background:rgba(255,255,255,.07);border-radius:12px;padding:5px 2px}.st b{display:block;font-size:14px}
+#top{position:absolute;left:0;right:0;top:calc(66px + env(safe-area-inset-top));display:none;justify-content:center;padding:0 10px}
 #top.on{display:flex}
-#top .card{width:100%;max-width:520px;padding:8px 10px}
-.res{display:flex;justify-content:space-between;gap:4px;margin-top:4px;font-weight:700;font-size:13px}.res small{display:block;font-weight:400;color:var(--mut);font-size:11px}
+#top .card{width:100%;max-width:520px;padding:8px 12px;border-radius:20px}
+.res{display:flex;justify-content:space-between;gap:4px;margin-top:4px;font-weight:700;font-size:13px}.res small{display:block;font-weight:400;color:var(--muted);font-size:11px}
 #s-play{justify-content:flex-end}
-#sheet{width:100%;max-width:520px;max-height:50%;overflow-y:auto;padding:0 10px 10px;-webkit-overflow-scrolling:touch}
-.bar{height:8px;border-radius:9px;background:#0d1640;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac2),#c08bff);width:0}
+#sheet{width:100%;max-width:520px;max-height:48%;overflow-y:auto;padding:0 10px 10px;-webkit-overflow-scrolling:touch}
+.bar{height:8px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;margin:7px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,#6FB3FF,#c08bff);width:0}
 .bld{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;margin-top:8px}
-.bld .nm{font-weight:700}.cost{font-size:12px;color:var(--mut)}
-#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 92px);transform:translateX(-50%);background:#101a52f0;border:1px solid var(--ac);border-radius:99px;padding:8px 16px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9;white-space:nowrap}
-#toast.on{opacity:1}
-#modal{position:fixed;inset:0;background:#02040acc;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
-#modal.on{display:flex}#modal .card{width:100%;max-width:400px;background:#0b1236}
+.bld .nm{font-weight:700}.cost{font-size:12px;color:var(--muted)}
+#modal{position:fixed;inset:0;background:rgba(2,8,30,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+#modal.on{display:flex}#modal .card{width:100%;max-width:400px;border-radius:26px;padding:18px}
 #s-launch{justify-content:flex-end;padding-bottom:6vh;text-align:center}
 #s-launch .card{margin:0 12px;max-width:440px;opacity:0;transition:opacity 1s}#s-launch.show .card{opacity:1}
 summary{cursor:pointer;color:#cfd9ff;font-weight:600}
-</style></head><body>
-<canvas id="c"></canvas>
+</style>
+</head><body>
+<canvas id="sky" tabindex="-1" aria-label="COSMIA ORIGIN"></canvas>
+<h1 id="welcome">환영합니다.</h1>
+<header id="bar"><a class="brand" href="#" aria-label="COSMIA ORIGIN"><em class="mk"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20role%3D%22img%22%20aria-label%3D%22LHY%20Space%22%3E%0A%3Cdefs%3E%0A%3CradialGradient%20id%3D%22arm%22%20gradientUnits%3D%22userSpaceOnUse%22%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%22.4%22%20stop-color%3D%22%23A9D6FF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232F6BFF%22%2F%3E%3C%2FradialGradient%3E%0A%3CradialGradient%20id%3D%22core%22%20cx%3D%2250%25%22%20cy%3D%2250%25%22%20r%3D%2250%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%22.3%22%20stop-color%3D%22%23CFE6FF%22%20stop-opacity%3D%22.9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232F6BFF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%0A%3CradialGradient%20id%3D%22halo%22%20cx%3D%2250%25%22%20cy%3D%2250%25%22%20r%3D%2250%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234C86FF%22%20stop-opacity%3D%22.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234C86FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%0A%3C%2Fdefs%3E%0A%3Cg%20transform%3D%22translate(256%20256)%20rotate(-24)%20scale(1%2C.8)%20translate(-256%20-256)%22%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22240%22%20fill%3D%22url(%23halo)%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2258%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.12%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2258%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.12%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2234%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.28%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2234%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.28%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2218%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%2218%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M270.1%20260.4%20L270.2%20262.0%20L270.1%20263.7%20L269.9%20265.5%20L269.4%20267.3%20L268.8%20269.2%20L267.9%20271.0%20L266.8%20272.8%20L265.5%20274.6%20L263.9%20276.3%20L262.1%20277.9%20L260.0%20279.4%20L257.8%20280.7%20L255.2%20281.9%20L252.5%20282.8%20L249.6%20283.5%20L246.5%20283.8%20L243.2%20283.9%20L239.8%20283.7%20L236.3%20283.1%20L232.7%20282.1%20L229.1%20280.6%20L225.5%20278.8%20L221.9%20276.5%20L218.5%20273.7%20L215.2%20270.5%20L212.1%20266.8%20L209.2%20262.7%20L206.7%20258.0%20L204.6%20253.0%20L202.9%20247.5%20L201.8%20241.7%20L201.2%20235.5%20L201.2%20229.0%20L201.9%20222.2%20L203.3%20215.2%20L205.5%20208.2%20L208.5%20201.1%20L212.4%20194.0%20L217.2%20187.0%20L222.9%20180.3%20L229.5%20173.9%20L237.0%20168.0%20L245.5%20162.6%20L254.8%20157.9%20L265.0%20154.0%20L275.9%20151.0%20L287.7%20149.0%20L300.0%20148.1%20L313.0%20148.5%20L326.4%20150.3%20L340.1%20153.6%20L354.1%20158.4%20L368.0%20164.8%20L381.9%20173.0%20L395.4%20182.9%20L408.4%20194.6%20L420.7%20208.1%20L432.1%20223.4%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%221%22%2F%3E%3Cpath%20d%3D%22M241.9%20251.6%20L241.8%20250.0%20L241.9%20248.3%20L242.1%20246.5%20L242.6%20244.7%20L243.2%20242.8%20L244.1%20241.0%20L245.2%20239.2%20L246.5%20237.4%20L248.1%20235.7%20L249.9%20234.1%20L252.0%20232.6%20L254.2%20231.3%20L256.8%20230.1%20L259.5%20229.2%20L262.4%20228.5%20L265.5%20228.2%20L268.8%20228.1%20L272.2%20228.3%20L275.7%20228.9%20L279.3%20229.9%20L282.9%20231.4%20L286.5%20233.2%20L290.1%20235.5%20L293.5%20238.3%20L296.8%20241.5%20L299.9%20245.2%20L302.8%20249.3%20L305.3%20254.0%20L307.4%20259.0%20L309.1%20264.5%20L310.2%20270.3%20L310.8%20276.5%20L310.8%20283.0%20L310.1%20289.8%20L308.7%20296.8%20L306.5%20303.8%20L303.5%20310.9%20L299.6%20318.0%20L294.8%20325.0%20L289.1%20331.7%20L282.5%20338.1%20L275.0%20344.0%20L266.5%20349.4%20L257.2%20354.1%20L247.0%20358.0%20L236.1%20361.0%20L224.3%20363.0%20L212.0%20363.9%20L199.0%20363.5%20L185.6%20361.7%20L171.9%20358.4%20L157.9%20353.6%20L144.0%20347.2%20L130.1%20339.0%20L116.6%20329.1%20L103.6%20317.4%20L91.3%20303.9%20L79.9%20288.6%22%20fill%3D%22none%22%20stroke%3D%22url(%23arm)%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22306.5%22%20cy%3D%22266.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22230%22%20cy%3D%22251.3%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22237.5%22%20cy%3D%22205.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22213.2%22%20cy%3D%22179.7%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22268.6%22%20cy%3D%22303%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22359.7%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22303.9%22%20cy%3D%22267.5%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22259.6%22%20cy%3D%22370.8%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22261.9%22%20cy%3D%22269.3%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22241.2%22%20cy%3D%22282%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22186%22%20cy%3D%22253.1%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22421.7%22%20cy%3D%22240.4%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%221%22%2F%3E%3Ccircle%20cx%3D%22184.7%22%20cy%3D%22244.9%22%20r%3D%222.6%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%2271.1%22%20cy%3D%22312.3%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22280.9%22%20cy%3D%22204.7%22%20r%3D%223.4%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22200.7%22%20cy%3D%22295.1%22%20r%3D%221.8%22%20fill%3D%22%23fff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2270%22%20fill%3D%22url(%23core)%22%2F%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2214%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""></em><b class="lhy">COSMIA</b><span class="cxo">ORIGIN</span></a><div class="acts"><button class="glass" id="cx-set" type="button" data-act="settings" style="display:none;pointer-events:auto">설정</button></div></header>
+<aside id="tag" aria-hidden="true">
+  <svg viewBox="0 0 26 100"><path d="M6 3 L14 20 L8 48 L16 76 L10 97"/><path d="M8 48 L1 41"/>
+    <circle cx="6" cy="3" r="2.4"/><circle cx="14" cy="20" r="3.6"/><circle cx="8" cy="48" r="3.6"/><circle cx="1" cy="41" r="2.4"/><circle cx="16" cy="76" r="3.6"/><circle cx="10" cy="97" r="2.4"/></svg>
+  <p><span>YOUR</span><span>OWN</span><span>COSMOS</span></p>
+</aside>
+<div id="sub" aria-hidden="true"><b>ONE GALAXY · YOUR OWN COSMOS</b><small>빅뱅으로 시작되는 나만의 우주</small></div>
 <div id="ui">
-<div id="s-galaxy" class="scr"><div class="ttl"><h1>COSMIA</h1><div>ORIGIN</div></div><button class="hint" data-act="enter" style="background:none">은하를 눌러 우주로 들어가세요</button></div>
+<div id="s-galaxy" class="scr"><button class="hint glass" data-act="enter" type="button">은하를 눌러 우주로 들어가세요</button></div>
 <div id="s-planet" class="scr"></div>
 <div id="s-race" class="scr"></div>
 <div id="s-play" class="scr"><div id="sheet"></div></div>
-<div id="s-launch" class="scr"><div class="card"><h2 style="margin:0 0 6px">🚀 우주 진출 성공</h2><div class="mut" style="margin-bottom:10px">첫 종족이 본진을 떠나 우주로 나아갔습니다.<br>새 행성 탐색·교류 콘텐츠는 다음 단계에서 열립니다.</div><button class="btn" data-act="back-home">본진으로 돌아가기</button></div></div>
+<div id="s-launch" class="scr"><div class="card"><h2 style="margin:0 0 6px">🚀 우주 진출 성공</h2><div class="mut" style="margin-bottom:12px">첫 종족이 본진을 떠나 우주로 나아갔습니다.<br>새 행성 탐색·교류 콘텐츠는 다음 단계에서 열립니다.</div><button class="btn" data-act="back-home" type="button">본진으로 돌아가기</button></div></div>
 <div id="top"><div class="card"></div></div>
 </div>
-<div id="toast"></div><div id="modal"><div class="card"></div></div>
+<div id="toast" role="status"></div><div id="modal"><div class="card"></div></div>
 <script>
+(function(){'use strict';
+var cv=document.getElementById('sky'),ctx=cv.getContext('2d'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var W=0,H=0,dpr=1,mobile=false,rnd=Math.random,qual=1;
+var ME={pl:{p:0,ty:1,r:0,m:0,ax:-18,at:16,ss:1,sd:0,rc:0,rs:1},sh:{h:0,c:0,f:0,e:0,n:''}},VIEW={on:false,pl:null},NB=[],NBP=[];
+function drawVisitors(){}
+function gauss(){var u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(6.2832*v)}
+function rgb(h){return parseInt(h.slice(1,3),16)+','+parseInt(h.slice(3,5),16)+','+parseInt(h.slice(5,7),16)}
+function clamp(x,a,b){return x<a?a:x>b?b:x}
+/* 남이 저장한 값은 믿지 않는다: 배열 번호는 항상 0..n-1, 숫자는 범위 안, 글자는 길이 제한 */
+function ix(v,n){v=Math.floor(+v)||0;return ((v%n)+n)%n}
+function num(v,a,b,d){v=+v;return isFinite(v)?clamp(v,a,b):d}
+function str(v,n){return typeof v==='string'?v.slice(0,n):''}
+function cleanSh(h){h=h&&typeof h==='object'?h:{};return {h:ix(h.h,4),c:ix(h.c,6),f:ix(h.f,6),e:ix(h.e,6),n:str(h.n,12)}}
+function cleanPl(x){
+  x=x&&typeof x==='object'?x:{}; var d=Array.isArray(x.d)?x.d.slice(0,72).map(function(v){return num(v,0,1000,0)}):[];
+  d.length-=d.length%3;
+  return {id:x.id,n:str(x.n,12),o:str(x.o,20),w:str(x.w,30),p:ix(x.p,6),ty:ix(x.ty,6),r:ix(x.r,6),rc:ix(x.rc,7),rs:ix(typeof x.rs==='number'?x.rs:1,3),ss:ix(typeof x.ss==='number'?x.ss:1,3),sd:x.sd?1:0,
+    ax:num(x.ax,-60,60,-18),at:num(x.at,4,70,16),m:ix(x.m,4),sk:ix(x.sk,3),d:d,sh:cleanSh(x.sh),vis:x.vis,fr:!!x.fr,t:+x.t||0};
+}
+function cleanVisit(x){x=x&&typeof x==='object'?x:{};return {id:x.id,n:str(x.n,20),msg:str(x.msg,40),sh:cleanSh(x.sh),t:+x.t||0}}
+function cleanStar(x){x=x&&typeof x==='object'?x:{};return {id:x.id,n:str(x.n,12),c:ix(x.c,5),h:ix(x.h,5),s:num(x.s,0,1,0),t:+x.t||0}}
+function sm(a,b,x){x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x)}
+function ease(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}
+
+/* 값 노이즈: 은하의 구름 덩어리와 어두운 틈을 만든다 */
+function hash(x,y){var h=Math.sin(x*127.1+y*311.7)*43758.5453;return h-Math.floor(h)}
+function vnoise(x,y){var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
+  return hash(xi,yi)*(1-u)*(1-v)+hash(xi+1,yi)*u*(1-v)+hash(xi,yi+1)*(1-u)*v+hash(xi+1,yi+1)*u*v}
+function fbm(x,y){return vnoise(x,y)*.55+vnoise(x*2.1+5,y*2.1+3)*.3+vnoise(x*4.3+9,y*4.3+7)*.15}
+/* 소용돌이 왜곡: 바깥으로 갈수록 크게 휘감기고, 가운데는 멀리 있는 것처럼 압축된다 */
+function W2(x,y){
+  var r=Math.sqrt(x*x+y*y), amp=.06+.15*r,
+      wx=x+(fbm(x*4.5+2,y*4.5+7)-.5)*2*amp, wy=y+(fbm(x*4.5+9,y*4.5+1)-.5)*2*amp,
+      rr=Math.sqrt(wx*wx+wy*wy),
+      d=(fbm(wx*2.6+7,wy*2.6+3)-.5)*1.8*rr*rr+1.1*rr*rr*rr,
+      c=Math.cos(d), s=Math.sin(d), ux=wx*c-wy*s, uy=wx*s+wy*c,
+      k=rr>0?Math.pow(rr,.35):0;
+  return [ux*k,uy*k];
+}
+
+/* 은하 바깥 경계: 방향마다 길이가 달라지고 서서히 사라진다 */
+function fall(x,y,ai){
+  var rr=Math.sqrt(x*x+y*y),ph=Math.atan2(y,x),
+      edge=.76+.34*fbm(Math.cos(ph)*1.7+4,Math.sin(ph)*1.7+2)+.2*(hash(ai,3)-.5),
+      v=(edge+.22-rr)/.44;
+  v=v<0?0:v>1?1:v; return v*v;
+}
+function grandGlow(g,size,tw,pal){
+  var up=size/2.4,half=size/2,cV=rgb('#7A5CFF'),cB=rgb(pal[2]),cL=rgb(pal[1]),cC=rgb('#4A5CFF');
+  g.globalCompositeOperation='lighter';
+  for(var i=0;i<46000;i++){
+    var r=.06+(rnd()<.45?.15+rnd()*.55:Math.pow(rnd(),1.3))*1.04, ai=(rnd()*6)|0,
+        a=ai*1.0472+r*tw+.16*Math.sin(r*23+ai*2.1)+.07*Math.sin(r*61+ai)+gauss()*(.16+.08*r),
+        w2=W2(Math.cos(a)*r,Math.sin(a)*r), x=w2[0], y=w2[1], n=fbm(x*7+3,y*7+1), k=(n-.18)*2.8*(1.3-.6*Math.min(1,Math.sqrt(x*x+y*y)))*fall(x,y,ai);
+    if(rnd()>k)continue;
+    var m=fbm(x*15+11,y*15+5), cn=fbm(x*2.4+20,y*2.4+9),
+        col=cn<.42?cV:cn<.58?cB:(m>.55?cL:cC),
+        rad=(.007+rnd()*.02)*up*(.38+.4*r), al=(.06+.12*m)*(.95+.45*r+.6*Math.exp(-Math.pow((r-.5)/.25,2))), rr2=Math.sqrt(x*x+y*y), el=1+2.2*rr2*rr2,
+        px=half+x*up, py=half+y*up, gr=g.createRadialGradient(0,0,0,0,0,rad);
+    gr.addColorStop(0,'rgba('+col+','+al+')'); gr.addColorStop(1,'rgba('+col+',0)');
+    g.save(); g.translate(px,py); g.rotate(Math.atan2(y,x)+1.5708-.3*rr2); g.scale(el,1);
+    g.fillStyle=gr; g.fillRect(-rad,-rad,rad*2,rad*2); g.restore();
+  }
+}
+
+/* 은하 팔레트: [중심, 안쪽, 바깥, 포인트] */
+var PAL={
+  main:['#FFF3DC','#BFD8FF','#3F6BFF','#8F6BFF'],
+  work:['#F2F8FF','#9ED0FF','#3F7BFF','#7FE0FF'],
+  rest:['#E6FFFF','#7CE8F0','#3AA9FF','#B6F5E6'],
+  game:['#F1ECFF','#B3A6FF','#6068FF','#E0B8FF'],
+  talkA:['#FFFFFF','#8FD3FF','#4C86FF','#C7E8FF'],
+  talkB:['#FFF3E0','#C8B5FF','#7A7CFF','#FFD6F0']
+};
+
+/* 은하 하나를 별 데이터와 빛 번짐 이미지로 만든다 */
+function build(kind,n,pal,pal2,o){
+  o=o||{}; pal2=pal2||pal;
+  var X=new Float32Array(n),Y=new Float32Array(n),S=new Float32Array(n),K=new Uint8Array(n),Z=new Float32Array(n),bk={};
+  var arms=o.arms||2, tw=o.tw||5.4, clus=[];
+  if(o.grand){for(var cc=0;cc<110;cc++){var rc=.25+rnd()*.7,ac=((rnd()*6)|0)*1.0472+rc*tw+gauss()*.05;clus.push(W2(Math.cos(ac)*rc,Math.sin(ac)*rc))}}
+  for(var i=0;i<n;i++){
+    var x,y,r,a,c=0,t=rnd(),forceAcc=false;
+    if(kind==='spiral'){
+      if(o.grand&&t>.94){var cl=clus[(rnd()*clus.length)|0];x=cl[0]+gauss()*.014;y=cl[1]+gauss()*.014;forceAcc=true}
+      else if(t<(o.grand?.06:.14)){r=o.grand?Math.abs(gauss())*.5:Math.sqrt(rnd())*1.08;a=rnd()*6.2832;x=Math.cos(a)*r;y=Math.sin(a)*r}
+      else if(t<(o.grand?.37:.3)){r=Math.abs(gauss())*(o.grand?.24:.17);a=rnd()*6.2832;x=Math.cos(a)*r;y=Math.sin(a)*r}
+      else if(o.grand&&t<.34){var bx=gauss()*.24,by=gauss()*.045;x=bx*Math.cos(.5)-by*Math.sin(.5);y=bx*Math.sin(.5)+by*Math.cos(.5)}
+      else{
+        r=(o.grand&&rnd()<.4?.15+rnd()*.6:Math.pow(rnd(),o.grand?1.1:.8))*(o.grand?1.06:1);
+        var ai=o.grand?((rnd()*6)|0):i%arms;
+        a=ai*6.2832/(o.grand?6:arms)+r*tw+(o.grand?.16*Math.sin(r*23+ai*2.1)+.07*Math.sin(r*61+ai):0)+gauss()*(o.grand?.2+.08*r:.09+.3*r);
+        x=Math.cos(a)*r;y=Math.sin(a)*r;
+        if(o.grand){var w2=W2(x,y);x=w2[0];y=w2[1];if(rnd()>fall(x,y,ai)){i--;continue}}
+      }
+    }else if(kind==='ring'){
+      a=rnd()*6.2832;
+      if(t<.8)r=.64+gauss()*.065; else if(t<.93)r=Math.abs(gauss())*.1; else r=rnd()*1.0;
+      x=Math.cos(a)*r;y=Math.sin(a)*r;
+    }else if(kind==='elliptic'){
+      a=rnd()*6.2832; r=t<.9?Math.abs(gauss())*.3:rnd()*.85;
+      x=Math.cos(a)*r;y=Math.sin(a)*r*.8;
+    }else{
+      c=i&1; a=rnd()*6.2832; r=Math.abs(gauss())*.2*(t<.1?2.2:1);
+      x=Math.cos(a)*r;y=Math.sin(a)*r;
+    }
+    X[i]=x;Y[i]=y;K[i]=c;Z[i]=o.grand?gauss()*(.03+.2*Math.exp(-Math.pow(Math.sqrt(x*x+y*y)/.3,2))):0;
+    var rl=Math.sqrt(x*x+y*y), q=rnd(), ci;
+    if(q<.08||forceAcc)ci=3; else if(rl<.16)ci=q<.7?0:1; else if(rl<.55)ci=q<.6?1:2; else ci=o.grand?(q<.5?2:q<.72?3:1):(q<.75?2:1);
+    var lv=rnd(); lv=lv<.5?0:lv<.86?1:2; if(rl<.2)lv=rl<.1?0:Math.min(lv,1); if(forceAcc)lv=2;
+    var s=rnd(); S[i]=(s<.85?1:s<.97?1.7:2.6)*(o.grand?.55+.75*Math.min(1,rl/.85):1);
+    var key=(c?12:0)+ci*3+lv; (bk[key]||(bk[key]=[])).push(i);
+  }
+  var buckets=Object.keys(bk).map(function(k){
+    k=+k; var pl=k>=12?pal2:pal;
+    return {style:'rgba('+rgb(pl[((k%12)/3)|0])+','+[.35,.65,1][k%3]+')',idx:Uint32Array.from(bk[k])};
+  });
+  var glows=[], ng=kind==='binary'?2:1;
+  for(var c2=0;c2<ng;c2++){
+    var size=o.glow||512, cn=document.createElement('canvas'); cn.width=cn.height=size;
+    var g=cn.getContext('2d'), up=size/2.4, half=size/2, pl2=c2?pal2:pal, pb=(o.blobs||200)/n;
+    g.globalCompositeOperation='lighter';
+    for(var j=0;j<n;j++){
+      if(rnd()>pb||(kind==='binary'&&K[j]!==c2))continue;
+      var rr=Math.sqrt(X[j]*X[j]+Y[j]*Y[j]); if(rr<.28&&rnd()>.1)continue; var col=rgb(pl2[rr<.3?1:2]), rad=(o.grand?.012+rnd()*.016:.08+rnd()*.17)*up,
+          px=half+X[j]*up, py=half+Y[j]*up, gr=g.createRadialGradient(px,py,0,px,py,rad), al=(o.ga||.06)+rnd()*.05;
+      gr.addColorStop(0,'rgba('+col+','+al+')'); gr.addColorStop(1,'rgba('+col+',0)');
+      g.fillStyle=gr; g.fillRect(px-rad,py-rad,rad*2,rad*2);
+    }
+    if(o.grand&&c2===0)grandGlow(g,size,tw,pl2);
+    if(o.grand&&c2===0){clus.forEach(function(cl){var px2=half+cl[0]*up,py2=half+cl[1]*up,rad2=.035*up,gr2=g.createRadialGradient(px2,py2,0,px2,py2,rad2);gr2.addColorStop(0,'rgba('+rgb(pl2[1])+',.05)');gr2.addColorStop(1,'rgba('+rgb(pl2[1])+',0)');g.fillStyle=gr2;g.fillRect(px2-rad2,py2-rad2,rad2*2,rad2*2)})}
+    if(o.halo){var hg=g.createRadialGradient(half,half,0,half,half,half),hc=rgb(pl2[2]);hg.addColorStop(0,'rgba('+hc+','+o.halo+')');hg.addColorStop(.6,'rgba('+hc+','+o.halo*.35+')');hg.addColorStop(1,'rgba('+hc+',0)');g.fillStyle=hg;g.fillRect(0,0,size,size)}
+    var cr=(o.coreR||.42)*up, ca=o.coreA||.55, cg=g.createRadialGradient(half,half,0,half,half,cr);
+    cg.addColorStop(0,'rgba('+rgb(pl2[0])+','+ca+')'); cg.addColorStop(.35,'rgba('+rgb(pl2[1])+','+ca*.35+')'); cg.addColorStop(1,'rgba('+rgb(pl2[2])+',0)');
+    g.fillStyle=cg; g.fillRect(0,0,size,size);
+    glows.push(cn);
+  }
+  var dust=null;
+  if(o.dust){
+    dust=document.createElement('canvas');dust.width=dust.height=768;var dg=dust.getContext('2d'),du=768/2.4;
+    for(var di=0;di<2600;di++){var dr=.16+rnd()*.7,da=(di%6)*1.0472+dr*tw+.52+gauss()*.07,dw2=W2(Math.cos(da)*dr,Math.sin(da)*dr),dx=384+dw2[0]*du,dy=384+dw2[1]*du,drad=(.012+rnd()*.026)*du,dgr=dg.createRadialGradient(dx,dy,0,dx,dy,drad);dgr.addColorStop(0,'rgba(4,10,30,.08)');dgr.addColorStop(1,'rgba(4,10,30,0)');dg.fillStyle=dgr;dg.fillRect(dx-drad,dy-drad,drad*2,drad*2)}
+  }
+  return {kind:kind,X:X,Y:Y,S:S,K:K,Z:Z,depth:o.grand?.18:0,bulge:!!o.grand,buckets:buckets,glows:glows,dust:dust};
+}
+
+/* 은하 그리기. cx,cy,R은 모두 실제 픽셀 단위 */
+function drawGal(G,cx,cy,R,tilt,inc,rot,alpha,sizeMul,t,gk){
+  if(gk===undefined)gk=1;
+  if(alpha<.004||R<2)return;
+  var ci=Math.cos(inc),si=Math.sin(inc),cr=Math.cos(rot),sr=Math.sin(rot),phi=t*.45,bin=G.kind==='binary';
+  var ox=.36*Math.cos(phi),oy=.36*Math.sin(phi),Wd=cv.width,Hd=cv.height,pxs=dpr*sizeMul,k,b,j,jn,i,x,y,rx,ry,sx,sy,s,idx,pf,zk=Math.sqrt(Math.max(0,1-tilt*tilt)),dep=G.depth||0;
+  ctx.save(); ctx.globalAlpha=Math.min(1,alpha)*gk; ctx.globalCompositeOperation='lighter';
+  ctx.translate(cx,cy); ctx.rotate(inc); ctx.scale(1,tilt); ctx.rotate(rot);
+  for(k=0;k<G.glows.length;k++){
+    ctx.save();
+    if(bin){var sg=k?-1:1; ctx.translate(sg*ox*R,sg*oy*R)}
+    ctx.drawImage(G.glows[k],-1.2*R,-1.2*R,2.4*R,2.4*R);
+    ctx.restore();
+  }
+  ctx.restore();
+  if(G.bulge){
+    /* 납작한 원반 위로 둥글게 솟은 중심부: 입체감의 핵심 */
+    ctx.save(); ctx.globalAlpha=Math.min(1,alpha)*gk; ctx.globalCompositeOperation='lighter';
+    ctx.translate(cx,cy-R*.03); ctx.rotate(inc); ctx.scale(1,1.12);
+    var bg=ctx.createRadialGradient(0,0,0,0,0,R*.27);
+    bg.addColorStop(0,'rgba(255,242,220,.3)'); bg.addColorStop(.4,'rgba(170,200,255,.14)'); bg.addColorStop(1,'rgba(80,110,255,0)');
+    ctx.fillStyle=bg; ctx.fillRect(-R*.3,-R*.3,R*.6,R*.6); ctx.restore();
+  }
+  ctx.save(); ctx.globalAlpha=Math.min(1,alpha); ctx.globalCompositeOperation='lighter';
+  for(k=0;k<G.buckets.length;k++){
+    b=G.buckets[k]; ctx.fillStyle=b.style; idx=b.idx;
+    for(j=0,jn=(idx.length*qual)|0;j<jn;j++){
+      i=idx[j]; x=G.X[i]; y=G.Y[i];
+      if(bin){ if(G.K[i]){x-=ox;y-=oy}else{x+=ox;y+=oy} }
+      rx=x*cr-y*sr; ry=(x*sr+y*cr)*tilt-G.Z[i]*zk;
+      pf=1+dep*ry; rx*=pf; ry*=pf;
+      sx=cx+R*(rx*ci-ry*si); sy=cy+R*(rx*si+ry*ci);
+      if(sx<-6||sx>Wd+6||sy<-6||sy>Hd+6)continue;
+      s=G.S[i]*pxs*(dep?pf:1); ctx.fillRect(sx-s/2,sy-s/2,s,s);
+    }
+  }
+  ctx.restore();
+  if(G.dust){ctx.save();ctx.globalAlpha=Math.min(1,alpha)*gk*.9;ctx.translate(cx,cy);ctx.rotate(inc);ctx.scale(1,tilt);ctx.rotate(rot);ctx.drawImage(G.dust,-1.2*R,-1.2*R,2.4*R,2.4*R);ctx.restore()}
+}
+
+/* 배경의 먼 별 */
+var BG=[]; for(var q0=0;q0<4200;q0++)BG.push({a:rnd()*6.2832,d:.03+Math.sqrt(rnd())*1.1,z:.3+rnd()*.9,s:.5+Math.pow(rnd(),2.4)*1.1,o:.3+rnd()*.6,p:rnd()*6.28});
+
+var PLP=[['바다','#BFE6FF','#3A86FF','#0A2A7A','#D6EEFF'],['오로라','#D8FFF0','#34C9A0','#0B4E52','#EFFFF8'],['사막','#FFE2B8','#E39A4A','#6E3410','#FFEFD6'],['성운','#EBDDFF','#8A63FF','#2A1670','#F6EEFF'],['장미','#FFD3DE','#E0527A','#60102C','#FFEEF2'],['얼음','#FFFFFF','#9CC6E6','#34587A','#FFFFFF']];
+var SHC=['#EAF4FF','#8FD3FF','#FFD6A8','#E0B8FF','#FFB7C5','#B6F5E6'], FLC=['#6FB3FF','#FF9A4A','#7CFFD8','#FF7BD0','#FFE066','#FFFFFF'];
+var HULLN=['화살','캡슐','원반','날개'], EMBN=['★','●','▲','◆','◎','⚡'];
+var PSP={}, shipSA=0, trail=[], nodeShown=false, plT=0, plTarget=0, flightWarp=0, fl={on:false,t:0};
+var plBtn=null, plPanel=null, plNameEl=null, plHint=null, plNameTxt='';
+function hexA(h,a){return 'rgba('+rgb(h)+','+a+')'}
+function shade(h,k){var c=rgb(h).split(',').map(Number);return 'rgb('+(c[0]*k|0)+','+(c[1]*k|0)+','+(c[2]*k|0)+')'}
+/* --- 자전하는 행성 (사용자 행성 전용 · 서비스 행성은 rot을 고정해서 쓰면 멈춘 행성이 된다) --- */
+var PLT=['가스 띠','대륙','바위','폭풍','용암','빙하'];
+var RGN=['없음','클래식','넓은 띠','이중','가는 선','빛나는'], RGS=['작게','보통','크게'], SPN=['느리게','보통','빠르게'], SPV=[.12,.28,.62];
+var RGC=['#FFFFFF','#FFD58A','#9FE8FF','#FF9FC8','#B99BFF','#FF8A5C'], RGCN=['행성색','은빛','황금','얼음','분홍','보라','노을'];
+var RGB_=[ /* [안쪽, 바깥쪽, 진하기] (행성 반지름 배수) */
+  [],[[1.34,1.52,.2],[1.55,1.84,.42],[1.87,1.95,.3]],[[1.3,1.62,.16],[1.62,2.06,.32],[2.06,2.34,.14]],[[1.38,1.62,.45],[1.8,2.02,.36]],
+  [[1.34,1.37,.5],[1.43,1.47,.4],[1.52,1.58,.6],[1.64,1.67,.35],[1.72,1.78,.55],[1.84,1.87,.4],[1.93,1.98,.45],[2.04,2.06,.3]],[[1.42,1.9,.18],[1.6,1.68,.9]]];
+var GTEX={}, GMAP={}, GMAPN=0, GCV={}, GLIT={};
+function plCfg(pl){
+  pl=pl||{}; var ax=typeof pl.ax==='number'?pl.ax:-18, at=typeof pl.at==='number'?pl.at:16;
+  return {p:ix(pl.p,6),ty:ix(pl.ty,6),r:ix(pl.r,6),rc:ix(pl.rc,7),rs:typeof pl.rs==='number'?ix(pl.rs,3):1,ax:num(ax,-60,60,-18)*Math.PI/180,at:num(at,4,70,16)|0,sp:SPV[typeof pl.ss==='number'?ix(pl.ss,3):1]*(pl.sd?-1:1)};
+}
+function hx3(h){var c=rgb(h).split(',');return [+c[0],+c[1],+c[2]]}
+function mix3(a,b,k){return [a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k]}
+function hsh(x,y,s){var h=(x*374761393+y*668265263+s*1442695041)|0; h=Math.imul(h^(h>>>13),1274126177); return ((h^(h>>>16))>>>0)/4294967296}
+function vno(x,y,per,s){var ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,x0=((ix%per)+per)%per,x1=(x0+1)%per; fx=fx*fx*(3-2*fx); fy=fy*fy*(3-2*fy);
+  var a=hsh(x0,iy,s),b=hsh(x1,iy,s),c=hsh(x0,iy+1,s),d=hsh(x1,iy+1,s); return a+(b-a)*fx+(c-a)*fy+(a-b-c+d)*fx*fy}
+function gfbm(u,v,f,oc,s){var t=0,a=.5,n=0; for(var o=0;o<oc;o++){t+=a*vno(u*f,v*f/2,f,s+o*31); n+=a; a*=.5; f*=2} return t/n}
+/* 행성 표면 지도(경도×위도, 가로로 이어짐) */
+function globeTex(p,ty){
+  var k=p+'_'+ty; if(GTEX[k])return GTEX[k];
+  var TW=512, TH=256, D=new Uint8ClampedArray(TW*TH*3), P=PLP[p].map(function(c,i){return i?hx3(c):c}), s=p*13+ty*101+7, cr=[];
+  if(ty===2)for(var q=0;q<30;q++)cr.push([hsh(q,1,s),.12+.76*hsh(q,2,s),.015+.06*Math.pow(hsh(q,3,s),2)]);
+  for(var y=0;y<TH;y++){var v=(y+.5)/TH, lat=Math.abs(v-.5)*2, cl=Math.cos((v-.5)*Math.PI);
+    for(var x=0;x<TW;x++){var u=x/TW, c, n;
+      if(ty===0||ty===3){
+        n=gfbm(u,v,4,4,s); var sw=0;
+        if(ty===3){var du=u-.3; du-=Math.round(du); du*=2*cl; var dv=v-.6, e=Math.sqrt(du*du/.012+dv*dv/.0035); if(e<2.2){sw=(2.2-e)*1.6}}
+        var b1=.5+.5*Math.sin(v*Math.PI*(ty?7:9)+n*3.4+sw*2.2), b2=.5+.5*Math.sin(v*Math.PI*23+n*6+sw*3);
+        c=mix3(mix3(P[3],P[2],b1),mix3(P[1],P[4],b2),b1*b2*.85); c=mix3(c,P[3],(n-.5)*.5);
+        if(ty===3&&e<1.25){var w=1-e/1.25; c=mix3(c,e>.8?P[3]:mix3(P[1],P[4],.5+.5*Math.sin(e*12+n*6)),Math.min(1,w*2.2))}
+      }else if(ty===1){
+        n=gfbm(u,v,3,5,s); var sea=.53;
+        if(n<sea)c=mix3(P[3],P[2],Math.pow(n/sea,2.2)); else c=mix3(mix3(P[1],P[2],.35),P[4],clamp((n-sea)*4,0,1));
+        if(lat>.8-(n-.5)*.5)c=mix3(c,[250,252,255],.9);
+        var cl2=gfbm(u+.37,v,6,4,s+9); if(cl2>.56)c=mix3(c,[255,255,255],Math.min(.85,(cl2-.56)*4));
+      }else if(ty===2){
+        n=gfbm(u,v,6,5,s); c=mix3(mix3(P[3],P[2],n*1.2),P[1],Math.max(0,n-.6));
+        for(var j=0;j<cr.length;j++){var dx=u-cr[j][0]; dx-=Math.round(dx); dx*=2*cl; var dy=v-cr[j][1], dd=Math.sqrt(dx*dx+dy*dy)/cr[j][2];
+          if(dd<1.15){c=dd<.86?mix3(c,P[3],.38*(1-dd*.5)):mix3(c,P[4],.42*(1-Math.abs(dd-1)/.15))}}
+      }else if(ty===4){
+        n=gfbm(u,v,5,5,s); var ck=Math.abs(gfbm(u,v,8,4,s+3)-.5), hot=mix3(mix3(P[4],P[1],.4),[255,200,120],.35);
+        c=mix3([18,10,14],mix3(P[3],[0,0,0],.45),n*1.3);
+        if(ck<.045)c=mix3(c,hot,Math.pow(1-ck/.045,1.5)); c=mix3(c,hot,Math.max(0,n-.68)*1.4);
+      }else{
+        n=gfbm(u,v,5,5,s); c=mix3(P[4],P[1],n*.85); var rd=1-Math.abs(gfbm(u,v,10,3,s+5)*2-1);
+        if(rd>.88)c=mix3(c,P[2],(rd-.88)*5); if(lat>.72)c=mix3(c,[255,255,255],(lat-.72)*2.6);
+      }
+      var o=(y*TW+x)*3; D[o]=c[0]; D[o+1]=c[1]; D[o+2]=c[2];
+    }}
+  return GTEX[k]={d:D,w:TW,h:TH};
+}
+/* 화면 픽셀 → 행성 경도·위도 표 (지름 S, 앞뒤 기울기 at) */
+function globeMap(S,at){
+  var k=S+'_'+at; if(GMAP[k])return GMAP[k];
+  if(++GMAPN>48){GMAP={};GMAPN=1}
+  var n=S*S, lon=new Float32Array(n), lat=new Uint16Array(n), al=new Uint8Array(n), h=S/2, ca=Math.cos(at*Math.PI/180), sa=Math.sin(at*Math.PI/180);
+  for(var y=0;y<S;y++)for(var x=0;x<S;x++){var i=y*S+x, nx=(x+.5-h)/h, ny=(y+.5-h)/h, r2=nx*nx+ny*ny; if(r2>=1)continue;
+    var nz=Math.sqrt(1-r2), by=ny*ca-nz*sa, bz=ny*sa+nz*ca; lon[i]=Math.atan2(nx,bz); lat[i]=Math.min(.9999,(Math.asin(clamp(by,-1,1))/Math.PI+.5))*65535; al[i]=Math.min(255,(1-Math.sqrt(r2))*h*255)}
+  return GMAP[k]={lon:lon,lat:lat,al:al};
+}
+function globeLight(p){
+  if(GLIT[p])return GLIT[p];
+  var P=PLP[p], cn=document.createElement('canvas'); cn.width=cn.height=256; var g=cn.getContext('2d');
+  var at=g.createRadialGradient(128,128,96,128,128,127); at.addColorStop(0,hexA(P[1],.5)); at.addColorStop(1,hexA(P[1],0)); g.fillStyle=at; g.beginPath(); g.arc(128,128,128,0,6.2832); g.arc(128,128,100,0,6.2832,true); g.fill();
+  g.save(); g.beginPath(); g.arc(128,128,100,0,6.2832); g.clip();
+  var sh=g.createRadialGradient(86,80,30,150,150,150); sh.addColorStop(0,'rgba(0,0,0,0)'); sh.addColorStop(.55,'rgba(2,6,22,.2)'); sh.addColorStop(1,'rgba(2,6,22,.82)'); g.fillStyle=sh; g.fillRect(0,0,256,256);
+  var sp=g.createRadialGradient(92,84,0,92,84,50); sp.addColorStop(0,'rgba(255,255,255,.32)'); sp.addColorStop(1,'rgba(255,255,255,0)'); g.fillStyle=sp; g.fillRect(0,0,256,256);
+  var rim=g.createRadialGradient(128,128,84,128,128,100); rim.addColorStop(0,hexA(P[1],0)); rim.addColorStop(1,hexA(P[1],.35)); g.fillStyle=rim; g.fillRect(0,0,256,256);
+  g.restore(); g.strokeStyle=hexA(P[1],.5); g.lineWidth=1.6; g.beginPath(); g.arc(128,128,100,0,6.2832); g.stroke();
+  return GLIT[p]=cn;
+}
+/* 표면만 그린다 (빛·대기는 globeLight). rot=자전 각도 */
+function drawGlobe(x,y,R,c,rot,cap){
+  var S=Math.max(24,Math.min(cap||300,Math.round(R*2/8)*8)), T=globeTex(c.p,c.ty), M=globeMap(S,c.at), cv2=GCV[S];
+  if(!cv2){cv2=document.createElement('canvas'); cv2.width=cv2.height=S; cv2._g=cv2.getContext('2d'); cv2._i=cv2._g.createImageData(S,S); GCV[S]=cv2}
+  var o=cv2._i.data, L=M.lon, A=M.al, LA=M.lat, TD=T.d, TW=T.w, TH=T.h, kx=TW/6.28319, off=((rot%6.28319)+6.28319)*kx;
+  for(var i=0,n=S*S;i<n;i++){var a=A[i], j=i*4; if(!a){o[j+3]=0;continue}
+    var tx=((L[i]*kx+off)|0)%TW, ty=(LA[i]*TH/65536)|0, t3=(ty*TW+tx)*3; o[j]=TD[t3]; o[j+1]=TD[t3+1]; o[j+2]=TD[t3+2]; o[j+3]=a}
+  cv2._g.putImageData(cv2._i,0,0);
+  ctx.save(); ctx.translate(x,y); ctx.rotate(c.ax); ctx.drawImage(cv2,-R,-R,R*2,R*2); ctx.restore();
+  ctx.drawImage(globeLight(c.p),x-R*1.28,y-R*1.28,R*2.56,R*2.56);
+}
+/* 고리: 행성 중력에 붙잡힌 얼음·암석·먼지 조각들이 적도면을 따라 공전하며 만든 띠.
+   옅은 먼지층 위에 조각 하나하나를 그리고, 케플러 법칙대로 안쪽 조각이 더 빨리 돈다. back=행성 뒤쪽 절반 */
+var RGP={};
+function ringParts(r){
+  if(RGP[r])return RGP[r];
+  var B=RGB_[r], wsum=0, w=[], a=[], s=r*977+5;
+  for(var i=0;i<B.length;i++){w.push((B[i][1]-B[i][0])*B[i][2]); wsum+=w[i]}
+  for(var k=0;k<1400;k++){
+    var q=hsh(k,1,s)*wsum, bi=0; while(bi<B.length-1&&q>w[bi]){q-=w[bi];bi++}
+    var b=B[bi], u=hsh(k,2,s), big=hsh(k,4,s)<.09;
+    a.push({r:b[0]+(b[1]-b[0])*u, th:hsh(k,3,s)*6.2832, z:big?1.5+hsh(k,5,s)*1.8:.6+Math.pow(hsh(k,5,s),2)*1.3, big:big, ice:hsh(k,6,s)<.35, lum:.55+hsh(k,7,s)*.45, al:b[2], tw:hsh(k,8,s)*6.2832, alt:bi%2});
+  }
+  return RGP[r]=a;
+}
+function drawRing(x,y,R,c,back){
+  if(!c.r)return; var P=PLP[c.p], base=c.rc?RGC[c.rc-1]:P[4], hi=c.rc?RGC[c.rc-1]:P[1], sz=[.84,1,1.2][c.rs], B=RGB_[c.r], fl=Math.max(.03,Math.sin(c.at*Math.PI/180)), glow=c.r===5;
+  /* 1) 옅은 먼지층 */
+  ctx.save(); ctx.translate(x,y); ctx.rotate(c.ax); ctx.scale(1,fl); if(glow)ctx.globalCompositeOperation='lighter';
+  for(var i=0;i<B.length;i++){var b=B[i], r0=1+(b[0]-1)*sz, r1=1+(b[1]-1)*sz; ctx.beginPath(); ctx.arc(0,0,R*(r0+r1)/2,back?Math.PI:0,back?6.2832:Math.PI); ctx.strokeStyle=hexA(i%2?hi:base,b[2]*.2*(back?.75:1)); ctx.lineWidth=R*(r1-r0); ctx.stroke()}
+  ctx.restore();
+  /* 2) 공전하는 조각들 */
+  var T=performance.now()/1000*(reduce?.25:1), dir=c.sp<0?-1:1, ca=Math.cos(c.ax), sa=Math.sin(c.ax), pa=ringParts(c.r), n=Math.min(pa.length,Math.max(80,R*4|0)), ps=Math.max(.8,R/85),
+      cb=hx3(base), ch=hx3(hi), a0=ctx.globalAlpha;
+  ctx.save(); if(glow)ctx.globalCompositeOperation='lighter';
+  for(var k=0;k<n;k++){var p=pa[k], rr=1+(p.r-1)*sz, th=p.th+dir*T*.17*Math.pow(rr,-1.5), sn=Math.sin(th);
+    if((sn<0)!==back)continue;
+    var ox=Math.cos(th)*rr*R, oy=sn*rr*R*fl, px=x+ox*ca-oy*sa, py=y+ox*sa+oy*ca, col=p.ice?mix3(ch,[255,255,255],.5):(p.alt?ch:cb), lm=p.lum*(back?.7:1);
+    /* 빛은 왼쪽 위에서 온다: 행성 뒤 오른쪽으로 드리운 그림자 속 조각은 어둡게 */
+    var sx_=px-x, sy_=py-y; if(back&&sx_*.8+sy_*.6>0&&Math.abs(-sx_*.6+sy_*.8)<R*.95)lm*=.3;
+    var tw=p.ice?.75+.25*Math.sin(T*2.4+p.tw):1, al=Math.min(1,(.55+p.al*.8)*tw);
+    ctx.globalAlpha=a0*al; ctx.fillStyle='rgb('+(col[0]*lm|0)+','+(col[1]*lm|0)+','+(col[2]*lm|0)+')';
+    var z=p.z*ps;
+    if(p.big){ctx.beginPath(); ctx.arc(px,py,z,0,6.2832); ctx.fill(); ctx.globalAlpha=a0*al*.6; ctx.fillStyle='rgba(255,255,255,.8)'; ctx.beginPath(); ctx.arc(px-z*.35,py-z*.35,z*.4,0,6.2832); ctx.fill()}
+    else ctx.fillRect(px-z/2,py-z/2,z,z);
+  }
+  ctx.restore();
+}
+function drawAxis(x,y,R,c,a){
+  if(a<.01)return; var ca=Math.cos(c.at*Math.PI/180), ux=Math.sin(c.ax)*ca, uy=-Math.cos(c.ax)*ca;
+  ctx.save(); ctx.globalAlpha*=a; ctx.strokeStyle='rgba(190,225,255,.85)'; ctx.lineWidth=Math.max(1,R*.018); ctx.setLineDash([R*.06,R*.05]);
+  ctx.beginPath(); ctx.moveTo(x-ux*R*1.55,y-uy*R*1.55); ctx.lineTo(x+ux*R*1.55,y+uy*R*1.55); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle='rgba(220,240,255,.95)'; ctx.beginPath(); ctx.arc(x+ux*R*1.55,y+uy*R*1.55,Math.max(2,R*.04),0,6.2832); ctx.fill(); ctx.restore();
+}
+var axisFlash=0;
+function plRot(pl,t,seed){return t*plCfg(pl).sp+(seed||0)}
+function emblem(k){
+  ctx.fillStyle='rgba(8,20,60,.9)'; ctx.strokeStyle='rgba(8,20,60,.9)'; ctx.lineWidth=.025; ctx.beginPath();
+  if(k===0){for(var i=0;i<10;i++){var a=-1.5708+i*.6283,r=i&1?.05:.12;ctx.lineTo(.04+Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath();ctx.fill()}
+  else if(k===1){ctx.arc(.04,0,.075,0,6.2832);ctx.fill()}
+  else if(k===2){ctx.moveTo(.14,0);ctx.lineTo(-.02,.1);ctx.lineTo(-.02,-.1);ctx.closePath();ctx.fill()}
+  else if(k===3){ctx.moveTo(.16,0);ctx.lineTo(.04,.1);ctx.lineTo(-.08,0);ctx.lineTo(.04,-.1);ctx.closePath();ctx.fill()}
+  else if(k===4){ctx.arc(.04,0,.085,0,6.2832);ctx.stroke()}
+  else{ctx.moveTo(.12,-.12);ctx.lineTo(-.02,.02);ctx.lineTo(.05,.02);ctx.lineTo(-.04,.13);ctx.lineTo(.11,-.03);ctx.lineTo(.04,-.03);ctx.closePath();ctx.fill()}
+}
+function drawShip(x,y,ang,L,sh,t,boost){
+  var col=SHC[ix(sh.c,6)], fcol=FLC[ix(sh.f,6)], fk=boost*(.85+.2*Math.sin(t*34));
+  ctx.save(); ctx.translate(x,y); ctx.rotate(ang); ctx.scale(L,L);
+  var g=ctx.createLinearGradient(-.45,0,-.45-.95*fk,0); g.addColorStop(0,fcol); g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.globalCompositeOperation='lighter'; ctx.fillStyle=g; ctx.beginPath(); ctx.moveTo(-.4,.12); ctx.lineTo(-.45-.95*fk,0); ctx.lineTo(-.4,-.12); ctx.closePath(); ctx.fill();
+  ctx.globalCompositeOperation='source-over';
+  var hg=ctx.createLinearGradient(0,-.45,0,.45); hg.addColorStop(0,col); hg.addColorStop(1,shade(col,.5));
+  ctx.fillStyle=hg; ctx.strokeStyle='rgba(255,255,255,.6)'; ctx.lineWidth=.022; ctx.beginPath();
+  var h=ix(sh.h,4);
+  if(h===0){ctx.moveTo(.66,0);ctx.lineTo(-.44,.46);ctx.lineTo(-.22,0);ctx.lineTo(-.44,-.46);ctx.closePath()}
+  else if(h===1){ctx.ellipse(0,0,.62,.2,0,0,6.2832);ctx.moveTo(-.34,.16);ctx.lineTo(-.66,.46);ctx.lineTo(-.56,.1);ctx.closePath();ctx.moveTo(-.34,-.16);ctx.lineTo(-.66,-.46);ctx.lineTo(-.56,-.1);ctx.closePath()}
+  else if(h===2){ctx.ellipse(0,0,.54,.3,0,0,6.2832)}
+  else{ctx.moveTo(.68,0);ctx.lineTo(.1,.13);ctx.lineTo(-.62,.1);ctx.lineTo(-.72,0);ctx.lineTo(-.62,-.1);ctx.lineTo(.1,-.13);ctx.closePath();
+       ctx.moveTo(.14,.1);ctx.lineTo(-.5,.66);ctx.lineTo(-.74,.62);ctx.lineTo(-.44,.1);ctx.closePath();ctx.moveTo(.14,-.1);ctx.lineTo(-.5,-.66);ctx.lineTo(-.74,-.62);ctx.lineTo(-.44,-.1);ctx.closePath()}
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle='rgba(210,238,255,.92)'; ctx.beginPath(); if(h===2)ctx.ellipse(0,0,.2,.14,0,0,6.2832); else ctx.ellipse(.26,0,.14,.075,0,0,6.2832); ctx.fill();
+  ctx.translate(h===2?.0:-.14,0); emblem(ix(sh.e,6));
+  ctx.restore();
+}
+function shipPos(x,y,R,sa){
+  var rx=R*2.35, ry=R*.72, c=Math.cos(-.32), s=Math.sin(-.32), ox=Math.cos(sa)*rx, oy=Math.sin(sa)*ry, dx=-Math.sin(sa)*rx, dy=Math.cos(sa)*ry;
+  return {x:x+ox*c-oy*s, y:y+ox*s+oy*c, a:Math.atan2(dx*s+dy*c,dx*c-dy*s), z:Math.sin(sa)};
+}
+var meAng=0;
+function drawPlanetBody(x,y,R,t,dt,dk){
+  var pl=VIEW.on?VIEW.pl:ME.pl, sh=ME.sh, P=PLP[ix(pl.p,6)], d=dpr, ct=Math.cos(-.32), st=Math.sin(-.32), cf=plCfg(pl), a0=ctx.globalAlpha, xa=1-sm(0,.3,dk||0);
+  meAng+=dt*cf.sp*(1+2.5*(dk||0));
+  var sp=shipPos(x,y,R,shipSA), vis=true, sx=sp.x, sy=sp.y, sa=sp.a, sc=1+.16*sp.z, boost=1, front=sp.z>=0;
+  if(fl.on){
+    fl.t+=dt/4.4; var u=fl.t;
+    if(u>=1){fl.on=false}
+    else if(u<.34){var k=u/.34,q=k*k*k; sx=sp.x+Math.cos(sp.a)*q*W*d*1.5; sy=sp.y+Math.sin(sp.a)*q*W*d*1.5; sc=1+q*1.4; boost=1+q*2.6; front=true}
+    else if(u<.58){vis=false}
+    else{var k2=(u-.58)/.42,q2=1-Math.pow(1-k2,3), stx=x-W*d*.8, sty=y-H*d*.5, ha=Math.atan2(sp.y-sty,sp.x-stx); sx=stx+(sp.x-stx)*q2; sy=sty+(sp.y-sty)*q2; sa=ha+(sp.a-ha)*q2*q2; sc=2.2-1.2*q2; boost=1+2.2*(1-q2); front=true}
+    flightWarp+=Math.sin(Math.PI*clamp((u-.05)/.7,0,1))*dt*1.5;
+  }
+  
+  for(var i=trail.length-1;i>=0;i--){trail[i].l-=dt*(fl.on?1.1:2.6); if(trail[i].l<=0)trail.splice(i,1)}
+  var L=R*.36*sc;
+  function moons(fr){
+    for(var i=0,mn=ix(pl.m,4);i<mn;i++){
+      var a=t*(.38-.07*i)+i*2.2, rx=R*(2.25+.45*i), ry=R*(.6+.1*i), ox=Math.cos(a)*rx, oy=Math.sin(a)*ry, mx=x+ox*ct-oy*st, my=y+ox*st+oy*ct;
+      if((Math.sin(a)>=0)!==fr)continue;
+      var mr=R*(.17-.03*i), g=ctx.createRadialGradient(mx-mr*.3,my-mr*.3,mr*.1,mx,my,mr); g.addColorStop(0,'#EEF2FB'); g.addColorStop(.6,'#8795B0'); g.addColorStop(1,'#2C3550');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(mx,my,mr,0,6.2832); ctx.fill();
+    }
+  }
+  function ship(){
+    ctx.save(); ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<trail.length;i++){var tr=trail[i]; ctx.fillStyle=hexA(FLC[ix(sh.f,6)],.5*tr.l*tr.l); ctx.beginPath(); ctx.arc(tr.x,tr.y,tr.r*(.4+.6*tr.l),0,6.2832); ctx.fill()}
+    ctx.restore();
+    
+  }
+  if(xa>.01){ctx.globalAlpha=a0*xa; drawRing(x,y,R,cf,true); moons(false); drawVisitors(x,y,R,t,false); if(!front)ship(); ctx.globalAlpha=a0}
+  drawGlobe(x,y,R,cf,meAng,dk?420:300);
+  if(xa>.01){ctx.globalAlpha=a0*xa; drawRing(x,y,R,cf,false); moons(true); drawVisitors(x,y,R,t,true); if(front)ship(); ctx.globalAlpha=a0}
+  if(axisFlash>0&&!VIEW.on){drawAxis(x,y,R,cf,Math.min(1,axisFlash)); axisFlash-=dt}
+}
+
+
+var main=null,mcx=0,mcy=0,mainR=0,lastE=0;
+function layout(){dpr=Math.min(1.5,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);mobile=W<700;mcx=W/2;mcy=mobile?H*.54:(H+105)/2;mainR=mobile?Math.min(W*.4,H*.3):Math.min(W*.37,(H-135)/1.31)}
+function init(){var nMain=mobile?9500:29000;main=build('spiral',nMain,PAL.main,null,{arms:2,tw:11,glow:1024,blobs:400,coreR:.4,coreA:.9,grand:true,dust:true,halo:.2,ga:.06})}
+function drawBG(e,introT,t,dt){
+var Wd=cv.width,Hd=cv.height,cx=mcx*dpr,cy=mcy*dpr,ew=e-(reduce?0:Math.pow(1-introT,2)*1.2),diag=Math.sqrt(Wd*Wd+Hd*Hd)*.55,speed=Math.abs(ew-lastE)/Math.max(dt,.001),span=diag*1.1,asp=Hd/Wd*1.2;
+ctx.save(); ctx.globalCompositeOperation='lighter';
+for(var q=0;q<BG.length;q++){
+var s=BG[q],d0=s.d*diag,d=(((d0+ew*diag*2.4*s.z)%span)+span)%span,ca=Math.cos(s.a),sa=Math.sin(s.a),al=s.o*(.65+.35*Math.sin(t*1.3+s.p)),x=cx+ca*d,y=cy+sa*d*asp;
+if(speed>.04&&(q&1)===0){var dp=(((d0+lastE*diag*2.4*s.z)%span)+span)%span;
+if(Math.abs(dp-d)<diag*.4){ctx.strokeStyle='rgba(200,225,255,'+Math.min(.7,al*(.4+speed*1.6))+')';ctx.lineWidth=s.s*dpr*.8;ctx.beginPath();ctx.moveTo(cx+ca*dp,cy+sa*dp*asp);ctx.lineTo(x,y);ctx.stroke();continue}}
+ctx.fillStyle='rgba(215,232,255,'+al+')';var z=s.s*dpr;ctx.fillRect(x-z/2,y-z/2,z,z);
+}
+ctx.restore(); lastE=ew;
+}
+function drawHome(e,introT,t,alpha,hover){
+var cx=mcx*dpr,cy=mcy*dpr,zoom=reduce?1+e*.12:Math.exp(Math.log(15)*e),a1=(1-sm(.42,.9,e))*sm(0,.4,introT)*alpha,ip=.1+.9*(1-Math.pow(1-introT,3.2));
+var R0=mainR*dpr*ip*(1+.015*hover),mR=R0*zoom,mT=.52+.1*e+.38*Math.pow(1-introT,2.5),mI=-.35+.35*Math.pow(1-introT,2.5),mRot=.4-t*.045+.5*Math.pow(1-introT,3);
+if(!main)return;
+drawGal(main,cx,cy,mR,mT,mI,mRot,a1*(1+.18*hover),1+Math.min(zoom-1,3)*.3,t,1-sm(.1,.55,e));
+}
+function hitMain(px,py){var dx=px-mcx,dy=py-mcy,ci=Math.cos(-.35),si=Math.sin(-.35),ux=dx*ci+dy*si,uy=-dx*si+dy*ci,tl=.52;return (ux*ux)/(mainR*mainR)+(uy*uy)/(mainR*mainR*tl*tl)<1}
+function planet(x,y,R,pl,t,dt){ME.pl=pl;drawPlanetBody(x*dpr,y*dpr,R*dpr,t,dt,0)}
+function ship(x,y,ang,L,t,boost){drawShip(x*dpr,y*dpr,ang,L*dpr,ME.sh,t,boost)}
+window.X={layout:layout,init:init,drawBG:drawBG,drawHome:drawHome,hitMain:hitMain,planet:planet,ship:ship,ctx:ctx,cv:cv,ease:ease,
+get dpr(){return dpr},get W(){return W},get H(){return H},get mcx(){return mcx},get mcy(){return mcy},get mainR(){return mainR}};
+
+})();
+</script>
+<script>
+
 'use strict';
 // ===== CONFIG: 모든 수치는 여기 (밸런스는 시뮬레이션으로 조정) =====
 const CONFIG={save:'cosmia_origin_v1',offlineMax:28800,offlineRate:.5,minMult:.4,eraMult:1.35,popFloor:.6,popGrow:.02,popStart:8,
@@ -82,12 +761,12 @@ req:[{R:190,pop:15},{R:1440,pop:35},{R:8000,pop:70},{R:35000,pop:120}],
 shardMin:1,shardEra:30,reroll:{base:100,step:50,cash:1100}};
 const STAT={food:'식량 생산',mineral:'광물 생산',growth:'인구 증가',research:'연구 속도',combat:'전투력',trade:'교류 보상'};
 const PLANETS=[
-{id:'desert',n:'사막 행성',d:'모래와 광맥의 세계',pal:['#f6c98a','#d9894a','#5a2a18'],blob:['#e8a863','#b8662f','#f2d9a4'],mods:{mineral:30,food:-25,growth:-15}},
-{id:'ocean',n:'해양 행성',d:'끝없는 바다로 덮인 세계',pal:['#a9ddff','#2f78d6','#0a2260'],blob:['#3a9be8','#1b5cbf','#9fd0ff'],cloud:1,mods:{food:30,mineral:-30,research:-20}},
-{id:'jungle',n:'정글 행성',d:'생명이 넘치는 울창한 세계',pal:['#b6f2a0','#3f9d52','#0c3322'],blob:['#2f8a44','#6cc26a','#1c5a34'],cloud:1,mods:{growth:30,research:-25}},
-{id:'ice',n:'빙설 행성',d:'얼음과 눈의 고요한 세계',pal:['#f2fbff','#9cc9e8','#2a4668'],blob:['#d8efff','#7fb0d8','#ffffff'],mods:{research:25,food:-30,growth:-10}},
-{id:'volcano',n:'화산 행성',d:'용암이 흐르는 불안정한 세계',pal:['#ffb27a','#c8402a','#2c0a0c'],blob:['#7a1d14','#ff7a2e','#3a0f10'],mods:{combat:25,mineral:15,food:-35}},
-{id:'crystal',n:'수정 행성',d:'빛나는 결정으로 뒤덮인 세계',pal:['#e8d8ff','#9b7cf0','#2a1a64'],blob:['#c9b0ff','#7a5cf0','#f4eaff'],mods:{research:20,trade:15,combat:-25,food:-10}}];
+{id:'desert',p:2,ty:2,n:'사막 행성',d:'모래와 광맥의 세계',pal:['#f6c98a','#d9894a','#5a2a18'],blob:['#e8a863','#b8662f','#f2d9a4'],mods:{mineral:30,food:-25,growth:-15}},
+{id:'ocean',p:0,ty:1,n:'해양 행성',d:'끝없는 바다로 덮인 세계',pal:['#a9ddff','#2f78d6','#0a2260'],blob:['#3a9be8','#1b5cbf','#9fd0ff'],cloud:1,mods:{food:30,mineral:-30,research:-20}},
+{id:'jungle',p:1,ty:1,n:'정글 행성',d:'생명이 넘치는 울창한 세계',pal:['#b6f2a0','#3f9d52','#0c3322'],blob:['#2f8a44','#6cc26a','#1c5a34'],cloud:1,mods:{growth:30,research:-25}},
+{id:'ice',p:5,ty:5,n:'빙설 행성',d:'얼음과 눈의 고요한 세계',pal:['#f2fbff','#9cc9e8','#2a4668'],blob:['#d8efff','#7fb0d8','#ffffff'],mods:{research:25,food:-30,growth:-10}},
+{id:'volcano',p:4,ty:4,n:'화산 행성',d:'용암이 흐르는 불안정한 세계',pal:['#ffb27a','#c8402a','#2c0a0c'],blob:['#7a1d14','#ff7a2e','#3a0f10'],mods:{combat:25,mineral:15,food:-35}},
+{id:'crystal',p:3,ty:3,n:'수정 행성',d:'빛나는 결정으로 뒤덮인 세계',pal:['#e8d8ff','#9b7cf0','#2a1a64'],blob:['#c9b0ff','#7a5cf0','#f4eaff'],mods:{research:20,trade:15,combat:-25,food:-10}}];
 const TR=[
 {g:'temper',n:'성향',list:[
 {id:'warlike',n:'호전적',ico:'⚔️',mods:{combat:25,trade:-30}},{id:'scholar',n:'학구적',ico:'📚',mods:{research:30,combat:-20}},
@@ -127,38 +806,6 @@ function unlockAudio(){try{ac=ac||new(window.AudioContext||window.webkitAudioCon
 function beep(f=440,d=.08,type='sine',v=.06,f2){if(S.mute)return;try{unlockAudio();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;if(f2)o.frequency.exponentialRampToValueAtTime(f2,ac.currentTime+d);g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
 function boom(){beep(90,1.4,'sawtooth',.16,25);beep(300,.5,'triangle',.05,40)}
 
-// ===== 캔버스 =====
-const cv=$('c'),ctx=cv.getContext('2d');let W=360,H=640,dpr=1,bgc=null;
-function resize(){dpr=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-bgc=document.createElement('canvas');bgc.width=W;bgc.height=H;const g=bgc.getContext('2d'),r=rng(42);
-for(let i=0;i<Math.floor(W*H/2600);i++){const s=r();g.fillStyle=`rgba(${190+r()*65|0},${200+r()*55|0},255,${.15+r()*.55})`;g.fillRect(r()*W,r()*H,s<.9?1:1.8,s<.9?1:1.8)}}
-addEventListener('resize',resize);resize();
-
-// ===== 은하계 스프라이트 (LHY Space 은하 방식: 2개 팔·감김 5.4·눕힘·반시계 회전) =====
-let GAL=null;
-function makeGalaxy(){const Z=1024,c=document.createElement('canvas');c.width=c.height=Z;const g=c.getContext('2d'),r=rng(777),half=Z/2,up=half/1.12;
-const P=[[255,243,220],[191,216,255],[63,107,255],[143,107,255]],tw=5.4;g.globalCompositeOperation='lighter';
-const pt=()=>{const t=r();let x,y,rad,a;if(t<.12){rad=Math.sqrt(r())*1.05;a=r()*6.2832}else if(t<.3){rad=Math.abs(gauss(r))*.17;a=r()*6.2832}else{rad=Math.pow(r(),.8);a=(r()<.5?0:Math.PI)+rad*tw+gauss(r)*(.09+.3*rad)}return[Math.cos(a)*rad,Math.sin(a)*rad,rad]};
-for(let i=0;i<520;i++){const[x,y,rd]=pt();if(rd<.25)continue;const px=half+x*up,py=half+y*up,R=(.06+r()*.14)*up,col=P[rd<.5?1:2],gr=g.createRadialGradient(px,py,0,px,py,R);gr.addColorStop(0,`rgba(${col},${.05+r()*.05})`);gr.addColorStop(1,`rgba(${col},0)`);g.fillStyle=gr;g.fillRect(px-R,py-R,R*2,R*2)}
-const cg=g.createRadialGradient(half,half,0,half,half,up*.45);cg.addColorStop(0,'rgba(255,243,220,.7)');cg.addColorStop(.3,'rgba(191,216,255,.25)');cg.addColorStop(1,'rgba(63,107,255,0)');g.fillStyle=cg;g.fillRect(0,0,Z,Z);
-for(let i=0;i<60000;i++){const[x,y,rl]=pt(),q=r(),ci=q<.08?3:rl<.16?(q<.7?0:1):rl<.55?(q<.6?1:2):(q<.75?2:1),lv=r(),al=lv<.5?.35:lv<.86?.65:1,s=r(),sz=s<.85?1:s<.97?1.7:2.6;
-g.fillStyle=`rgba(${P[ci]},${al})`;g.fillRect(half+x*up,half+y*up,sz,sz)}
-GAL=c}
-
-// ===== 행성 렌더 =====
-function drawPlanet(g,cx,cy,R,P,t,o){o=o||{};const T=PL[P.type],rr=rng(P.seed);
-let ag=g.createRadialGradient(cx,cy,R*.85,cx,cy,R*1.4);ag.addColorStop(0,rgba(T.pal[0],.4));ag.addColorStop(1,rgba(T.pal[0],0));g.fillStyle=ag;g.fillRect(cx-R*1.5,cy-R*1.5,R*3,R*3);
-g.save();g.beginPath();g.arc(cx,cy,R,0,6.2832);g.clip();
-const bg=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);bg.addColorStop(0,T.pal[0]);bg.addColorStop(.5,T.pal[1]);bg.addColorStop(1,T.pal[2]);g.fillStyle=bg;g.fillRect(cx-R,cy-R,R*2,R*2);
-for(let k=0;k<38;k++){const bx=rr(),by=rr(),bs=rr(),col=T.blob[(rr()*T.blob.length)|0],u=((bx+t*.012*(.6+bs))%1+1)%1,x=cx+(u*2-1)*R*1.3,y=cy+(by*2-1)*R*.92,w=R*(.12+bs*.3),h=w*(.4+rr()*.5);
-g.globalAlpha=.55;g.fillStyle=col;g.beginPath();g.ellipse(x,y,w,h,0,0,6.2832);g.fill()}
-if(T.cloud){for(let k=0;k<16;k++){const bx=rr(),by=rr(),u=((bx+t*.03)%1+1)%1,x=cx+(u*2-1)*R*1.3,y=cy+(by*2-1)*R*.9,w=R*(.15+rr()*.22);g.globalAlpha=.22;g.fillStyle='#fff';g.beginPath();g.ellipse(x,y,w,w*.3,0,0,6.2832);g.fill()}}
-g.globalAlpha=1;const sh=g.createRadialGradient(cx-R*.4,cy-R*.4,R*.15,cx-R*.1,cy-R*.1,R*1.3);sh.addColorStop(0,'rgba(0,0,12,0)');sh.addColorStop(.55,'rgba(0,0,12,.25)');sh.addColorStop(1,'rgba(0,0,12,.88)');g.fillStyle=sh;g.fillRect(cx-R,cy-R,R*2,R*2);
-if(o.lights>0){const r2=rng(P.seed+99);let n=0,tries=0;g.fillStyle=o.lc||'#ffd36e';while(n<o.lights&&tries<4000){tries++;const a=r2()*6.2832,d=Math.sqrt(r2())*R*.95,x=cx+Math.cos(a)*d,y=cy+Math.sin(a)*d;if((x-cx)+(y-cy)<R*.1)continue;n++;g.globalAlpha=.55+.45*Math.sin(t*2+n);g.fillRect(x,y,R>60?2:1.5,R>60?2:1.5)}g.globalAlpha=1}
-g.restore();g.strokeStyle=rgba(T.pal[0],.35);g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,R,Math.PI*1.05,Math.PI*1.6);g.stroke();
-if(o.era>=2){const n=(o.era-1)*2;g.fillStyle='#cfe3ff';for(let i=0;i<n;i++){const a=t*(.35+i*.04)+i*6.28/n,rx=R*(1.28+(i%3)*.12),x=cx+Math.cos(a)*rx,y=cy+Math.sin(a)*rx*.28;if(Math.sin(a)<0&&Math.abs(x-cx)<R)continue;g.fillRect(x-1,y-1,2.4,2.4)}}
-if(o.era>=4){g.strokeStyle='rgba(160,200,255,.35)';g.beginPath();g.ellipse(cx,cy,R*1.5,R*.4,0,0,6.2832);g.stroke()}}
-
 // ===== 경제 =====
 const totalsOf=(pt,race)=>{const t={food:0,mineral:0,growth:0,research:0,combat:0,trade:0},add=m=>{for(const k in m)t[k]+=m[k]};add(PL[pt].mods);for(const g in race){if(TRM[g]&&TRM[g][race[g]])add(TRM[g][race[g]].mods)}return t};
 const mult=(t,k)=>Math.max(CONFIG.minMult,1+t[k]/100);
@@ -179,11 +826,11 @@ let toastT=0;function toast(m){const e=$('toast');e.textContent=m;e.classList.ad
 function modal(h){const m=$('modal');m.firstElementChild.innerHTML=h;m.classList.add('on')}
 function closeModal(){$('modal').classList.remove('on')}
 const SC={galaxy:'s-galaxy',planet:'s-planet',race:'s-race',play:'s-play',launch:'s-launch'};
-function setScene(n){S.scene=n;S.st=0;S.parts=null;S.boomed=false;for(const k in SC)$(SC[k]).classList.toggle('on',SC[k]===SC[n]&&!!SC[n]);$('top').classList.toggle('on',n==='play');$('s-launch').classList.remove('show')}
+function setScene(n){S.scene=n;S.st=0;S.parts=null;S.boomed=false;for(const k in SC)$(SC[k]).classList.toggle('on',SC[k]===SC[n]&&!!SC[n]);$('top').classList.toggle('on',n==='play');$('s-launch').classList.remove('show');$('sub').classList.toggle('on',n==='zoom'||n==='bang');$('cx-set').style.display=n==='play'?'':'none'}
 
 // ===== 흐름 =====
-function enter(){if(S.scene!=='galaxy')return;unlockAudio();beep(220,.9,'sine',.05,880);setScene('zoom')}
-function rollPlanet(seed){seed=seed==null?Math.floor(Math.random()*1e9):seed;const r=rng(seed);const type=PLANETS[(r()*PLANETS.length)|0].id;S.pend={type,seed,name:'코스미아-'+seed.toString(36).slice(0,3).toUpperCase()}}
+function enter(){if(S.scene!=='galaxy')return;unlockAudio();beep(220,.9,'sine',.05,880);Z.target=1;const d=document;d.getElementById('welcome').classList.add('hide');d.getElementById('bar').classList.add('on');d.getElementById('tag').classList.add('off');setScene('zoom')}
+function rollPlanet(seed){seed=seed==null?Math.floor(Math.random()*1e9):seed;const r=rng(seed);const type=PLANETS[(r()*PLANETS.length)|0].id;S.pend={type,seed,name:'코스미아-'+seed.toString(36).slice(0,3).toUpperCase(),ring:r()<.45?1+((r()*5)|0):0,moons:(r()*4)|0,ax:-35+((r()*70)|0),at:10+((r()*40)|0)}}
 function renderPlanet(){const P=S.pend,T=PL[P.type];$('s-planet').innerHTML=`<div class="wrap col"><div class="card"><div class="row"><b style="font-size:17px">${P.name}</b><span class="tag">${T.n}</span></div><div class="mut">${T.d}</div><div class="mods">${modsHTML(T.mods)}</div></div><div class="row gap"><button class="btn sub" data-act="reroll" style="flex:1">🎲 다시 뽑기</button><button class="btn" data-act="planet-ok" style="flex:2">이 행성으로 결정</button></div></div>`}
 function rerollCost(){return CONFIG.reroll.base+CONFIG.reroll.step*S.rerolls}
 function openReroll(){const c=rerollCost();modal(`<b style="font-size:16px">행성 다시 뽑기</b><div class="mut" style="margin:6px 0 10px">지금 행성은 사라지고 새 행성이 랜덤으로 생성됩니다.<br>다시 뽑을수록 필요량이 늘어납니다.</div><div class="col"><button class="btn" data-act="reroll-shard" ${S.shards<c?'disabled':''}>⭐ 별의 조각 ${c}개 사용 (보유 ${fmt(S.shards)})</button><button class="btn sub" data-act="reroll-cash">💳 ₩${CONFIG.reroll.cash.toLocaleString()} 결제로 뽑기<br><small class="mut">프로토타입: 실제 결제 없이 적용됩니다</small></button><button class="btn sub" data-act="close">닫기</button></div>`)}
@@ -202,7 +849,7 @@ const dn=Object.entries(t).filter(e=>e[1]<0).sort((a,b)=>a[1]-b[1]),up=Object.en
 const cell=(k,v)=>`<div><span class="mut">${STAT[k]}</span><b class="${v>0?'up':v<0?'dn':'mut'}">${v>0?'▲ +':v<0?'▼ −':''}${Math.abs(v)}%</b></div>`;
 const ok=p.temper&&p.body&&p.metab&&p.name.length>0;
 $('sum').innerHTML=`<div class="st">${Object.keys(STAT).map(k=>cell(k,t[k])).join('')}</div><div style="font-size:12px"><span class="dn">⚠ 패널티 합계: ${dn.length?dn.map(([k,v])=>`${STAT[k]} −${-v}%`).join(' · '):'없음'}</span><br><span class="up">✔ 보너스 합계: ${up.length?up.map(([k,v])=>`${STAT[k]} +${v}%`).join(' · '):'없음'}</span></div><button class="btn" data-act="race-ok" style="width:100%;margin-top:8px" ${ok?'':'disabled'}>${ok?'종족 확정 · 문명 시작':'성향·체형·생태를 모두 선택하세요'}</button>`}
-function startGame(){const p=S.pick;S.G=newG({type:S.pend.type,seed:S.pend.seed,name:S.pend.name},{name:p.name,color:p.color,temper:p.temper,body:p.body,metab:p.metab});S.rerolls=0;persist();enterPlay();beep(520,.3,'sine',.06,1040)}
+function startGame(){const p=S.pick;S.G=newG(Object.assign({},S.pend),{name:p.name,color:p.color,temper:p.temper,body:p.body,metab:p.metab});S.rerolls=0;persist();enterPlay();beep(520,.3,'sine',.06,1040)}
 function enterPlay(){setScene('play');buildPlay();refreshPlay()}
 function buildPlay(){const G=S.G;$('top').firstElementChild.innerHTML=`<div class="row"><b id="who"></b><span><button class="btn sub sm" data-act="settings">⚙</button></span></div><div class="res"><div>🌾<span id="rF"></span><small id="rFs"></small></div><div>🪨<span id="rM"></span><small id="rMs"></small></div><div>🔬<span id="rR"></span><small id="rRs"></small></div><div>👥<span id="rP"></span><small id="rPs"></small></div><div>⭐<span id="rS"></span><small>별의 조각</small></div></div>`;
 $('sheet').innerHTML=`<div class="card" id="eraC"></div><div class="row" style="margin:8px 0 0"><span class="mut">강화 수량</span><span>${[1,10,'max'].map(q=>`<button class="btn sub sm" data-act="qty" data-q="${q}" style="margin-left:4px">${q==='max'?'최대':'×'+q}</button>`).join('')}</span></div>
@@ -241,13 +888,12 @@ else if(a==='advance'){if(advance(S.G)){boom();toast(S.G.era===4?'🚀 우주로
 else if(a==='back-home'){enterPlay()}
 else if(a==='settings')settings();
 else if(a==='mute'){S.mute=!S.mute;persist();settings()}
-else if(a==='reset'){if(b.dataset.s){store.clear();S.G=null;S.shards=0;S.rerolls=0;closeModal();setScene('galaxy')}else{b.dataset.s=1;b.textContent='⚠ 한 번 더 누르면 모든 진행이 삭제됩니다'}}});
-cv.addEventListener('pointerdown',()=>{unlockAudio();if(S.scene==='galaxy')enter();else if(S.scene==='bang'&&S.st>1.4)S.st=Math.max(S.st,5.3)});
+else if(a==='reset'){if(b.dataset.s){store.clear();S.G=null;S.shards=0;S.rerolls=0;closeModal();resetHome();setScene('galaxy')}else{b.dataset.s=1;b.textContent='⚠ 한 번 더 누르면 모든 진행이 삭제됩니다'}}});
 
 // ===== 업데이트 =====
 function spawnBang(){const r=rng(S.pend.seed),T=PL[S.pend.type],cols=[...T.pal,...T.blob,'#ffffff','#ffe6b0'],k=Math.min(W,H)/700;S.parts=[];for(let i=0;i<420;i++){const a=r()*6.2832,v=(60+r()*520)*k;S.parts.push({x:0,y:0,vx:Math.cos(a)*v,vy:Math.sin(a)*v,c:cols[(r()*cols.length)|0],s:1+r()*2})}}
-function update(dt){S.st+=dt;S.T+=dt;
-if(S.scene==='zoom'&&S.st>1.8){rollPlanet(S.seedOverride);S.seedOverride=null;setScene('bang')}
+function update(dt){S.st+=dt;S.T+=dt;Z.intro=Math.min(1,Z.intro+dt/2.8);if(Z.prog!==Z.target)Z.prog=Z.target>Z.prog?Math.min(Z.target,Z.prog+dt/3):Math.max(Z.target,Z.prog-dt/2.4);
+if(S.scene==='zoom'&&Z.prog>=1){rollPlanet(S.seedOverride);S.seedOverride=null;setScene('bang')}
 else if(S.scene==='bang'){const t=S.st;if(t>.95&&!S.boomed){S.boomed=true;boom();spawnBang()}
 if(S.parts){const pull=t>2.6?clamp((t-2.6)/1.6,0,1):0;for(const p of S.parts){p.x+=p.vx*dt;p.y+=p.vy*dt;const dm=Math.pow(.5,dt*1.6);p.vx*=dm;p.vy*=dm;if(pull){p.vx-=p.x*pull*9*dt;p.vy-=p.y*pull*9*dt}}}
 if(t>5.2){renderPlanet();setScene('planet')}}
@@ -256,45 +902,63 @@ if(S.flash)S.flash=Math.max(0,S.flash-dt*2);
 if((S.scene==='play'||S.scene==='launch')&&S.G){tickEcon(S.G,dt);const G=S.G;G.lastSeen=Date.now();S.shardAcc=(S.shardAcc||0)+dt;if(S.shardAcc>=60){S.shardAcc-=60;S.shards+=CONFIG.shardMin}
 S.uiT+=dt;if(S.uiT>.25&&S.scene==='play'){S.uiT=0;refreshPlay()}S.saveT+=dt;if(S.saveT>5){S.saveT=0;persist()}}}
 
-// ===== 렌더 =====
-function drawGalaxy(k,rotMul){const D=Math.min(W*1.02,H*.72)*k;ctx.save();ctx.translate(W/2,H*.5);ctx.globalCompositeOperation='lighter';ctx.scale(1,.58);ctx.rotate(-S.T*.06*rotMul);ctx.drawImage(GAL,-D/2,-D/2,D,D);ctx.restore()}
-function planetPos(){const top=96,bot=H*.5,R=clamp(Math.min(W*.28,(bot-top)*.42),50,150);return{x:W/2,y:(top+bot)/2+4,R}}
-function draw(){ctx.globalCompositeOperation='source-over';ctx.fillStyle='#04060f';ctx.fillRect(0,0,W,H);ctx.drawImage(bgc,0,0,W,H);
-const sc=S.scene,t=S.st;
-if(sc==='galaxy'){drawGalaxy(1+.015*Math.sin(S.T*.8),1)}
-else if(sc==='zoom'){const p=t/1.8;drawGalaxy(1+Math.pow(p,2.5)*20,1+p*6);ctx.fillStyle=`rgba(255,255,255,${clamp((p-.65)/.35,0,1)})`;ctx.fillRect(0,0,W,H)}
-else if(sc==='bang'){const cx=W/2,cy=H*.42,T=PL[S.pend.type],M=Math.min(W,H);
-if(t<1){const r=3+t*12+Math.sin(t*40)*1.5,g=ctx.createRadialGradient(cx,cy,0,cx,cy,r*5);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(1,'rgba(150,180,255,0)');ctx.fillStyle=g;ctx.fillRect(cx-r*5,cy-r*5,r*10,r*10)}
-if(t>.95){const e=t-.95;for(let k=0;k<3;k++){const rr=(e-k*.25)*M*.55;if(rr>0){ctx.strokeStyle=rgba(T.pal[0],clamp(.7-rr/M*.8,0,.7));ctx.lineWidth=3;ctx.beginPath();ctx.arc(cx,cy,rr,0,6.2832);ctx.stroke()}}
-const ng=ctx.createRadialGradient(cx,cy,0,cx,cy,M*.5*ease(e/2));ng.addColorStop(0,rgba(T.pal[1],.35*clamp(1-e/3.5,0,1)));ng.addColorStop(1,rgba(T.pal[2],0));ctx.fillStyle=ng;ctx.fillRect(0,0,W,H)}
-if(S.parts){ctx.globalCompositeOperation='lighter';for(const p of S.parts){ctx.fillStyle=p.c;ctx.globalAlpha=t>3.6?clamp(1-(t-3.6)/1.2,0,1):1;ctx.fillRect(cx+p.x,cy+p.y,p.s,p.s)}ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over'}
-if(t>3.2){const R=Math.min(W*.3,H*.17,150)*ease((t-3.2)/1.6);if(R>1)drawPlanet(ctx,cx,cy,R,S.pend,S.T)}
-if(t>.9&&t<1.6){ctx.fillStyle=`rgba(255,255,255,${1-(t-.9)/.7})`;ctx.fillRect(0,0,W,H)}}
-else if(sc==='planet'){const R=Math.min(W*.3,H*.17,150);drawPlanet(ctx,W/2,H*.3,R,S.pend,S.T);if(S.flash){ctx.fillStyle=`rgba(255,255,255,${S.flash})`;ctx.fillRect(0,0,W,H)}}
-else if(sc==='race'){drawPlanet(ctx,W-44,40,30,S.pend,S.T)}
-else if(sc==='play'&&S.G){const G=S.G,pp=planetPos(),r=rates(G);drawPlanet(ctx,pp.x,pp.y,pp.R,G.planet,S.T,{lights:Math.min(140,Math.floor(G.pop*.7+G.era*12)),lc:COLORS[G.race.color],era:G.era})}
+// ===== 렌더 (LHY 엔진 사용) =====
+const Z={prog:0,target:0,intro:0,hover:0,over:false};
+let W=innerWidth,H=innerHeight,dpr=1;
+function relayout(){X.layout();W=X.W;H=X.H;dpr=X.dpr}
+addEventListener('resize',relayout);relayout();
+const cfgOf=P=>({p:PL[P.type].p,ty:PL[P.type].ty,r:P.ring||0,rc:0,rs:1,m:P.moons||0,ax:P.ax==null?-18:P.ax,at:P.at==null?16:P.at,ss:1,sd:0});
+function planetPos(){const top=158,bot=H*.52,R=clamp(Math.min(W*.28,(bot-top)*.42),46,150);return{x:W/2,y:(top+bot)/2,R}}
+function drawLights(x,y,R,P,t,n,col){const g=X.ctx;g.save();g.scale(dpr,dpr);g.beginPath();g.arc(x,y,R,0,6.2832);g.clip();const r2=rng(P.seed+99);let c=0,tr=0;g.fillStyle=col;while(c<n&&tr<4000){tr++;const a=r2()*6.2832,d=Math.sqrt(r2())*R*.95,px=x+Math.cos(a)*d,py=y+Math.sin(a)*d;if((px-x)+(py-y)<R*.1)continue;c++;g.globalAlpha=.55+.45*Math.sin(t*2+c);g.fillRect(px,py,2,2)}g.restore()}
+function skipIntro(){Z.prog=Z.target=1;Z.intro=1;const d=document;d.getElementById('welcome').classList.add('hide');d.getElementById('tag').classList.add('off');d.getElementById('bar').classList.add('on')}
+function resetHome(){Z.prog=Z.target=0;Z.intro=0;const d=document;d.getElementById('welcome').classList.remove('hide');d.getElementById('tag').classList.remove('off');d.getElementById('bar').classList.remove('on')}
+const sky=X.cv;
+sky.addEventListener('pointermove',e=>{const o=S.scene==='galaxy'&&X.hitMain(e.clientX,e.clientY);Z.over=!!o;sky.classList.toggle('go',!!o)});
+sky.addEventListener('pointerdown',e=>{unlockAudio();if(S.scene==='galaxy'){if(X.hitMain(e.clientX,e.clientY))enter()}else if(S.scene==='bang'&&S.st>1.4)S.st=Math.max(S.st,5.3)});
+function draw(dt){
+const g=X.ctx,cvs=X.cv,t=S.T,sc=S.scene,st=S.st;
+g.setTransform(1,0,0,1,0,0);g.globalAlpha=1;g.globalCompositeOperation='source-over';g.clearRect(0,0,cvs.width,cvs.height);
+const e=X.ease(Z.prog);
+X.drawBG(e,Z.intro,t,dt);
+if(sc==='galaxy'||sc==='zoom'){Z.hover+=((sc==='galaxy'&&Z.over?1:0)-Z.hover)*.1;X.drawHome(e,Z.intro,t,1,Z.hover)}
+else if(sc==='bang'){
+const cx=W/2,cy=H*.42,T=PL[S.pend.type],M=Math.min(W,H);
+g.save();g.scale(dpr,dpr);
+if(st<1){const r=3+st*12+Math.sin(st*40)*1.5,gr=g.createRadialGradient(cx,cy,0,cx,cy,r*5);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(1,'rgba(150,180,255,0)');g.fillStyle=gr;g.fillRect(cx-r*5,cy-r*5,r*10,r*10)}
+if(st>.95){const e2=st-.95;for(let k=0;k<3;k++){const rr=(e2-k*.25)*M*.55;if(rr>0){g.strokeStyle=rgba(T.pal[0],clamp(.7-rr/M*.8,0,.7));g.lineWidth=3;g.beginPath();g.arc(cx,cy,rr,0,6.2832);g.stroke()}}
+const ng=g.createRadialGradient(cx,cy,0,cx,cy,M*.5*ease(e2/2));ng.addColorStop(0,rgba(T.pal[1],.35*clamp(1-e2/3.5,0,1)));ng.addColorStop(1,rgba(T.pal[2],0));g.fillStyle=ng;g.fillRect(0,0,W,H)}
+if(S.parts){g.globalCompositeOperation='lighter';for(const p of S.parts){g.fillStyle=p.c;g.globalAlpha=st>3.6?clamp(1-(st-3.6)/1.2,0,1):1;g.fillRect(cx+p.x,cy+p.y,p.s,p.s)}g.globalAlpha=1;g.globalCompositeOperation='source-over'}
+g.restore();
+if(st>3.2){const R=Math.min(W*.3,H*.17,150)*ease((st-3.2)/1.6);if(R>1)X.planet(cx,cy,R,cfgOf(S.pend),t,dt)}
+if(st>.9&&st<1.6){g.save();g.scale(dpr,dpr);g.fillStyle='rgba(255,255,255,'+(1-(st-.9)/.7)+')';g.fillRect(0,0,W,H);g.restore()}
+}
+else if(sc==='planet'){const R=Math.min(W*.3,H*.17,150);X.planet(W/2,H*.3,R,cfgOf(S.pend),t,dt);if(S.flash){g.save();g.scale(dpr,dpr);g.fillStyle='rgba(255,255,255,'+S.flash+')';g.fillRect(0,0,W,H);g.restore()}}
+else if(sc==='race'){X.planet(W/2,112,36,cfgOf(S.pend),t,dt)}
+else if(sc==='play'&&S.G){const G=S.G,pp=planetPos();X.planet(pp.x,pp.y,pp.R,cfgOf(G.planet),t,dt);drawLights(pp.x,pp.y,pp.R,G.planet,t,Math.min(140,Math.floor(G.pop*.7+G.era*12)),COLORS[G.race.color])}
 else if(sc==='launch'&&S.G){const G=S.G,pp=planetPos();
-if(t<3.4){drawPlanet(ctx,pp.x,pp.y,pp.R,G.planet,S.T,{lights:100,lc:COLORS[G.race.color],era:4});const ry=pp.y-pp.R*.7-Math.max(0,t-.6)*Math.max(0,t-.6)*120;ctx.save();ctx.translate(pp.x,ry);
-if(S.parts)for(const p of S.parts){ctx.globalAlpha=clamp(p.l,0,1);ctx.fillStyle=p.c;ctx.fillRect(p.x-2,p.y,4,4)}ctx.globalAlpha=1;
-ctx.fillStyle='#f4f6ff';ctx.beginPath();ctx.moveTo(0,-18);ctx.quadraticCurveTo(8,-4,6,14);ctx.lineTo(-6,14);ctx.quadraticCurveTo(-8,-4,0,-18);ctx.fill();ctx.fillStyle='#ff5b6e';ctx.beginPath();ctx.moveTo(0,-18);ctx.quadraticCurveTo(4,-12,4.5,-8);ctx.lineTo(-4.5,-8);ctx.quadraticCurveTo(-4,-12,0,-18);ctx.fill();
-ctx.fillStyle='#8fb4ff';ctx.beginPath();ctx.arc(0,0,2.6,0,6.2832);ctx.fill();ctx.restore()}
-if(t>2.6){const a=clamp((t-2.6)/1.2,0,1);ctx.globalAlpha=a;drawGalaxy(.9+.1*(1-ease((t-2.6)/3)),1);const R2=Math.min(W*1.02,H*.72)*.5,hx=W/2+R2*.34,hy=H*.5+R2*.12,pu=1+.5*Math.sin(S.T*3),g=ctx.createRadialGradient(hx,hy,0,hx,hy,14*pu);g.addColorStop(0,'rgba(120,230,255,1)');g.addColorStop(1,'rgba(120,230,255,0)');ctx.fillStyle=g;ctx.fillRect(hx-20,hy-20,40,40);
-ctx.fillStyle='#cfe3ff';ctx.font='12px system-ui,sans-serif';ctx.textAlign='left';ctx.fillText('본진',hx+12,hy+4);ctx.fillStyle='#6f7fb8';[[-.3,-.1],[.15,-.22],[-.1,.2],[.45,-.05]].forEach(([dx,dy])=>{ctx.fillText('?',W/2+R2*dx*1.8,H*.5+R2*dy*.8)});ctx.globalAlpha=1}}}
+if(st<3.4){X.planet(pp.x,pp.y,pp.R,cfgOf(G.planet),t,dt);drawLights(pp.x,pp.y,pp.R,G.planet,t,100,COLORS[G.race.color]);const ry=pp.y-pp.R*.7-Math.max(0,st-.6)*Math.max(0,st-.6)*120;
+g.save();g.scale(dpr,dpr);g.translate(pp.x,ry);if(S.parts)for(const p of S.parts){g.globalAlpha=clamp(p.l,0,1);g.fillStyle=p.c;g.fillRect(p.x-2,p.y+14,4,4)}g.globalAlpha=1;g.restore();
+X.ship(pp.x,ry,-Math.PI/2,26,t,1.6)}
+if(st>2.6){const a=clamp((st-2.6)/1.2,0,1);X.drawHome(0,1,t,a,0);g.save();g.scale(dpr,dpr);g.globalAlpha=a;const hx=X.mcx+X.mainR*.3,hy=X.mcy+X.mainR*.1,pu=1+.5*Math.sin(t*3),gr=g.createRadialGradient(hx,hy,0,hx,hy,14*pu);gr.addColorStop(0,'rgba(120,230,255,1)');gr.addColorStop(1,'rgba(120,230,255,0)');g.fillStyle=gr;g.fillRect(hx-20,hy-20,40,40);g.fillStyle='#cfe3ff';g.font='12px Pretendard Variable,system-ui,sans-serif';g.textAlign='left';g.fillText('본진',hx+12,hy+4);g.restore()}
+}
+}
 
 // ===== 루프: 고정 타임스텝 =====
-const STEP=1/60;let acc=0,last=performance.now();
-function frame(now){acc+=Math.min((now-last)/1000,.1);last=now;while(acc>=STEP){update(STEP);acc-=STEP}draw();requestAnimationFrame(frame)}
+const STEP=1/60;let acc=0,last=performance.now(),errc=0;
+function frame(now){const raw=Math.min((now-last)/1000,.1);last=now;acc+=raw;while(acc>=STEP){update(STEP);acc-=STEP}try{draw(raw)}catch(err){X.cv.width=X.cv.width;if(errc++<3)console.error(err)}requestAnimationFrame(frame)}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)persist();else if(S.G&&S.scene==='play'){offlineGain(S.G);refreshPlay()}});
 addEventListener('pagehide',persist);
 
 // ===== 시작 =====
-makeGalaxy();
-(function boot(){const d=store.get();if(d&&d.version===1){S.shards=d.shards||0;S.rerolls=d.rerolls||0;S.mute=!!d.mute;if(d.G){S.G=d.G;enterPlay();offlineGain(S.G);refreshPlay();return}}setScene('galaxy')})();
+X.init();setTimeout(()=>document.getElementById('welcome').classList.add('show'),60);[0,1,3,2,4,5].forEach((ci,rank)=>{const c=document.querySelectorAll('#tag circle')[ci];if(c){c.style.setProperty('--r',rank);c.classList.add('lit')}});
+(function boot(){const FR=true;if(FR)S.noSave=true;const d=FR?null:store.get();if(d&&d.version===1){S.shards=d.shards||0;S.rerolls=d.rerolls||0;S.mute=!!d.mute;if(d.G){S.G=d.G;skipIntro();enterPlay();offlineGain(S.G);refreshPlay();return}}setScene('galaxy')})();
 requestAnimationFrame(frame);
 
 // ===== 테스트 훅 (삭제 금지) =====
 window.__game={state:S,CONFIG,input:{_p:{}},core:{rates,tickEcon,costOf,buy,canAdv,advance,newG,totalsOf,capOf,PLANETS,TR,rollPlanet},
 step(n=1){for(let i=0;i<n;i++)update(STEP)},
 press(k){if(k==='action'){if(S.scene==='galaxy')enter();else if(S.scene==='bang')S.st=Math.max(S.st,5.3)}},
-reset(seed){S.noSave=false;store.clear();S.G=null;S.shards=0;S.rerolls=0;S.seedOverride=seed;closeModal();setScene('galaxy')}};
-</script></body></html>
+reset(seed){S.noSave=false;store.clear();S.G=null;S.shards=0;S.rerolls=0;S.seedOverride=seed;closeModal();resetHome();setScene('galaxy')}};
+
+</script>
+</body></html>
