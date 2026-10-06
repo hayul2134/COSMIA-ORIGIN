@@ -951,7 +951,7 @@ addEventListener('pagehide',persist);
 
 // ===== 시작 =====
 X.init();setTimeout(()=>document.getElementById('welcome').classList.add('show'),60);[0,1,3,2,4,5].forEach((ci,rank)=>{const c=document.querySelectorAll('#tag circle')[ci];if(c){c.style.setProperty('--r',rank);c.classList.add('lit')}});
-(function boot(){const d=store.get();if(d&&d.version===1){S.shards=d.shards||0;S.rerolls=d.rerolls||0;S.mute=!!d.mute;if(d.G){S.G=d.G;skipIntro();enterPlay();offlineGain(S.G);refreshPlay();return}}setScene('galaxy')})();
+(function boot(){const FR=location.search.indexOf('fresh')>=0;if(FR)S.noSave=true;const d=FR?null:store.get();if(d&&d.version===1){S.shards=d.shards||0;S.rerolls=d.rerolls||0;S.mute=!!d.mute;if(d.G){S.G=d.G;skipIntro();enterPlay();offlineGain(S.G);refreshPlay();return}}setScene('galaxy')})();
 requestAnimationFrame(frame);
 
 // ===== 테스트 훅 (삭제 금지) =====
