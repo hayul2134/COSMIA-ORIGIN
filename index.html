@@ -1,600 +1,300 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>COSMIA: ORIGIN — 하나의 우주, 나만의 공간</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#04060f">
+<title>COSMIA: ORIGIN</title>
 <style>
-:root{--ice:#EAF4FF;--sky:#6FB3FF;--muted:rgba(234,244,255,.66);--line:rgba(255,255,255,.22);--ok:#7ee8b5;--warn:#ff9f7f;
---body:'Noto Sans KR','Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
---display:'Sora','Noto Sans KR',system-ui,sans-serif;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*{box-sizing:border-box;margin:0}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-html,body{height:100%;overflow:hidden;background:#050E24;color:var(--ice);font-family:var(--body);color-scheme:dark;font-size:14px;line-height:1.45}
-body{background:radial-gradient(70% 60% at 50% 55%,rgba(30,70,190,.34),transparent 70%),radial-gradient(50% 40% at 85% 10%,rgba(47,107,255,.2),transparent 70%),linear-gradient(180deg,#050E24,#07142F 60%,#050E24)}
-#sky{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
-.glass{background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.22);border-radius:26px;backdrop-filter:blur(26px) saturate(1.7);-webkit-backdrop-filter:blur(26px) saturate(1.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 18px 50px rgba(2,8,30,.5)}
-#bar{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);display:flex;justify-content:space-between;align-items:center;padding:16px 22px;pointer-events:none;z-index:5}
-#bar>*{pointer-events:auto}
-#logo{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
-#logo b{font-family:var(--display);font-style:italic;font-weight:800;font-size:17px;letter-spacing:.04em}
-#logo span{font-family:var(--display);font-weight:300;font-size:15px;letter-spacing:.16em}
-.pill{border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.04));backdrop-filter:blur(14px);border-radius:99px;padding:7px 14px;font-size:12px;color:var(--ice);cursor:pointer;font-family:inherit}
-#welcome{position:fixed;left:0;right:0;top:calc(7vh + env(safe-area-inset-top,0px));text-align:center;pointer-events:none;font-weight:700;font-size:clamp(24px,3.4vw,40px);letter-spacing:.1em;text-shadow:0 0 22px rgba(120,170,255,.8),0 0 60px rgba(70,120,255,.5);z-index:4;transition:opacity .6s}
-#hint{position:fixed;left:0;right:0;bottom:calc(5vh + env(safe-area-inset-bottom,0px));text-align:center;font-size:12px;letter-spacing:.3em;color:var(--muted);pointer-events:none;z-index:4;transition:opacity .6s}
-#constel{position:fixed;left:26px;top:22vh;z-index:4;pointer-events:none;transition:opacity .6s}
-#constel div{font-family:var(--display);font-size:10px;letter-spacing:.35em;color:rgba(234,244,255,.8);margin:0 0 14px 26px}
-.hide{display:none!important}
-.fade{opacity:0;pointer-events:none}
-button{font:inherit;color:var(--ice);cursor:pointer;touch-action:manipulation}
-.btn{border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border-radius:14px;padding:8px 12px}
-.btn:hover{background:linear-gradient(145deg,rgba(255,255,255,.24),rgba(255,255,255,.08))}
-.btn.on,.btn.pri{background:linear-gradient(145deg,#4f93ff,#7b6bff);border-color:transparent;color:#fff}
-.btn:disabled{opacity:.4;cursor:not-allowed}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.grow{flex:1}
-.sw{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.3);padding:0}
-.sw.on{border-color:#fff;box-shadow:0 0 0 3px rgba(111,179,255,.6)}
-#dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(640px,calc(100vw - 20px));max-height:56vh;display:flex;flex-direction:column;z-index:6;transition:opacity .5s,transform .5s}
-#tabs{display:flex;gap:4px;padding:8px 8px 4px;overflow-x:auto}
-#tabs .btn{flex:1 0 auto;padding:6px 10px;border-radius:99px;font-size:13px}
-#dbody{overflow:auto;padding:6px 14px 14px;-webkit-overflow-scrolling:touch}
-.sec{margin-top:12px}.sec h3{font-size:11px;letter-spacing:.2em;color:var(--muted);font-weight:500;margin-bottom:6px;text-transform:uppercase}
-.res{display:flex;gap:6px;flex-wrap:wrap}.res .r{flex:1 1 70px;background:rgba(255,255,255,.08);border-radius:12px;padding:5px 9px}.res .r b{display:block;font-size:14px}.res .r span{font-size:11px;color:var(--muted)}
-.bar{height:8px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#4f93ff,#a58bff);width:0}
-.small{font-size:12px;color:var(--muted)}.good{color:var(--ok)}.bad{color:var(--warn)}
-.kv{display:flex;justify-content:space-between;gap:8px;font-size:13px}
-select,input[type=text]{font:inherit;color:var(--ice);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:6px 8px;max-width:100%}
-select option{color:#111}
-input[type=range]{width:100%;accent-color:#6FB3FF}
-.pl{border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:8px 10px;margin-top:8px;background:rgba(255,255,255,.04)}
-.goal{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.14)}.goal:last-child{border:0}
-.goal .ck{width:20px;height:20px;border-radius:7px;border:2px solid rgba(255,255,255,.3);flex:none;text-align:center;line-height:16px;font-size:13px;margin-top:1px}
-.goal.done .ck{background:#2fbf8a;border-color:#2fbf8a;color:#fff}
-table{width:100%;border-collapse:collapse;font-size:12px}td{padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.1)}
-#plp{position:fixed;right:18px;top:calc(70px + env(safe-area-inset-top,0px));bottom:18px;width:min(360px,calc(100vw - 20px));overflow:auto;padding:16px;z-index:7;transition:transform .5s,opacity .5s}
-#plp h2{font-size:15px;font-weight:700;margin-bottom:2px}
-#hui{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(760px,calc(100vw - 16px));padding:10px 12px;z-index:7}
-#hui .items{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
-#hui .items .btn{flex:0 0 auto;padding:6px 9px;font-size:12px;white-space:nowrap}
-#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(88px + env(safe-area-inset-bottom,0px));background:rgba(8,16,48,.88);border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .25s;max-width:92vw;text-align:center;z-index:30}
+:root{--fg:#e8eeff;--mut:#8b97c4;--ln:#26336a;--cd:rgba(10,16,44,.84);--up:#5eead4;--dn:#ff6b81;--ac:#8f9bff;--ac2:#3f6bff}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#04060f;color:var(--fg);font:14px/1.45 system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+#ui{position:fixed;inset:0;pointer-events:none}
+.scr{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.scr.on{display:flex}
+.scr>*,#top{pointer-events:auto}
+.wrap{width:100%;max-width:520px;padding:0 12px}
+button{font:inherit;color:inherit;border:0;cursor:pointer}
+.btn{padding:12px 16px;border-radius:12px;background:linear-gradient(135deg,var(--ac2),#7a5cff);font-weight:700;color:#fff;box-shadow:0 4px 18px #3f6bff55}
+.btn.sub{background:#162052;box-shadow:none;border:1px solid var(--ln)}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
+.btn:disabled{opacity:.35;cursor:default}
+.up{color:var(--up)}.dn{color:var(--dn)}.mut{color:var(--mut)}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:12px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gap{gap:10px}.col{display:flex;flex-direction:column;gap:8px}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#18235a;border:1px solid var(--ln)}
+.mods{display:flex;flex-direction:column;gap:2px;margin-top:6px;font-weight:600}
+#s-galaxy{justify-content:space-between;text-align:center}
+.ttl{margin-top:7vh}.ttl h1{margin:0;font-size:clamp(34px,9vw,54px);letter-spacing:.28em;font-weight:800;background:linear-gradient(180deg,#fff,#9fb4ff);-webkit-background-clip:text;background-clip:text;color:transparent;padding-left:.28em}
+.ttl div{letter-spacing:.5em;color:var(--ac);font-weight:700;padding-left:.5em}
+.hint{margin-bottom:9vh;padding:10px 18px;color:#cfd9ff;background:transparent;animation:pl 2.2s infinite}
+@keyframes pl{50%{opacity:.35}}
+#s-planet{justify-content:flex-end;padding-bottom:14px}
+#s-race{justify-content:flex-start}
+#race-scroll{width:100%;max-width:520px;flex:1;overflow-y:auto;padding:0 12px 8px;-webkit-overflow-scrolling:touch}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{text-align:left;background:var(--cd);border:1.5px solid var(--ln);border-radius:12px;padding:9px 10px;font-size:13px}
+.opt.sel{border-color:var(--ac);background:#16226a;box-shadow:0 0 0 2px #8f9bff44}
+.opt b{font-size:14px}.opt .mods{font-size:12px;margin-top:4px}
+h3{margin:14px 0 6px;font-size:14px;color:#cfd9ff}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid transparent}.sw.sel{border-color:#fff}
+input#rname{background:#0d1640;border:1px solid var(--ln);color:#fff;border-radius:10px;padding:10px 12px;font:inherit;width:100%;user-select:text;-webkit-user-select:text}
+#sum{width:100%;max-width:520px;padding:8px 12px 12px}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:6px 0;font-size:12px;text-align:center}
+.st div{background:#0d1640;border-radius:8px;padding:4px 2px}.st b{display:block;font-size:14px}
+#top{position:absolute;left:0;right:0;top:0;display:none;justify-content:center;padding:calc(env(safe-area-inset-top) + 8px) 10px 0}
+#top.on{display:flex}
+#top .card{width:100%;max-width:520px;padding:8px 10px}
+.res{display:flex;justify-content:space-between;gap:4px;margin-top:4px;font-weight:700;font-size:13px}.res small{display:block;font-weight:400;color:var(--mut);font-size:11px}
+#s-play{justify-content:flex-end}
+#sheet{width:100%;max-width:520px;max-height:50%;overflow-y:auto;padding:0 10px 10px;-webkit-overflow-scrolling:touch}
+.bar{height:8px;border-radius:9px;background:#0d1640;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac2),#c08bff);width:0}
+.bld{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;margin-top:8px}
+.bld .nm{font-weight:700}.cost{font-size:12px;color:var(--mut)}
+#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 92px);transform:translateX(-50%);background:#101a52f0;border:1px solid var(--ac);border-radius:99px;padding:8px 16px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9;white-space:nowrap}
 #toast.on{opacity:1}
-#modal{position:fixed;inset:0;background:rgba(3,8,28,.6);display:flex;align-items:center;justify-content:center;z-index:40;padding:16px}
-#modal .box{max-width:420px;width:100%;max-height:86vh;overflow:auto;padding:18px}
-@media (max-width:700px){
-#plp{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:56vh}
-#welcome{top:calc(9vh + env(safe-area-inset-top,0px))}
-#constel{display:none}
-#dock{max-height:50vh}
-}
-@media (prefers-reduced-motion:reduce){#welcome,#hint,#dock,#plp{transition:none}}
-</style>
-</head>
-<body>
-<canvas id="sky"></canvas>
-<div id="bar">
-<div id="logo" title="홈으로"><svg width="22" height="22" viewBox="0 0 22 22"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd0ff"/><stop offset="1" stop-color="#7b6bff"/></linearGradient></defs><path d="M3 14c2-6 9-9 15-6-5-1-9 1-10 5 4-3 8-2 10 1-5-2-9 0-11 4" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="11" r="1.8" fill="#fff"/></svg><b>COSMIA</b><span>ORIGIN</span></div>
-<div class="row"><span class="pill" id="stageChip">①</span><button class="pill hide" id="btnBack">← 돌아가기</button></div>
+#modal{position:fixed;inset:0;background:#02040acc;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
+#modal.on{display:flex}#modal .card{width:100%;max-width:400px;background:#0b1236}
+#s-launch{justify-content:flex-end;padding-bottom:6vh;text-align:center}
+#s-launch .card{margin:0 12px;max-width:440px;opacity:0;transition:opacity 1s}#s-launch.show .card{opacity:1}
+summary{cursor:pointer;color:#cfd9ff;font-weight:600}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="ui">
+<div id="s-galaxy" class="scr"><div class="ttl"><h1>COSMIA</h1><div>ORIGIN</div></div><button class="hint" data-act="enter" style="background:none">은하를 눌러 우주로 들어가세요</button></div>
+<div id="s-planet" class="scr"></div>
+<div id="s-race" class="scr"></div>
+<div id="s-play" class="scr"><div id="sheet"></div></div>
+<div id="s-launch" class="scr"><div class="card"><h2 style="margin:0 0 6px">🚀 우주 진출 성공</h2><div class="mut" style="margin-bottom:10px">첫 종족이 본진을 떠나 우주로 나아갔습니다.<br>새 행성 탐색·교류 콘텐츠는 다음 단계에서 열립니다.</div><button class="btn" data-act="back-home">본진으로 돌아가기</button></div></div>
+<div id="top"><div class="card"></div></div>
 </div>
-<div id="welcome">환영합니다.</div>
-<div id="constel"><div>YOUR</div><div>OWN</div><div>COSMOS</div></div>
-<div id="hint">은하를 눌러 들어가세요</div>
-<div id="dock" class="glass hide">
-<div id="tabs"></div>
-<div id="dbody">
-<div id="tab-main">
-<div class="res" id="res"></div><div class="small" id="rateLine" style="margin-top:6px"></div>
-<div class="sec"><h3 id="progTitle">다음 단계</h3><div class="bar"><i id="progBar"></i></div><div class="small" id="progText" style="margin-top:5px"></div><div class="small" id="unlockText"></div></div>
-<div class="sec"><h3>성장</h3>
-<div class="row"><button class="btn pri grow" id="btnStar"></button></div>
-<div class="row" style="margin-top:8px"><button class="btn grow" id="btnPlanet"></button><select id="newType"></select></div>
-<div class="row" style="margin-top:8px"><button class="btn grow" id="btnRec">추천 강화 (가장 싼 것부터)</button></div>
-<div class="small" id="focusInfo" style="margin-top:6px"></div></div>
-</div>
-<div id="tab-planets" class="hide"><div id="planetList"></div></div>
-<div id="tab-lab" class="hide"><div class="sec" style="margin-top:0"><h3>조합 연구소 · 미리보기</h3><div class="row"><select id="labP"></select><select id="labE"></select><select id="labL"></select></div><div id="labOut" style="margin-top:8px"></div></div></div>
-<div id="tab-goal" class="hide"><div class="sec" style="margin-top:0"><h3>첫 24시간 미니 목표</h3><div id="goals"></div></div></div>
-<div id="tab-dex" class="hide"><div class="sec" style="margin-top:0"><h3>도감</h3><div id="dex"></div></div></div>
-<div id="tab-dev" class="hide"><div class="sec" style="margin-top:0"><h3>테스트 도구</h3><div class="small">시간을 건너뛰어 성장을 확인합니다.</div>
-<div class="row" style="margin-top:8px"><button class="btn" data-away="1">1시간 부재</button><button class="btn" data-away="8">8시간 부재</button><button class="btn" data-away="24">24시간 부재</button><button class="btn" data-away="72">3일 부재</button></div>
-<div class="row" style="margin-top:8px"><span class="small">온라인 가속</span><button class="btn" data-speed="1">×1</button><button class="btn" data-speed="60">×60</button><button class="btn" data-speed="600">×600</button><span class="pill" id="speedChip">×1</span></div>
-<div class="row" style="margin-top:8px"><button class="btn" id="btnReset">전체 초기화</button></div><div class="small" id="devInfo" style="margin-top:8px"></div></div></div>
-</div>
-</div>
-<div id="plp" class="glass hide"></div>
-<div id="hui" class="glass hide">
-<div class="items" id="huiItems"></div>
-<div class="row" style="margin-top:4px">
-<button class="btn" data-tool="hand">✋ 이동</button><button class="btn" data-tool="erase">🧽 지우개</button><button class="btn" id="huiUndo">↩ 되돌리기</button>
-<button class="btn" id="huiL">◀</button><button class="btn" id="huiR">▶</button>
-<span class="small" id="huiCnt"></span><span class="grow"></span>
-<button class="btn pri" id="huiDone">완료</button>
-</div>
-<div class="row" style="margin-top:6px"><span class="small">하늘</span><span id="huiSky" class="row"></span><input type="text" id="huiMsg" maxlength="30" placeholder="환영 한마디 (30자)" class="grow" style="min-width:140px"></div>
-</div>
-<div id="toast"></div>
-<div id="modal" class="hide"><div class="box glass" id="modalBox"></div></div>
+<div id="toast"></div><div id="modal"><div class="card"></div></div>
 <script>
 'use strict';
-const CONFIG={
-version:1,
-TH1:5.648e6,
-N3:7.845e8,
-TH0:150,
-starBase:10, r:1.2, starLin:.5,
-pc:[100,1500,20000,300000], pu:[40,300,2500,20000], po:[2,10,50,250], plvLin:.5, syn:1.2, slots:{1:0,2:1,3:3},
-offline:[[8,.6],[8,.4],[8,.25]],
-activeMult:3, activeLen:600, activeWindow:5400,
-q:.35, kappa:.65, kappaCap:.8, exch:.5, exchCap:.65, dup:[.8,.6], adaptDays:14, VREF:2.05,
-w:[.4,.3,.2,.1]
-};
-const RES=['식량','광물','동력','연료'], ENV=['온난','한랭','고온','폭풍'], PLT=['암석','해양','얼음','용암','가스'], LIFE=['광물종','수서종','한랭종','화염종','기체종'];
-const BASE={암석:[0,1,.2,0],해양:[1,0,0,.2],얼음:[.2,0,1,0],용암:[0,.6,.6,0],가스:[0,0,.2,1]};
-const PE={암석:[1,1,.9,1.2],해양:[1.3,.8,.7,1],얼음:[.7,1.3,.6,.9],용암:[.9,.7,1.3,1],가스:[1,.9,1.1,1.3]};
-const EL={광물종:[1,1,1.2,.9],수서종:[1.3,.9,.7,1],한랭종:[.7,1.3,.6,1],화염종:[.9,.7,1.3,.9],기체종:[1,.9,1,1.3]};
-const NAT={광물종:'암석',수서종:'해양',한랭종:'얼음',화염종:'용암',기체종:'가스'};
-const HOME={광물종:'고온',수서종:'온난',한랭종:'한랭',화염종:'고온',기체종:'폭풍'};
-const SKILL={광물종:[0,1.3,1,1],수서종:[1.3,1,1,1],한랭종:[1,1,1.3,1],화염종:[1,1.15,1.15,1],기체종:[1,1,1,1.3]};
-const SB={광물종:[0,1,0,0],수서종:[1,0,0,0],한랭종:[0,0,1,0],화염종:[0,.5,.5,0],기체종:[0,0,0,1]};
-const PCOL={암석:'#b8a99a',해양:'#5aa9ff',얼음:'#bfeaff',용암:'#ff7a59',가스:'#d6a6ff'};
-// 융합 특성 20종: [행성, 생명체, 이름, 효과 설명, ③단계 생산 환산값]
-const TRAIT_S3={"암석|수서종": 0.1278, "암석|한랭종": 0.1059, "암석|화염종": 0.0116, "암석|기체종": 0.1366, "해양|광물종": 0.0349, "해양|한랭종": 0.0963, "해양|화염종": 0.1116, "해양|기체종": 0.0824, "얼음|광물종": 0.1181, "얼음|수서종": 0.0845, "얼음|화염종": 0.1053, "얼음|기체종": 0.1113, "용암|광물종": 0.0977, "용암|수서종": 0.1037, "용암|한랭종": 0.0819, "용암|기체종": 0.1199, "가스|광물종": 0.0443, "가스|수서종": 0.1016, "가스|한랭종": 0.0999, "가스|화염종": 0.0505};
-const TRAITS=[
-['암석','수서종','지하수맥','식량 +17%, 가뭄 피해 -35%'],
-['암석','한랭종','동토 저장고','8시간 이후 오프라인 효율 +10%p, 동력 +3%'],
-['암석','화염종','화산암 단조','[팀] 균형 보정 +15%p, 동력 +4%'],
-['암석','기체종','풍화 협곡','연료 +20%, 광물 +5%'],
-['해양','광물종','산호 광맥','[팀] 교환 효율 +10%p, 광물 +5%'],
-['해양','한랭종','빙해 어장','식량·동력 각 +11%'],
-['해양','화염종','해저 열수구','희귀 파편 드롭 +50%, 식량 +6%'],
-['해양','기체종','안개 해역','파견 피해 -18%, 식량 +11%, 연료 +6%'],
-['얼음','광물종','결정 동굴','도감 보너스 +100%, 광물 +8%'],
-['얼음','수서종','빙하 수원','친구 도움 +50%, 동력 +19%'],
-['얼음','화염종','얼음 속 불씨','동력 +12%, 광물 +6%, 변환효율 +5%'],
-['얼음','기체종','극지 오로라','리액션 보상 +50%, 연료 +17%'],
-['용암','광물종','마그마 광산','광물 +14%, 재난 피해 +7% (고위험)'],
-['용암','수서종','증기 온천','식량 +12%, 첫 8시간 오프라인 효율 +3%p'],
-['용암','한랭종','얼어붙은 화산','재난 피해 -50%, 광물 +16%'],
-['용암','기체종','화산 연기','연료 +20%, 파견 속도 +14%'],
-['가스','광물종','부유 광석','파견 속도 +20%, 광물 +15%'],
-['가스','수서종','구름 바다','식량 +15%, 연료 +7%'],
-['가스','한랭종','냉각 성운','첫 8시간 오프라인 효율 +9%p'],
-['가스','화염종','항성 불꽃','공격 +30%, 불리 상성 -0.06, 동력 +24%']
-];
-const TRAIT_MAP={};TRAITS.forEach(t=>TRAIT_MAP[t[0]+'|'+t[1]]=t);
-const STAGE_NAME={1:'① 빅뱅',2:'② 항성계',3:'③ 행성'};
-const GOALS=[
-{id:'g1',t:'별 점화: 항성 강화 1회',r:3,chk:s=>s.star>=1},
-{id:'g2',t:'항성 Lv5 달성',r:10,chk:s=>s.star>=5},
-{id:'g3',t:'② 항성계 진입 후 첫 행성 건설',r:10,chk:s=>s.planets.length>=1},
-{id:'g4',t:'조합 연구소에서 조합 미리보기',r:10,chk:s=>s.flags.lab},
-{id:'g5',t:'1시간 이상 비운 뒤 복귀 리포트 확인',r:20,chk:s=>s.flags.report},
-{id:'g6',t:'③ 행성 단계 진입 (조합 해금)',r:30,chk:s=>s.stage>=3},
-{id:'g7',t:'24시간 뒤 다시 접속 (플레이 시간 24h 경과)',r:60,chk:s=>s.gt>=86400}
-];
-let state;
-function newState(){return{version:2,stage:1,gt:0,E:0,totalE:0,S:[0,0,0,0],C:[0,0,0,0],star:0,planets:[],
-activeLeft:CONFIG.activeLen,windowStart:0,speed:1,lastSeen:Date.now(),
-goals:{},flags:{},dex:{combos:{},traits:{}},sel:0,log:[],report:null}}
-function rng(seed){let s=(seed>>>0)||1;return()=>(s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296}
-let rand=rng(1);
-const KEY='cosmia_proto_v1';
-let memSave=null;
-function save(){state.lastSeen=Date.now();const j=JSON.stringify(state);try{localStorage.setItem(KEY,j)}catch(e){memSave=j}}
-function load(){let j=null;try{j=localStorage.getItem(KEY)}catch(e){j=memSave}
-if(!j)return null;try{const s=JSON.parse(j);if(s&&(s.version===1||s.version===2)){migrate(s);return s}}catch(e){}return null}
-function fit(p,e,l){const ei=ENV.indexOf(e);return PE[p][ei]*EL[l][ei]*(NAT[l]===p?1.15:1)}
-function adaptFactor(pl){return Math.min(1,(state.gt-(pl.placedAt||0))/(CONFIG.adaptDays*86400))}
-function effMult(p,e,l,a){
-const M=Math.pow(fit(p,e,l),0.7),me=M>=1?M:M+(1-M)*a;return Math.pow(M,0.3)*Math.pow(me,CONFIG.q)}
-function comboVec(p,e,l,a){
-const k=NAT[l]===p?.5:.7,nat=NAT[l]===p,tv=nat?0:(TRAIT_S3[p+'|'+l]||0),f=effMult(p,e,l,a);
-return BASE[p].map((b,i)=>(b+k*SB[l][i])*f*SKILL[l][i]*(1+tv));
-}
-function teamBonus(){let kap=CONFIG.kappa,ex=CONFIG.exch;
-for(const pl of state.planets){if(!pl.env)continue;
-if(pl.type==='암석'&&pl.life==='화염종')kap+=.15;
-if(pl.type==='해양'&&pl.life==='광물종')ex+=.10}
-return{kappa:Math.min(CONFIG.kappaCap,kap),ex:Math.min(CONFIG.exchCap,ex)}}
-function prodVec(){
-const W=CONFIG.w,n=state.planets.length,syn=n>=2?CONFIG.syn:1,p=[0,0,0,0],seen={};
-state.planets.forEach((pl,i)=>{
-if(!pl.env||!pl.life)return;
-const key=pl.type+pl.env+pl.life,c=seen[key]||0;seen[key]=c+1;
-const dup=c===0?1:(c===1?CONFIG.dup[0]:CONFIG.dup[1]);
-const v=comboVec(pl.type,pl.env,pl.life,adaptFactor(pl)),k=CONFIG.po[i]*(1+CONFIG.plvLin*pl.lv)*syn/CONFIG.VREF*dup;
-for(let r=0;r<4;r++)p[r]+=v[r]*k});
-const st=1+CONFIG.starLin*state.star;for(let r=0;r<4;r++)p[r]+=W[r]*st;
-const tot=p.reduce((a,b)=>a+b,0),kap=teamBonus().kappa;
-const gap=p.map((x,i)=>Math.max(0,tot*W[i]-x)),sur=p.map((x,i)=>Math.max(0,x-tot*W[i]));
-const G=gap.reduce((a,b)=>a+b,0),U=sur.reduce((a,b)=>a+b,0);
-if(G>0&&U>0){const T=kap*Math.min(G,U);for(let r=0;r<4;r++)p[r]+=T*gap[r]/G-T*sur[r]/U}
-return p}
-function rateE(){const n=state.planets.length,syn=n>=2?CONFIG.syn:1;let r=1+CONFIG.starLin*state.star;
-state.planets.forEach((pl,i)=>r+=CONFIG.po[i]*(1+CONFIG.plvLin*pl.lv)*syn);return r}
-function feas(S,need,ex){let D=0,U=0;for(let i=0;i<4;i++){D+=Math.max(0,need[i]-S[i]);U+=Math.max(0,S[i]-need[i])}return ex*U>=D}
-function payMix(S,need,ex){let D=0,U=0;for(let i=0;i<4;i++){D+=Math.max(0,need[i]-S[i]);U+=Math.max(0,S[i]-need[i])}
-return S.map((s,i)=>s>need[i]?(s-need[i])*(1-(U>0?(D/ex)/U:0)):0)}
-function costs(){const o=[];o.push({k:'star',c:CONFIG.starBase*Math.pow(CONFIG.r,state.star)});
-const slots=CONFIG.slots[state.stage]||0;
-if(state.planets.length<slots)o.push({k:'new',c:CONFIG.pc[state.planets.length]});
-state.planets.forEach((pl,i)=>o.push({k:'up',i,c:CONFIG.pu[i]*Math.pow(CONFIG.r,pl.lv)}));return o}
-function canPay(c){if(state.stage<3)return state.E>=c;return feas(state.S,CONFIG.w.map(x=>x*c),teamBonus().ex)}
-function pay(c){if(state.stage<3){state.E-=c;return}state.S=payMix(state.S,CONFIG.w.map(x=>x*c),teamBonus().ex)}
-function mult(){return state.activeLeft>0?CONFIG.activeMult:1}
-function accrue(effSec){
-if(state.stage<3){const g=rateE()*effSec;state.E+=g;state.totalE+=g;return g}
-const p=prodVec();for(let r=0;r<4;r++){const g=p[r]*effSec;state.S[r]+=g;state.C[r]+=g}return p.reduce((a,b)=>a+b,0)*effSec}
-function checkStage(){
-if(state.stage===1&&state.totalE>=CONFIG.TH0){state.stage=2;toast('② 항성계 진입! 행성 슬롯 1개 해금');burst(180,100,'#ffe29a',40)}
-if(state.stage===2&&state.totalE>=CONFIG.TH1){state.stage=3;
-state.S=CONFIG.w.map(w=>state.E*w);state.E=0;state.C=[0,0,0,0];
-state.planets.forEach(pl=>{if(!pl.env){pl.life=pl.life||defaultLife(pl.type);pl.env=pl.env||HOME[pl.life];pl.placedAt=state.gt;regDex(pl)}});
-toast('③ 행성 단계 진입! 환경·생명체 조합이 열렸습니다');burst(180,100,'#9be7ff',60)}}
-function nextProgress(){
-if(state.stage===1)return{f:state.totalE/CONFIG.TH0,t:'누적 에너지 '+fmt(state.totalE)+' / '+fmt(CONFIG.TH0),n:'② 항성계',u:'열리는 것: 행성 슬롯 1개, 행성 타입 선택'};
-if(state.stage===2)return{f:Math.log10(1+state.totalE)/Math.log10(1+CONFIG.TH1),t:'누적 에너지 '+fmt(state.totalE)+' / '+fmt(CONFIG.TH1),n:'③ 행성',u:'열리는 것: 행성 슬롯 3개, 환경·생명체 조합, 융합 특성 20종, 도감 확장'};
-const need=CONFIG.w.map(w=>w*CONFIG.N3),ex=teamBonus().ex;let m=0,U=0;
-for(let i=0;i<4;i++){m+=Math.min(state.C[i],need[i]);U+=Math.max(0,state.C[i]-need[i])}
-const f=Math.min(1,(m+ex*U)/CONFIG.N3);
-return{f,t:'누적 생산 '+RES.map((r,i)=>r+' '+Math.min(100,100*state.C[i]/need[i]).toFixed(0)+'%').join(' · '),n:'④ 문명 (프로토타입 범위 밖)',u:'열리는 것: 파견·미션·친구 방문. 이 단계가 이번 프로토타입의 끝입니다'}}
-function advance(sec){
-let left=sec;
-while(left>0){const dt=Math.min(left,60);left-=dt;
-if(state.gt-state.windowStart>=CONFIG.activeWindow){state.windowStart=state.gt;state.activeLeft=CONFIG.activeLen}
-const act=Math.min(dt,state.activeLeft);state.activeLeft-=act;
-accrue(dt+act*(CONFIG.activeMult-1));state.gt+=dt;checkStage()}}
-function offlineEff(gapSec){let h=gapSec/3600,eff=0;for(const[w,r]of CONFIG.offline){const x=Math.min(Math.max(h,0),w);eff+=x*r;h-=x}return eff*3600}
-function away(hours){const gap=hours*3600,eff=offlineEff(gap),b4=snapshot();
-state.gt+=gap;accrue(eff);checkStage();
-state.windowStart=state.gt;state.activeLeft=CONFIG.activeLen;
-state.report={hours,effHours:eff/3600,gain:diff(b4,snapshot())};
-if(hours>=1)showReport()}
-function snapshot(){return state.stage<3?{E:state.E}:{S:state.S.slice()}}
-function diff(a,b){return a.E!==undefined?{E:(b.E||0)-a.E}:{S:b.S?b.S.map((x,i)=>x-(a.S?a.S[i]:0)):[0,0,0,0]}}
-function buy(o){if(!canPay(o.c))return false;pay(o.c);
-if(o.k==='star'){state.star++}
-else if(o.k==='new'){const t=state.newType||PLT[1];const life=Object.keys(NAT).find(l=>NAT[l]===t);
-const pl=mkPlanet(t);
-if(state.stage>=3){pl.life=life;pl.env=HOME[life];regDex(pl)}state.planets.push(pl)}
-else state.planets[o.i].lv++;
-checkStage();return true}
-function recommend(){let n=0;for(let g=0;g<500;g++){const o=costs().sort((a,b)=>a.c-b.c)[0];if(!o||!buy(o))break;n++}return n}
-function defaultLife(t){return Object.keys(NAT).find(l=>NAT[l]===t)}
-function regDex(pl){const k=pl.type+'|'+pl.env+'|'+pl.life;state.dex.combos[k]=1;if(NAT[pl.life]!==pl.type)state.dex.traits[pl.type+'|'+pl.life]=1}
-function setCombo(i,p,e,l){const pl=state.planets[i];if(!pl||state.stage<3)return false;
-if(pl.type===p&&pl.env===e&&pl.life===l)return true;pl.type=p;pl.env=e;pl.life=l;pl.placedAt=state.gt;regDex(pl);return true}
-const BASEC=[[58,134,255],[52,201,160],[227,154,74],[138,99,255],[224,82,122],[156,198,230]];
-const COLN=['바다','오로라','사막','성운','장미','얼음'];
-const DESIGNS=[['gas','가스 띠'],['cont','대륙'],['rock','바위'],['storm','폭풍'],['lava','용암'],['ice','빙하']];
-const RINGS=['없음','클래식','넓은 띠','이중','가는 선','빛나는'];
-const RCOLS=[null,[255,255,255],[255,213,138],[159,232,255],[255,159,200],[185,155,255],[255,138,92]];
-const RCOLN=['행성색','은빛','황금','얼음','분홍','보라','노을'];
-const SPEEDN=['느리게','보통','빠르게'],SPEEDM=[.45,1,2.2];
-const DEF_DESIGN={암석:'rock',해양:'cont',얼음:'ice',용암:'lava',가스:'gas'};
-const DEF_COLOR={암석:2,해양:0,얼음:5,용암:4,가스:3};
-const ITEMS=[['tree','🌳','나무'],['pine','🌲','소나무'],['flower','🌸','꽃'],['house','🏠','집'],['lamp','💡','가로등'],['flag','🚩','깃발'],['crystal','💎','수정'],['tent','⛺','텐트'],['fire','🔥','모닥불'],['mill','🌬️','풍차'],['rock','🪨','바위'],['pond','💧','연못']];
-const SKYN=['밤하늘','노을','오로라'],MAXITEM=24;
-function defLook(t,seed){return{design:DEF_DESIGN[t]||'cont',color:DEF_COLOR[t]||0,tx:-21,ty:18,speed:1,dir:1,ring:0,rcol:0,rsize:1,moons:0,name:'',seed:(seed||0)%6}}
-function mkPlanet(t){return{type:t,lv:0,env:null,life:null,placedAt:state.gt,look:defLook(t,state.planets.length+(state.stage*3)),home:{sky:0,msg:'',items:[]}}}
-function migrate(s){(s.planets||[]).forEach((p,i)=>{if(!p.look)p.look=defLook(p.type,i);if(!p.home)p.home={sky:0,msg:'',items:[]}});s.version=2}
-const $=id=>document.getElementById(id);
-function fmt(x){if(!isFinite(x))return'∞';if(x<1000)return x<10?x.toFixed(2):x.toFixed(x<100?1:0);if(x<1e6)return(x/1e3).toFixed(1)+'K';if(x<1e9)return(x/1e6).toFixed(2)+'M';if(x<1e12)return(x/1e9).toFixed(2)+'B';return x.toExponential(2)}
-function fmtT(s){if(!isFinite(s))return'—';if(s<90)return Math.ceil(s)+'초';if(s<5400)return Math.round(s/60)+'분';if(s<172800)return(s/3600).toFixed(1)+'시간';return(s/86400).toFixed(1)+'일'}
-let toastT=0;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2400)}
-const mixc=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
-const sst=(a,b,x)=>{x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x)};
-const rgbs=(c,a)=>'rgba('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+','+(a===undefined?1:a)+')';
-const clampv=(v,a,b)=>Math.max(a,Math.min(b,v));
-function h3(x,y,z){const n=Math.sin(x*127.1+y*311.7+z*74.7)*43758.5453;return n-Math.floor(n)}
-function vn3(x,y,z){const xi=Math.floor(x),yi=Math.floor(y),zi=Math.floor(z),xf=x-xi,yf=y-yi,zf=z-zi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf),w=zf*zf*(3-2*zf);
-const a=(i,j,k)=>h3(xi+i,yi+j,zi+k),l=(p,q,t)=>p+(q-p)*t;
-return l(l(l(a(0,0,0),a(1,0,0),u),l(a(0,1,0),a(1,1,0),u),v),l(l(a(0,0,1),a(1,0,1),u),l(a(0,1,1),a(1,1,1),u),v),w)}
-function fbm3(x,y,z,o){let a=.5,s=0,f=1;for(let i=0;i<o;i++){s+=a*vn3(x*f,y*f,z*f);f*=2;a*=.5}return s*1.06}
-const texCache={};
-function bake(design,ci,seed){
-const W=256,H=128,d=new Uint8ClampedArray(W*H*4),C=BASEC[ci],dk=C.map(v=>v*.42),lt=C.map(v=>v+(255-v)*.62),so=seed*13.37+1.7;
-const storms=[[.8+seed*.7,-.35,.55],[-1.6+seed*.5,.42,.35]];
-for(let j=0;j<H;j++){const lat=(.5-(j+.5)/H)*Math.PI,cl=Math.cos(lat),sl=Math.sin(lat);
-for(let i=0;i<W;i++){const lon=((i+.5)/W)*2*Math.PI-Math.PI,x=cl*Math.sin(lon),y=sl,z=cl*Math.cos(lon);let c,e=0;
-if(design==='gas'||design==='storm'){
-const w=fbm3(x*2.2+so,y*2.2,z*2.2,3),t=.5+.5*Math.sin(lat*10+w*4.2);c=mixc(dk,lt,t*.85+.1*fbm3(x*9,y*9+so,z*9,2));
-if(design==='storm')for(const s of storms){let dl=Math.abs(lon-s[0]);if(dl>Math.PI)dl=2*Math.PI-dl;const dx=dl*cl/(s[2]*1.5),dy=(lat-s[1])/(s[2]*.8),rr=Math.sqrt(dx*dx+dy*dy);
-if(rr<1){const ang=Math.atan2(dy,dx),sw=.5+.5*Math.sin(ang*2+rr*9);c=mixc(c,mixc(lt,[255,255,255],.35),(1-rr)*.85*sw);if(rr<.22)c=mixc(c,dk,.55)}}
-}else if(design==='cont'){
-const n=fbm3(x*2+so,y*2,z*2,5);
-if(n<.5){c=mixc(dk,C,.35+.55*fbm3(x*6,y*6,z*6+so,2));if(n>.455)c=mixc(c,lt,.4)}
-else c=mixc(mixc(C,[110,170,80],.72),[190,165,110],sst(.6,.8,n));
-const pc=1.22+.12*fbm3(x*5,y*5,z*5,2);if(Math.abs(lat)>pc)c=[236,246,255];
-}else if(design==='rock'){
-const n=fbm3(x*3+so,y*3,z*3,5),base=mixc([74,68,64],C.map(v=>v*.5),.32);c=mixc(base,mixc(base,[170,160,148],.7),n);
-const q=[x*6+so,y*6,z*6],cx0=Math.floor(q[0]),cy0=Math.floor(q[1]),cz0=Math.floor(q[2]),jx=cx0+h3(cx0,cy0,cz0),jy=cy0+h3(cy0,cz0,cx0),jz=cz0+h3(cz0,cx0,cy0);
-const dd=Math.hypot(q[0]-jx,q[1]-jy,q[2]-jz)/.38;if(dd<1&&h3(cx0,cy0,cz0+9)>.35){const k=dd<.78?.74:1.28;c=c.map(v=>v*k)}
-}else if(design==='lava'){
-const n=fbm3(x*3+so,y*3,z*3,5),r=1-Math.abs(2*n-1),crack=sst(.925,.985,r),halo=sst(.8,.985,r)*.4,crust=mixc([28,21,22],C.map(v=>v*.28),.5).map(v=>v*(.6+.9*fbm3(x*8,y*8,z*8,2)));
-c=mixc(crust,mixc([255,125,44],C,.3),Math.min(1,crack+halo*.5));e=Math.min(1,crack+halo*.45)*255;
-}else{
-const n=fbm3(x*2.5+so,y*2.5,z*2.5,5),base=mixc(lt,[226,242,255],.5+.4*n),r=1-Math.abs(2*fbm3(x*4,y*4+so,z*4,4)-1),crack=sst(.935,.985,r);
-c=mixc(base,mixc(C,[30,70,140],.6),crack*.85);if(Math.abs(lat)>1.15)c=mixc(c,[255,255,255],.5);
-}
-const k=(j*W+i)*4;d[k]=c[0];d[k+1]=c[1];d[k+2]=c[2];d[k+3]=e}}
-return{w:W,h:H,d}}
-function getTex(l){const k=l.design+l.color+'_'+l.seed;return texCache[k]||(texCache[k]=bake(l.design,l.color,l.seed))}
-const gcv=document.createElement('canvas'),gctx=gcv.getContext('2d');
-let DPR=1;
-function drawGlobe(ctx,cx,cy,R,look,t){
-const P=Math.max(24,Math.min(280,Math.round(2*R*DPR)));if(gcv.width!==P){gcv.width=gcv.height=P}
-const img=gctx.createImageData(P,P),D=img.data,tex=getTex(look),TW=tex.w,TH=tex.h,T=tex.d,C=BASEC[look.color];
-const spin=(t/1000)*.28*SPEEDM[look.speed]*look.dir,ra=look.tx*Math.PI/180,pb=look.ty*Math.PI/180,sa=Math.sin(ra),ca=Math.cos(ra),sb=Math.sin(pb),cb=Math.cos(pb);
-const Lx=-.52,Ly=.48,Lz=.7,ln=Math.hypot(Lx,Ly,Lz),lx=Lx/ln,ly=Ly/ln,lz=Lz/ln,atm=mixc(C,[255,255,255],.55);
-for(let j=0;j<P;j++){const py=-((j+.5)/P*2-1);
-for(let i=0;i<P;i++){const x=(i+.5)/P*2-1,r2=x*x+py*py;if(r2>1)continue;const z=Math.sqrt(1-r2);
-const x1=x*ca+py*sa,y1=-x*sa+py*ca,y2=y1*cb+z*sb,z2=-y1*sb+z*cb;
-let u=(Math.atan2(x1,z2)+spin)/(2*Math.PI)+.5;u-=Math.floor(u);const v=.5-Math.asin(clampv(y2,-1,1))/Math.PI;
-const fu=u*TW-.5,fv=v*TH-.5,i0=Math.floor(fu),j0=Math.floor(fv),du=fu-i0,dv=fv-j0,ia=((i0%TW)+TW)%TW,ib=(ia+1)%TW,ja=clampv(j0,0,TH-1),jb=clampv(j0+1,0,TH-1);
-const t00=(ia+ja*TW)*4,t10=(ib+ja*TW)*4,t01=(ia+jb*TW)*4,t11=(ib+jb*TW)*4,w00=(1-du)*(1-dv),w10=du*(1-dv),w01=(1-du)*dv,w11=du*dv;
-const tr=T[t00]*w00+T[t10]*w10+T[t01]*w01+T[t11]*w11,tg=T[t00+1]*w00+T[t10+1]*w10+T[t01+1]*w01+T[t11+1]*w11,tb=T[t00+2]*w00+T[t10+2]*w10+T[t01+2]*w01+T[t11+2]*w11,ta=T[t00+3]*w00+T[t10+3]*w10+T[t01+3]*w01+T[t11+3]*w11;
-const lam=x*lx+py*ly+z*lz,sh=sst(-.12,.65,lam)*.92+.08,rim=Math.pow(1-z,2.6),em=ta/255;
-const k=(j*P+i)*4;let r=tr*sh,g=tg*sh,b=tb*sh;
-r+=em*255*(1-.5*sh);g+=em*110*(1-.5*sh);b+=em*30*(1-.5*sh);
-const ar=rim*(.25+.75*sh)*.9;r+=atm[0]*ar;g+=atm[1]*ar;b+=atm[2]*ar;
-D[k]=r;D[k+1]=g;D[k+2]=b;D[k+3]=r2<.955?255:Math.max(0,(1-r2)/.045*255)}}
-gctx.putImageData(img,0,0);ctx.drawImage(gcv,cx-R,cy-R,2*R,2*R)}
-const RBANDS={1:[[1.45,2.05,.6]],2:[[1.35,2.55,.34]],3:[[1.4,1.8,.6],[1.95,2.35,.42]],4:[[1.7,1.76,.85],[1.95,1.99,.65],[2.22,2.25,.5]],5:[[1.5,2.1,.55]]};
-function ringPass(ctx,cx,cy,R,look,front){
-if(!look.ring)return;const bands=RBANDS[look.ring],sc=[.8,1,1.25][look.rsize],C=look.rcol?RCOLS[look.rcol]:mixc(BASEC[look.color],[255,255,255],.6);
-const sq=.16+.46*Math.abs(Math.sin(look.ty*Math.PI/180)),dirFront=look.ty>=0?1:-1;
-ctx.save();ctx.translate(cx,cy);ctx.rotate(look.tx*Math.PI/180);
-ctx.beginPath();if(front===(dirFront>0))ctx.rect(-R*4,0,R*8,R*4);else ctx.rect(-R*4,-R*4,R*8,R*4);ctx.clip();
-ctx.scale(1,sq);if(look.ring===5){ctx.shadowColor=rgbs(C,.9);ctx.shadowBlur=18}
-for(const b of bands){const mid=(b[0]+b[1])/2*R*sc,w=(b[1]-b[0])*R*sc;ctx.beginPath();ctx.arc(0,0,mid,0,Math.PI*2);ctx.strokeStyle=rgbs(C,b[2]);ctx.lineWidth=w;ctx.stroke();
-if(look.ring===1){ctx.beginPath();ctx.arc(0,0,mid+w*.15,0,Math.PI*2);ctx.strokeStyle='rgba(8,14,40,.45)';ctx.lineWidth=w*.07;ctx.stroke()}}
-ctx.restore()}
-function drawMoons(ctx,cx,cy,R,look,t,front){
-const sq=.16+.46*Math.abs(Math.sin(look.ty*Math.PI/180));
-for(let m=0;m<look.moons;m++){const orb=R*(1.75+m*.5),a=t/1000*(.5-m*.12)+m*2.1,mx=Math.cos(a)*orb,my=Math.sin(a)*orb*sq,fr=(Math.sin(a)*(look.ty>=0?1:-1))>0;if(fr!==front)continue;
-const rr=R*(.13-m*.015),ra=look.tx*Math.PI/180,px=cx+mx*Math.cos(ra)-my*Math.sin(ra),py=cy+mx*Math.sin(ra)+my*Math.cos(ra);
-const g=ctx.createRadialGradient(px-rr*.35,py-rr*.35,rr*.1,px,py,rr);g.addColorStop(0,'#f2f1ee');g.addColorStop(1,'#6d6a78');ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,rr,0,Math.PI*2);ctx.fill()}}
-function drawPlanet(ctx,cx,cy,R,look,t,glow){
-if(glow!==0){const g=ctx.createRadialGradient(cx,cy,R*.9,cx,cy,R*1.9),C=BASEC[look.color];g.addColorStop(0,rgbs(C,.32*(glow||1)));g.addColorStop(1,rgbs(C,0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.9,0,Math.PI*2);ctx.fill()}
-ringPass(ctx,cx,cy,R,look,false);drawMoons(ctx,cx,cy,R,look,t,false);drawGlobe(ctx,cx,cy,R,look,t);ringPass(ctx,cx,cy,R,look,true);drawMoons(ctx,cx,cy,R,look,t,true)}
-const GAL=[],BGS=[];
-const CLD=[];
-function initGalaxy(){const r=rng(11);for(let i=0;i<6200;i++){const arm=i%5,t=Math.pow(r(),.6),sc=(r()+r()+r()-1.5)*(.28*(1-t*.6)+.1),th=arm*Math.PI*2/5+t*8.2+sc*2.4;
-const col=t<.1?[255,246,222]:t<.38?mixc([255,246,222],[96,158,255],(t-.1)/.28):mixc([84,146,255],[176,124,255],(t-.38)/.62);
-GAL.push({t,th,r:t*(1+sc*.3),c:col,s:.45+r()*1.5,a:.3+r()*.65,ph:r()*6.28})}
-for(let i=0;i<150;i++){const arm=i%5,t=.12+Math.pow(r(),.8)*.88,th=arm*Math.PI*2/5+t*8.2+(r()-.5)*.5;CLD.push({t,th,r:t,s:.05+r()*.09,c:t<.45?[80,140,255]:[160,110,255],a:.05+r()*.07})}
-const q=rng(3);for(let i=0;i<170;i++)BGS.push({x:q(),y:q(),s:q()*1.3+.3,p:q()*6.28})}
-function drawBg(ctx,w,h,t,a){for(const s of BGS){ctx.globalAlpha=a*(.35+.5*Math.abs(Math.sin(t/1100+s.p)));ctx.fillStyle='#e8f1ff';ctx.fillRect(s.x*w,s.y*h,s.s,s.s)}ctx.globalAlpha=1}
-function drawGalaxy(ctx,cx,cy,R,t,alpha){
-const sq=.56;ctx.save();ctx.globalCompositeOperation='lighter';
-let g=ctx.createRadialGradient(cx,cy,0,cx,cy,R*1.25);g.addColorStop(0,'rgba(190,210,255,'+.5*alpha+')');g.addColorStop(.25,'rgba(70,110,255,'+.2*alpha+')');g.addColorStop(1,'rgba(30,40,160,0)');
-ctx.save();ctx.translate(cx,cy);ctx.scale(1,sq);ctx.translate(-cx,-cy);ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.25,0,Math.PI*2);ctx.fill();ctx.restore();
-const rot=t/1000*.11;
-for(const q of CLD){const th=q.th+rot*(1.25/(.35+q.t)),x=cx+Math.cos(th)*q.r*R,y=cy-Math.sin(th)*q.r*R*sq,rr=q.s*R,g2=ctx.createRadialGradient(x,y,0,x,y,rr);g2.addColorStop(0,rgbs(q.c,q.a*alpha));g2.addColorStop(1,rgbs(q.c,0));ctx.fillStyle=g2;ctx.fillRect(x-rr,y-rr,rr*2,rr*2)}
-for(const p of GAL){const th=p.th+rot*(1.25/(.35+p.t)),x=cx+Math.cos(th)*p.r*R,y=cy-Math.sin(th)*p.r*R*sq,tw=.75+.25*Math.sin(t/700+p.ph);
-ctx.fillStyle=rgbs(p.c,p.a*alpha*tw);const ps=p.s*(R/260+.3)*(1.2-p.t*.5);if(ps<1)ctx.fillRect(x,y,ps*1.6,ps*1.6);else{ctx.beginPath();ctx.arc(x,y,ps,0,Math.PI*2);ctx.fill()}}
-g=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.2);g.addColorStop(0,'rgba(255,255,255,'+alpha+')');g.addColorStop(.4,'rgba(255,236,200,'+.5*alpha+')');g.addColorStop(1,'rgba(255,220,170,0)');
-ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*.2,0,Math.PI*2);ctx.fill();
-ctx.globalCompositeOperation='source-over';ctx.lineWidth=1.2;
-for(let k=0;k<2;k++){ctx.strokeStyle='rgba(150,190,255,'+(.34-k*.14)*alpha+')';ctx.beginPath();ctx.ellipse(cx,cy,R*(1.22+k*.5),R*(1.22+k*.5)*sq,-.12,0,Math.PI*2);ctx.stroke()}
-ctx.restore()}
-function drawItem(ctx,k,x,y,s,t,C,id){
-ctx.save();ctx.translate(x,y);ctx.scale(s,s);
-const shade=(c,f)=>rgbs(c.map(v=>v*f));
-switch(k){
-case'tree':ctx.fillStyle='#6b4a33';ctx.fillRect(-4,-26,8,26);for(const[a,b,r,c]of[[0,-48,22,'#3f9d5a'],[-12,-38,16,'#358a4e'],[12,-38,16,'#47ab63']]){ctx.fillStyle=c;ctx.beginPath();ctx.arc(a,b,r,0,6.3);ctx.fill()}break;
-case'pine':ctx.fillStyle='#5a3f2e';ctx.fillRect(-3,-12,6,12);for(let i=0;i<3;i++){ctx.fillStyle=i%2?'#2f8a58':'#3b9c66';ctx.beginPath();ctx.moveTo(0,-62+i*15);ctx.lineTo(-20+i*3,-28+i*10);ctx.lineTo(20-i*3,-28+i*10);ctx.closePath();ctx.fill()}break;
-case'flower':ctx.strokeStyle='#3d9a55';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-22);ctx.stroke();{const pc=['#ff7fa8','#ffd36b','#b99bff','#7fd4ff'][id%4];ctx.fillStyle=pc;for(let i=0;i<5;i++){const a=i/5*6.28;ctx.beginPath();ctx.arc(Math.cos(a)*6,-26+Math.sin(a)*6,4.5,0,6.3);ctx.fill()}ctx.fillStyle='#fff3b0';ctx.beginPath();ctx.arc(0,-26,3.4,0,6.3);ctx.fill()}break;
-case'house':ctx.fillStyle='#e9dcc8';ctx.fillRect(-22,-30,44,30);ctx.fillStyle='#c55a4a';ctx.beginPath();ctx.moveTo(-28,-30);ctx.lineTo(0,-54);ctx.lineTo(28,-30);ctx.closePath();ctx.fill();ctx.fillStyle='#7a5238';ctx.fillRect(-5,-17,10,17);ctx.fillStyle='rgba(255,226,140,'+(.75+.2*Math.sin(t/500+id))+')';ctx.fillRect(9,-24,9,9);ctx.fillRect(-18,-24,9,9);break;
-case'lamp':{const gl=.7+.3*Math.sin(t/400+id);ctx.fillStyle='#3a4468';ctx.fillRect(-2,-46,4,46);ctx.fillRect(-7,-2,14,4);const g=ctx.createRadialGradient(0,-50,0,0,-50,34);g.addColorStop(0,'rgba(255,230,150,'+.75*gl+')');g.addColorStop(1,'rgba(255,230,150,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,-50,34,0,6.3);ctx.fill();ctx.fillStyle='#fff3c0';ctx.beginPath();ctx.arc(0,-50,5,0,6.3);ctx.fill();break}
-case'flag':ctx.fillStyle='#d9deef';ctx.fillRect(-2,-56,3,56);ctx.fillStyle='#ff6b6b';ctx.beginPath();ctx.moveTo(1,-54);for(let i=0;i<=10;i++)ctx.lineTo(1+i*2.8,-54+Math.sin(t/220+i*.7+id)*3+i*.6);for(let i=10;i>=0;i--)ctx.lineTo(1+i*2.8,-38+Math.sin(t/220+i*.7+id)*3+i*.6);ctx.closePath();ctx.fill();break;
-case'crystal':{const g=ctx.createRadialGradient(0,-24,0,0,-24,36);g.addColorStop(0,'rgba(120,220,255,'+(.35+.15*Math.sin(t/600+id))+')');g.addColorStop(1,'rgba(120,220,255,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,-24,36,0,6.3);ctx.fill();
-for(const[dx,h,w,c]of[[-10,26,7,'#7fd7ff'],[0,40,9,'#a6e9ff'],[10,22,6,'#69c4f5']]){ctx.fillStyle=c;ctx.beginPath();ctx.moveTo(dx,-h);ctx.lineTo(dx-w,-4);ctx.lineTo(dx,0);ctx.lineTo(dx+w,-4);ctx.closePath();ctx.fill()}break}
-case'tent':ctx.fillStyle='#e0a458';ctx.beginPath();ctx.moveTo(0,-38);ctx.lineTo(-26,0);ctx.lineTo(26,0);ctx.closePath();ctx.fill();ctx.fillStyle='#3a2a22';ctx.beginPath();ctx.moveTo(0,-26);ctx.lineTo(-9,0);ctx.lineTo(9,0);ctx.closePath();ctx.fill();ctx.strokeStyle='#fff3d6';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,-38);ctx.lineTo(0,-44);ctx.stroke();break;
-case'fire':{const fl=Math.sin(t/110+id)*.5+.5,g=ctx.createRadialGradient(0,-12,0,0,-12,40);g.addColorStop(0,'rgba(255,170,70,'+(.5+.2*fl)+')');g.addColorStop(1,'rgba(255,120,40,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,-12,40,0,6.3);ctx.fill();
-ctx.strokeStyle='#6b4a33';ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-12,-2);ctx.lineTo(12,-8);ctx.moveTo(12,-2);ctx.lineTo(-12,-8);ctx.stroke();
-ctx.fillStyle='#ff9a3c';ctx.beginPath();ctx.moveTo(0,-34-fl*6);ctx.quadraticCurveTo(12,-16,0,-6);ctx.quadraticCurveTo(-12,-16,0,-34-fl*6);ctx.fill();ctx.fillStyle='#ffe08a';ctx.beginPath();ctx.moveTo(0,-24-fl*3);ctx.quadraticCurveTo(6,-14,0,-8);ctx.quadraticCurveTo(-6,-14,0,-24-fl*3);ctx.fill();break}
-case'mill':ctx.fillStyle='#e8e1d3';ctx.beginPath();ctx.moveTo(-12,0);ctx.lineTo(-7,-44);ctx.lineTo(7,-44);ctx.lineTo(12,0);ctx.closePath();ctx.fill();ctx.fillStyle='#b3543f';ctx.beginPath();ctx.moveTo(-10,-44);ctx.lineTo(0,-56);ctx.lineTo(10,-44);ctx.closePath();ctx.fill();
-ctx.save();ctx.translate(0,-44);ctx.rotate(t/900+id);ctx.fillStyle='#f5f0e6';for(let i=0;i<4;i++){ctx.rotate(Math.PI/2);ctx.fillRect(-2,-30,4,30);ctx.fillStyle='rgba(255,255,255,.75)';ctx.fillRect(2,-30,9,16);ctx.fillStyle='#f5f0e6'}ctx.restore();break;
-case'rock':ctx.fillStyle='#7d8294';ctx.beginPath();ctx.moveTo(-20,0);ctx.lineTo(-14,-16);ctx.lineTo(-3,-22);ctx.lineTo(10,-17);ctx.lineTo(20,0);ctx.closePath();ctx.fill();ctx.fillStyle='rgba(255,255,255,.18)';ctx.beginPath();ctx.moveTo(-14,-16);ctx.lineTo(-3,-22);ctx.lineTo(0,-8);ctx.closePath();ctx.fill();break;
-case'pond':{const g=ctx.createLinearGradient(0,-10,0,10);g.addColorStop(0,'#5fb7ff');g.addColorStop(1,'#2f6fd0');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,-4,34,11,0,0,6.3);ctx.fill();ctx.strokeStyle='rgba(255,255,255,'+(.3+.2*Math.sin(t/500+id))+')';ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(-6,-4,14+3*Math.sin(t/600),4,0,0,6.3);ctx.stroke();break}
-}
-ctx.restore()}
-function drawInterior(ctx,w,h,t,pl,scroll,hover){
-const hz=h*.56,C=BASEC[pl.look.color],sky=pl.home.sky;
-let g=ctx.createLinearGradient(0,0,0,hz);
-if(sky===0){g.addColorStop(0,'#040a22');g.addColorStop(1,'#10235e')}else if(sky===1){g.addColorStop(0,'#2a1650');g.addColorStop(.55,'#b4506f');g.addColorStop(1,'#ffb36b')}else{g.addColorStop(0,'#03101c');g.addColorStop(1,'#0b2a3a')}
-ctx.fillStyle=g;ctx.fillRect(0,0,w,hz+4);
-if(sky!==1)drawBg(ctx,w,hz,t,1);
-if(sky===1){const sg=ctx.createRadialGradient(w*.7-scroll*.05,hz,0,w*.7-scroll*.05,hz,w*.35);sg.addColorStop(0,'rgba(255,230,160,.95)');sg.addColorStop(.25,'rgba(255,170,100,.5)');sg.addColorStop(1,'rgba(255,120,80,0)');ctx.fillStyle=sg;ctx.fillRect(0,0,w,hz+4)}
-if(sky===2){ctx.globalCompositeOperation='lighter';for(let b=0;b<3;b++){const col=[[60,230,170],[90,170,255],[170,120,255]][b];ctx.beginPath();ctx.moveTo(0,hz);for(let x=0;x<=w;x+=14)ctx.lineTo(x,hz*(.2+.12*b)+Math.sin(x/110+t/1800+b*2)*hz*.09-Math.sin(x/37+t/900)*6);ctx.lineTo(w,hz);ctx.closePath();const ag=ctx.createLinearGradient(0,hz*.1,0,hz);ag.addColorStop(0,rgbs(col,.0));ag.addColorStop(.4,rgbs(col,.3));ag.addColorStop(1,rgbs(col,0));ctx.fillStyle=ag;ctx.fill()}ctx.globalCompositeOperation='source-over'}
+// ===== CONFIG: 모든 수치는 여기 (밸런스는 시뮬레이션으로 조정) =====
+const CONFIG={save:'cosmia_origin_v1',offlineMax:28800,offlineRate:.5,minMult:.4,eraMult:1.35,popFloor:.6,popGrow:.02,popStart:8,
+capBase:20,capHouse:12,capEra:.3,
+b:{farm:{n:'농장',ico:'🌾',rate:1,base:{F:10},r:1.14,out:'F'},mine:{n:'광산',ico:'⛏️',rate:.8,base:{F:25},r:1.15,out:'M'},
+lab:{n:'연구소',ico:'🔬',rate:.5,base:{M:20},r:1.15,out:'R'},house:{n:'주거지',ico:'🏠',rate:0,base:{F:40,M:15},r:1.17,out:null}},
+start:{F:25,M:0,R:0,lv:{farm:1,mine:0,lab:0,house:0}},
+eras:[{n:'원시 시대',ico:'🔥'},{n:'농경 시대',ico:'🌱'},{n:'산업 시대',ico:'🏭'},{n:'정보 시대',ico:'💡'},{n:'우주 시대',ico:'🚀'}],
+req:[{R:190,pop:15},{R:1440,pop:35},{R:8000,pop:70},{R:35000,pop:120}],
+shardMin:1,shardEra:30,reroll:{base:100,step:50,cash:1100}};
+const STAT={food:'식량 생산',mineral:'광물 생산',growth:'인구 증가',research:'연구 속도',combat:'전투력',trade:'교류 보상'};
+const PLANETS=[
+{id:'desert',n:'사막 행성',d:'모래와 광맥의 세계',pal:['#f6c98a','#d9894a','#5a2a18'],blob:['#e8a863','#b8662f','#f2d9a4'],mods:{mineral:30,food:-25,growth:-15}},
+{id:'ocean',n:'해양 행성',d:'끝없는 바다로 덮인 세계',pal:['#a9ddff','#2f78d6','#0a2260'],blob:['#3a9be8','#1b5cbf','#9fd0ff'],cloud:1,mods:{food:30,mineral:-30,research:-20}},
+{id:'jungle',n:'정글 행성',d:'생명이 넘치는 울창한 세계',pal:['#b6f2a0','#3f9d52','#0c3322'],blob:['#2f8a44','#6cc26a','#1c5a34'],cloud:1,mods:{growth:30,research:-25}},
+{id:'ice',n:'빙설 행성',d:'얼음과 눈의 고요한 세계',pal:['#f2fbff','#9cc9e8','#2a4668'],blob:['#d8efff','#7fb0d8','#ffffff'],mods:{research:25,food:-30,growth:-10}},
+{id:'volcano',n:'화산 행성',d:'용암이 흐르는 불안정한 세계',pal:['#ffb27a','#c8402a','#2c0a0c'],blob:['#7a1d14','#ff7a2e','#3a0f10'],mods:{combat:25,mineral:15,food:-35}},
+{id:'crystal',n:'수정 행성',d:'빛나는 결정으로 뒤덮인 세계',pal:['#e8d8ff','#9b7cf0','#2a1a64'],blob:['#c9b0ff','#7a5cf0','#f4eaff'],mods:{research:20,trade:15,combat:-25,food:-10}}];
+const TR=[
+{g:'temper',n:'성향',list:[
+{id:'warlike',n:'호전적',ico:'⚔️',mods:{combat:25,trade:-30}},{id:'scholar',n:'학구적',ico:'📚',mods:{research:30,combat:-20}},
+{id:'social',n:'사교적',ico:'🤝',mods:{trade:30,mineral:-10}},{id:'diligent',n:'근면한',ico:'🛠️',mods:{mineral:20,research:-15}}]},
+{g:'body',n:'체형',list:[
+{id:'giant',n:'거대형',ico:'🦣',mods:{combat:25,growth:-20,food:-10}},{id:'small',n:'소형',ico:'🐭',mods:{growth:30,combat:-25}},
+{id:'aquatic',n:'수생형',ico:'🐙',mods:{food:20,mineral:-15}},{id:'exo',n:'외골격형',ico:'🪲',mods:{combat:15,mineral:10,trade:-15}}]},
+{g:'metab',n:'생태',list:[
+{id:'photo',n:'광합성',ico:'🌿',mods:{food:25,research:-15}},{id:'lithic',n:'광물섭취',ico:'🪨',mods:{mineral:25,food:-20}},
+{id:'omni',n:'잡식',ico:'🍖',mods:{growth:15,mineral:-10}},{id:'energy',n:'에너지체',ico:'⚡',mods:{research:25,growth:-25}}]}];
+const COLORS=['#ffd36e','#7fe0ff','#ff8fb0','#9dff9a','#c9a0ff','#ffffff'];
+const NAMES=['루미나','아르카','네뷸라','솔라','오르비','카이로','베가','리라'];
+const PL=Object.fromEntries(PLANETS.map(p=>[p.id,p]));
+const TRM=Object.fromEntries(TR.map(g=>[g.g,Object.fromEntries(g.list.map(o=>[o.id,o]))]));
 
-ctx.save();ctx.beginPath();ctx.ellipse(w/2,hz+h*1.55,w*1.7,h*1.55,0,0,6.3);ctx.clip();
-g=ctx.createLinearGradient(0,hz,0,h);g.addColorStop(0,rgbs(mixc(C,[255,255,255],.25),1));g.addColorStop(.35,rgbs(C.map(v=>v*.72)));g.addColorStop(1,rgbs(C.map(v=>v*.3)));ctx.fillStyle=g;ctx.fillRect(0,hz-4,w,h);
-ctx.fillStyle='rgba(255,255,255,.05)';for(let i=0;i<30;i++){const gx=((i*173.7)%(w*2))-scroll*1.0,gy=hz+((i*91.3)%(h-hz)),rr=3+(i%5)*3;ctx.beginPath();ctx.ellipse(((gx%w)+w)%w,gy,rr*2,rr*.6,0,0,6.3);ctx.fill()}ctx.restore();
-ctx.strokeStyle=rgbs(mixc(C,[255,255,255],.6),.35);ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(w/2,hz+h*1.55,w*1.7,h*1.55,0,Math.PI*1.12,Math.PI*1.88);ctx.stroke();
-const arr=pl.home.items.map((it,i)=>({it,i})).sort((a,b)=>a.it.y-b.it.y);
-for(const{it,i}of arr){const sx=it.x-scroll,sy=hz+(h-hz)*(.12+.8*it.y),s=(.55+.7*it.y)*Math.min(1.4,h/560);if(sx<-80||sx>w+80)continue;
-ctx.fillStyle='rgba(0,0,0,.22)';ctx.beginPath();ctx.ellipse(sx,sy+2,22*s,6*s,0,0,6.3);ctx.fill();drawItem(ctx,it.t,sx,sy,s,t,C,i);
-if(hover&&hover.i===i){ctx.strokeStyle='rgba(255,255,255,.7)';ctx.setLineDash([4,4]);ctx.beginPath();ctx.arc(sx,sy-24*s,34*s,0,6.3);ctx.stroke();ctx.setLineDash([])}}
-const vg=ctx.createRadialGradient(w/2,h*.55,h*.3,w/2,h*.55,h*1.0);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,4,20,.55)');ctx.fillStyle=vg;ctx.fillRect(0,0,w,h);
-if(pl.home.msg){ctx.font='700 '+Math.round(Math.min(26,w/22))+'px '+getComputedStyle(document.body).fontFamily;ctx.textAlign='center';ctx.fillStyle='rgba(234,244,255,.95)';ctx.shadowColor='rgba(120,170,255,.8)';ctx.shadowBlur=18;ctx.fillText(pl.home.msg,w/2,h*.14);ctx.shadowBlur=0;ctx.textAlign='left'}}
-const parts=[];
-function burst(x,y,col,n){for(let i=0;i<n&&parts.length<160;i++){const a=Math.random()*6.283,s=40+Math.random()*100;parts.push({x:W/2+((x-180)/180)*40,y:starY(),vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,c:col})}}
-function showReport(){const r=state.report;if(!r)return;
-const g=r.gain.E!==undefined?'에너지 +'+fmt(r.gain.E):RES.map((n,i)=>n+' +'+fmt(r.gain.S[i])).join(' · ');
-$('modalBox').innerHTML='<h3 style="margin-bottom:8px">그동안 생긴 일</h3><div>자리를 비운 시간 <b>'+r.hours+'시간</b><br>정산된 시간 <b>'+r.effHours.toFixed(1)+'시간분</b><span class="small"> (8h 60% · 8h 40% · 8h 25%, 최대 24h)</span><br>'+g+'<br><span class="small">지금부터 10분간 활동 집중 ×3 생산이 적용됩니다.</span></div><div class="row" style="margin-top:14px"><button class="btn pri grow" id="okRep">확인</button></div>';
-$('modal').classList.remove('hide');$('okRep').onclick=()=>{$('modal').classList.add('hide');state.flags.report=true;checkGoals();save()}}
-function checkGoals(){for(const g of GOALS){if(!state.goals[g.id]&&g.chk(state)){state.goals[g.id]=1;
-const rate=state.stage<3?rateE():prodVec().reduce((a,b)=>a+b,0);accrue(rate>0?g.r*60:0);toast('목표 달성: '+g.t+' (생산 '+g.r+'분어치 보상)')}}}
-function comboInfoHTML(p,e,l,a){
-const m=fit(p,e,l),fm=effMult(p,e,l,a),v=comboVec(p,e,l,a),nat=NAT[l]===p,t=TRAIT_MAP[p+'|'+l],ei=ENV.indexOf(e);
-let h='<table><tr><td>행성×환경</td><td>×'+PE[p][ei].toFixed(2)+'</td><td>생명체×환경</td><td>×'+EL[l][ei].toFixed(2)+'</td></tr><tr><td>고향 보너스</td><td>'+(nat?'×1.15':'—')+'</td><td>최종 적합</td><td class="'+(fm>=1?'good':'bad')+'">×'+fm.toFixed(2)+'</td></tr></table>'+
-'<div class="small" style="margin-top:4px">산출: '+v.map((x,i)=>RES[i]+' '+x.toFixed(2)).join(' · ')+'</div>';
-if(!nat&&t)h+='<div class="pl"><b>융합 특성: '+t[2]+'</b><div class="small">'+t[3]+'</div><div class="small">③단계 생산 환산 약 +'+((TRAIT_S3[p+'|'+l]||0)*100).toFixed(1)+'%</div></div>';else h+='<div class="small" style="margin-top:6px">고향 조합: 융합 특성 없음</div>';
-if(m<1)h+='<div class="small bad">적합도가 낮아 초기 패널티가 있습니다. 14일에 걸쳐 점차 적응합니다.</div>';return h}
-function fillSel(el,arr,val){el.innerHTML=arr.map(x=>'<option'+(x===val?' selected':'')+'>'+x+'</option>').join('')}
-function planetName(pl,i){return pl.look.name||('행성 '+(i+1))}
-const PLCOL=t=>BASEC[DEF_COLOR[t]||0];
-function renderResources(){
-if(state.stage<3){$('res').innerHTML='<div class="r"><b>'+fmt(state.E)+'</b><span>우주 에너지</span></div><div class="r"><b>'+fmt(rateE()*mult())+'/s</b><span>초당 생산'+(state.activeLeft>0?' (활동 ×3)':'')+'</span></div>';$('rateLine').textContent='항성 Lv'+state.star+' · 행성 '+state.planets.length+'개'}
-else{const p=prodVec(),m=mult();$('res').innerHTML=RES.map((n,i)=>'<div class="r"><b>'+fmt(state.S[i])+'</b><span>'+n+' +'+fmt(p[i]*m)+'/s</span></div>').join('');const tb=teamBonus();
-$('rateLine').textContent='교환 효율 '+Math.round(tb.ex*100)+'% · 균형 보정 '+Math.round(tb.kappa*100)+'%'+(state.activeLeft>0?' · 활동 집중 ×3 ('+Math.ceil(state.activeLeft/60)+'분 남음)':'')}}
-function renderProgress(){const n=nextProgress();$('progTitle').textContent='다음 단계 → '+n.n;$('progBar').style.width=Math.max(0,Math.min(100,n.f*100))+'%';let eta='';
-if(state.stage<3){const rem=(state.stage===1?CONFIG.TH0:CONFIG.TH1)-state.totalE;eta=' · 현재 속도로 약 '+fmtT(rem/Math.max(1e-9,rateE()*mult()))}
-else{const rem=(1-n.f)*CONFIG.N3,p=prodVec().reduce((a,b)=>a+b,0);eta=' · 현재 속도로 약 '+fmtT(rem/Math.max(1e-9,p*mult()))}
-$('progText').textContent=(state.stage===2?'(로그 눈금) ':'')+(n.f*100).toFixed(1)+'% · '+n.t+eta;$('unlockText').textContent=n.u;$('stageChip').textContent=STAGE_NAME[state.stage]}
-function renderMain(){
-const c=costs(),star=c.find(o=>o.k==='star'),np=c.find(o=>o.k==='new'),unit=state.stage<3?'에너지':'자원 묶음',slots=CONFIG.slots[state.stage]||0;
-$('btnStar').textContent='항성 강화 Lv'+state.star+' → '+(state.star+1)+'  (비용 '+fmt(star.c)+' '+unit+')';$('btnStar').disabled=!canPay(star.c);
-if(state.stage===1){$('btnPlanet').textContent='행성 건설 (② 항성계에서 해금)';$('btnPlanet').disabled=true;$('newType').classList.add('hide')}
-else if(np){$('btnPlanet').textContent='행성 건설 (비용 '+fmt(np.c)+') '+state.planets.length+'/'+slots;$('btnPlanet').disabled=!canPay(np.c);$('newType').classList.remove('hide')}
-else{$('btnPlanet').textContent='행성 슬롯 가득 '+state.planets.length+'/'+slots;$('btnPlanet').disabled=true;$('newType').classList.add('hide')}
-$('focusInfo').textContent=state.stage<3?'모든 비용은 우주 에너지로 지불합니다.':'비용은 현재 단계 수요 비중 묶음이며, 부족분은 교환소가 '+Math.round(teamBonus().ex*100)+'% 효율로 보충합니다.'}
-function planetOut(pl,i){const a=adaptFactor(pl),v=comboVec(pl.type,pl.env,pl.life,a),k=CONFIG.po[i]*(1+CONFIG.plvLin*pl.lv)*(state.planets.length>=2?CONFIG.syn:1)/CONFIG.VREF;return v.map(x=>x*k)}
-function renderPlanets(){const c=costs();
-$('planetList').innerHTML=state.planets.length?state.planets.map((pl,i)=>{const up=c.find(o=>o.k==='up'&&o.i===i),cmb=pl.env?pl.type+' · '+pl.env+' · '+pl.life:pl.type+' · (③에서 조합 해금)',out=pl.env?planetOut(pl,i).map((x,r)=>RES[r]+' '+fmt(x)).join(' / '):'';
-return '<div class="pl"><div class="row"><canvas class="thumb" data-i="'+i+'" width="56" height="56" style="width:48px;height:48px"></canvas><div class="grow"><b>'+planetName(pl,i)+' · Lv'+pl.lv+'</b><div class="small">'+cmb+'</div>'+(out?'<div class="small">초당 '+out+'</div>':'')+'</div><div style="display:flex;flex-direction:column;gap:6px"><button class="btn pri" data-open="'+i+'">꾸미기</button><button class="btn" data-up="'+i+'" '+(canPay(up.c)?'':'disabled')+'>강화 '+fmt(up.c)+'</button></div></div></div>'}).join(''):'<div class="small">아직 행성이 없습니다. 성장 탭에서 행성을 건설하세요.</div>'}
-function renderGoals(){$('goals').innerHTML=GOALS.map(g=>'<div class="goal'+(state.goals[g.id]?' done':'')+'"><div class="ck">'+(state.goals[g.id]?'✓':'')+'</div><div><div>'+g.t+'</div><div class="small">보상: 생산 '+g.r+'분어치</div></div></div>').join('')}
-function renderDex(){const nc=Object.keys(state.dex.combos).length,nt=Object.keys(state.dex.traits).length;
-$('dex').innerHTML='<div class="kv"><span>조합</span><b>'+nc+' / 100</b></div><div class="kv"><span>융합 특성</span><b>'+nt+' / 20</b></div><div style="margin-top:8px">'+TRAITS.map(t=>{const f=state.dex.traits[t[0]+'|'+t[1]];return '<div class="small">'+(f?'✓ <b>'+t[2]+'</b> ('+t[0]+'+'+t[1]+') — '+t[3]:'· ??? ('+t[0]+'+'+t[1]+')')+'</div>'}).join('')+'</div><div class="small" style="margin-top:6px">※ 도감 영구 보너스(상한 +5%)는 아직 적용되지 않습니다.</div>'}
-function renderDev(){$('devInfo').textContent='게임 시간 '+fmtT(state.gt)+' · 누적 에너지 '+fmt(state.totalE)+' · 활동 집중 잔여 '+Math.ceil(state.activeLeft/60)+'분';$('speedChip').textContent='×'+state.speed}
-const TABS=[['main','우주'],['planets','행성'],['lab','연구'],['goal','목표'],['dex','도감'],['dev','도구']];let tab='main';
-function setTab(t){tab=t;TABS.forEach(([k])=>$('tab-'+k).classList.toggle('hide',k!==t));$('tabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));renderDock(true)}
-function renderDock(full){renderResources();renderProgress();
-if(tab==='main')renderMain();if(tab==='planets'&&full)renderPlanets();if(tab==='goal')renderGoals();if(tab==='dex')renderDex();if(tab==='dev')renderDev();
-if(tab==='lab'&&full)labUpdate0()}
-function labUpdate0(){$('labOut').innerHTML=comboInfoHTML($('labP').value,$('labE').value,$('labL').value,1)}
-function labUpdate(){const p=$('labP').value,e=$('labE').value,l=$('labL').value;$('labOut').innerHTML=comboInfoHTML(p,e,l,1);
-state.dex.combos[p+'|'+e+'|'+l]=1;if(NAT[l]!==p)state.dex.traits[p+'|'+l]=1;if(!state.flags.lab){state.flags.lab=true;checkGoals()}}
-let selPl=0;
-function btnRow(act,labels,cur,extra){return '<div class="row">'+labels.map((l,i)=>'<button class="btn'+(i===cur?' on':'')+'" data-act="'+act+':'+i+'" '+(extra||'')+'>'+l+'</button>').join('')+'</div>'}
-function swRow(act,cols,cur,names){return '<div class="row">'+cols.map((c,i)=>'<button class="sw'+(i===cur?' on':'')+'" title="'+names[i]+'" data-act="'+act+':'+i+'" style="background:'+(c?rgbs(c):'conic-gradient(#bfe6ff,#e39a4a,#8a63ff,#bfe6ff)')+'"></button>').join('')+'</div>'}
-function renderPlanetPanel(keepScroll){
-const pl=state.planets[selPl];if(!pl)return;const L=pl.look,box=$('plp'),sc=box.scrollTop;
-const combo=state.stage>=3&&pl.env?'<div class="sec"><h3>환경 · 생명체 (게임 효과)</h3><div class="row"><select id="eP"></select><select id="eE"></select><select id="eL"></select></div><div id="eOut" style="margin-top:8px"></div><div class="small" id="eAd"></div></div>':'<div class="sec"><h3>환경 · 생명체</h3><div class="small">③ 행성 단계에서 환경·생명체를 고를 수 있어요. 조합 연구소에서 미리 체험해보세요.</div></div>';
-box.innerHTML='<div class="row"><div class="grow"><h2><input type="text" id="plName" maxlength="12" value="'+L.name.replace(/"/g,'')+'" placeholder="'+planetName(pl,selPl)+'" style="width:100%;font-weight:700;font-size:15px"></h2><div class="small">'+pl.type+' · Lv'+pl.lv+(pl.env?' · '+pl.env+' · '+pl.life:'')+'</div></div></div>'+
-'<div class="sec"><h3>겉모습</h3><div class="small" style="margin-bottom:4px">디자인</div>'+btnRow('design',DESIGNS.map(d=>d[1]),DESIGNS.findIndex(d=>d[0]===L.design))+'<div class="small" style="margin:8px 0 4px">색</div>'+swRow('color',BASEC,L.color,COLN)+'</div>'+
-'<div class="sec"><h3>자전</h3><div class="small">좌우 기울기 <b id="vTx">'+L.tx+'°</b></div><input type="range" min="-45" max="45" value="'+L.tx+'" data-k="tx"><div class="small">앞뒤 기울기 <b id="vTy">'+L.ty+'°</b></div><input type="range" min="-45" max="45" value="'+L.ty+'" data-k="ty"><div class="small" style="margin:6px 0 4px">속도</div>'+btnRow('speed',SPEEDN,L.speed)+'<div class="small" style="margin:8px 0 4px">방향</div>'+btnRow('dir',['→ 동쪽','← 서쪽'],L.dir>0?0:1)+'</div>'+
-'<div class="sec"><h3>고리</h3><div class="small" style="margin-bottom:4px">모양</div>'+btnRow('ring',RINGS,L.ring)+(L.ring?'<div class="small" style="margin:8px 0 4px">색</div>'+swRow('rcol',RCOLS,L.rcol,RCOLN)+'<div class="small" style="margin:8px 0 4px">크기</div>'+btnRow('rsize',['작게','보통','크게'],L.rsize):'')+'</div>'+
-'<div class="sec"><h3>그 밖에</h3><div class="small" style="margin-bottom:4px">위성</div>'+btnRow('moons',['0','1','2','3'],L.moons)+'</div>'+combo+
-'<div class="sec"><button class="btn pri" style="width:100%" data-act="home:0">🏡 행성 안 꾸미기</button><div class="small" style="margin-top:4px">땅에 나무·집·불빛을 놓고 하늘을 골라요</div></div>';
-if(combo.indexOf('eP')>0){fillSel($('eP'),PLT,pl.type);fillSel($('eE'),ENV,pl.env);fillSel($('eL'),LIFE,pl.life);comboRefresh()}
-if(keepScroll)box.scrollTop=sc}
-function comboRefresh(){const pl=state.planets[selPl];if(!pl||!$('eOut'))return;$('eOut').innerHTML=comboInfoHTML(pl.type,pl.env,pl.life,adaptFactor(pl));$('eAd').textContent='적응 진행 '+(adaptFactor(pl)*100).toFixed(0)+'% (조합을 바꾸면 초기화)'}
-let scene='home',fxT0=0,fxFrom='home',interiorTool='hand',scroll=0,hist=[],hover=null,drag=null;
-function setScene(s,i){
-fxFrom=scene;scene=s;fxT0=performance.now();if(i!==undefined)selPl=i;
-const hm=s==='home';['welcome','constel','hint'].forEach(id=>$(id).classList.toggle('fade',!hm));
-$('dock').classList.toggle('hide',s!=='cosmos');$('plp').classList.toggle('hide',s!=='planet');$('hui').classList.toggle('hide',s!=='interior');
-$('btnBack').classList.toggle('hide',s==='home'||s==='interior');$('stageChip').classList.toggle('hide',s==='home');
-$('btnBack').textContent=s==='planet'?'← 우주':'← 홈';
-if(s==='cosmos')renderDock(true);if(s==='planet'){if(!state.planets[selPl]){scene='cosmos';return setScene('cosmos')}renderPlanetPanel()}
-if(s==='interior'){scroll=0;hist=[];buildHui()}}
-function buildHui(){const pl=state.planets[selPl];
-$('huiItems').innerHTML=ITEMS.map(it=>'<button class="btn'+(interiorTool===it[0]?' on':'')+'" data-tool="'+it[0]+'">'+it[1]+' '+it[2]+'</button>').join('');
-$('huiSky').innerHTML=SKYN.map((n,i)=>'<button class="btn'+(pl.home.sky===i?' on':'')+'" data-sky="'+i+'">'+n+'</button>').join('');
-$('huiMsg').value=pl.home.msg||'';$('huiCnt').textContent=pl.home.items.length+' / '+MAXITEM;
-document.querySelectorAll('#hui [data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===interiorTool))}
-function pushHist(){const pl=state.planets[selPl];hist.push(JSON.stringify(pl.home.items));if(hist.length>40)hist.shift()}
-let W=800,H=600;const cv=$('sky'),cx=cv.getContext('2d');
-function resize(){DPR=Math.min(2,window.devicePixelRatio||1);W=window.innerWidth;H=window.innerHeight;cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR)}
-const starY=()=>W<700?H*.3:H*.4;
-function planetPos(i,n,t){const rx=Math.min(W*.42,150+i*72+(W>700?60:0)),ry=rx*.34,a=t/1000*(.22-i*.04)+i*2.2;return[W/2+Math.cos(a)*rx,starY()+Math.sin(a)*ry,rx,ry,Math.sin(a)]}
-let planetHits=[];
-function drawCosmos(t,al){
-cx.globalAlpha=al;drawBg(cx,W,H,t,al);const sy=starY(),sr=14+Math.min(18,state.star*.9);
-let g=cx.createRadialGradient(W/2,sy,2,W/2,sy,sr*3.6);g.addColorStop(0,'rgba(255,240,180,.95)');g.addColorStop(.3,'rgba(255,180,90,.45)');g.addColorStop(1,'rgba(255,120,60,0)');cx.fillStyle=g;cx.beginPath();cx.arc(W/2,sy,sr*3.6,0,6.3);cx.fill();
-const orbs=state.planets.map((pl,i)=>planetPos(i,state.planets.length,t));
-orbs.forEach((o,i)=>{cx.strokeStyle='rgba(180,210,255,.15)';cx.lineWidth=1;cx.beginPath();cx.ellipse(W/2,sy,o[2],o[3],0,0,6.3);cx.stroke()});
-cx.fillStyle='#fff3c4';cx.beginPath();cx.arc(W/2,sy,sr,0,6.3);cx.fill();
-planetHits=[];const order=state.planets.map((p,i)=>i).sort((a,b)=>orbs[a][4]-orbs[b][4]);
-for(const i of order){const pl=state.planets[i],o=orbs[i],R=17+Math.min(14,pl.lv*.5);drawPlanet(cx,o[0],o[1],R,pl.look,t,.8);planetHits.push({i,x:o[0],y:o[1],r:R*1.5});
-cx.font='500 11px '+getComputedStyle(document.body).fontFamily;cx.textAlign='center';cx.fillStyle='rgba(234,244,255,.8)';cx.fillText(planetName(pl,i),o[0],o[1]+R*1.9+10);cx.textAlign='left'}
-for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.x+=p.vx/60;p.y+=p.vy/60;p.l-=.02;if(p.l<=0){parts.splice(i,1);continue}cx.globalAlpha=p.l*al;cx.fillStyle=p.c;cx.fillRect(p.x,p.y,2.5,2.5)}
-cx.globalAlpha=1}
-function planetCenter(){const wide=W>700;return{x:wide?W/2-150:W/2,y:wide?H*.5:H*.28,R:Math.min(H*(wide?.26:.2),W*(wide?.14:.26),150)}}
-function drawPlanetScene(t,al){cx.globalAlpha=al;drawBg(cx,W,H,t,al);const pl=state.planets[selPl];if(!pl){cx.globalAlpha=1;return}const c=planetCenter();
-for(let k=0;k<3;k++){const nl=state.planets[(selPl+k+1)%Math.max(1,state.planets.length)],look=(nl&&nl!==pl)?nl.look:defLook(PLT[(k*2)%5],k);cx.globalAlpha=.16*al;drawGlobe(cx,c.x+(k-1)*c.R*2.2+(k===1?c.R*.6:0),c.y-c.R*(1.15+k*.18),c.R*(.3-k*.04),look,t);}
-cx.globalAlpha=al;drawPlanet(cx,c.x,c.y,c.R,pl.look,t,1);cx.globalAlpha=1}
-function interiorGeom(){return{WW:W*2}}
-function drawInteriorScene(t,al){const pl=state.planets[selPl];if(!pl)return;cx.globalAlpha=al;drawInterior(cx,W,H,t,pl,scroll,hover);cx.globalAlpha=1}
-function frame(now){const dt=Math.min(.25,(now-last)/1000);last=now;
-if(!paused){advance(dt*state.speed);accUi+=dt;accSave+=dt;if(accUi>.25){accUi=0;checkGoals();if(scene==='cosmos')renderDock(false);if(scene==='planet'&&$('eOut'))comboRefresh()}if(accSave>5){accSave=0;save()}}
-cx.setTransform(DPR,0,0,DPR,0,0);cx.clearRect(0,0,W,H);
-const ft=Math.min(1,(now-fxT0)/900),e=ft*ft*(3-2*ft),t=now;
-if(scene==='home'||(fxFrom==='home'&&ft<1&&scene==='cosmos')){
-const k=scene==='home'?(fxFrom==='cosmos'?e:1):1-e,gr=Math.min(W,H)*.4*(W<700?1.1:1.05),sc=scene==='home'?(fxFrom==='cosmos'?3.2-2.2*e:1):1+e*2.6;
-drawBg(cx,W,H,t,1);drawGalaxy(cx,W/2,H*.53,gr*sc,t,(scene==='home'?(fxFrom==='cosmos'?e:1):1-e)*1);
-if(scene==='cosmos')drawCosmos(t,e)}
-else if(scene==='cosmos')drawCosmos(t,fxFrom==='home'?1:e);
-else if(scene==='planet')drawPlanetScene(t,e);
-else if(scene==='interior')drawInteriorScene(t,e);
-requestAnimationFrame(frame)}
-let last=performance.now(),accUi=0,accSave=0,paused=false;
-function ptr(e){const r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}
-function itemAt(x,y){const pl=state.planets[selPl],h=H,hz=h*.56;let best=null,bd=1e9;pl.home.items.forEach((it,i)=>{const sx=it.x-scroll,sy=hz+(h-hz)*(.12+.8*it.y),s=(.55+.7*it.y)*Math.min(1.4,h/560),d=Math.hypot(x-sx,y-(sy-22*s));if(d<40*s&&d<bd){bd=d;best={i,d}}});return best}
-cv.addEventListener('pointerdown',e=>{const[x,y]=ptr(e);
-if(scene==='home'){const gr=Math.min(W,H)*.34*1.2;if(Math.hypot(x-W/2,(y-H*.53)*1.5)<gr*1.4)enterCosmos();return}
-if(scene==='cosmos'){for(let k=planetHits.length-1;k>=0;k--){const h=planetHits[k];if(Math.hypot(x-h.x,y-h.y)<h.r){setScene('planet',h.i);return}}return}
-if(scene==='interior'){const pl=state.planets[selPl],hit=itemAt(x,y);cv.setPointerCapture(e.pointerId);
-if(interiorTool==='erase'){if(hit){pushHist();pl.home.items.splice(hit.i,1);$('huiCnt').textContent=pl.home.items.length+' / '+MAXITEM}return}
-if(hit){pushHist();drag={mode:'item',i:hit.i,dx:0,moved:false};return}
-drag={mode:'pan',x0:x,s0:scroll,moved:false,place:interiorTool!=='hand'?[x,y]:null}}});
-cv.addEventListener('pointermove',e=>{if(scene!=='interior')return;const[x,y]=ptr(e),pl=state.planets[selPl];
-if(!drag){hover=itemAt(x,y);return}
-if(drag.mode==='item'){const it=pl.home.items[drag.i];if(!it)return;drag.moved=true;const hz=H*.56;it.x=clampv(x+scroll,20,W*2-20);it.y=clampv(((y-hz)/(H-hz)-.12)/.8,0,1)}
-else{const dx=x-drag.x0;if(Math.abs(dx)>6)drag.moved=true;if(drag.moved)scroll=clampv(drag.s0-dx,0,W)}});
-cv.addEventListener('pointerup',e=>{if(scene!=='interior'||!drag)return;const[x,y]=ptr(e),pl=state.planets[selPl];
-if(drag.mode==='pan'&&!drag.moved&&drag.place&&ITEMS.some(it=>it[0]===interiorTool)){placeItem(interiorTool,x+scroll,y)}
-drag=null;save()});
-function placeItem(k,wx,py){const pl=state.planets[selPl],hz=H*.56;if(pl.home.items.length>=MAXITEM){toast('최대 '+MAXITEM+'개까지 놓을 수 있어요');return false}
-if(py<hz+8){toast('땅 위에 놓아주세요');return false}pushHist();pl.home.items.push({t:k,x:clampv(wx,20,W*2-20),y:clampv(((py-hz)/(H-hz)-.12)/.8,0,1)});$('huiCnt').textContent=pl.home.items.length+' / '+MAXITEM;return true}
-function enterCosmos(){setScene('cosmos');burst(180,100,'#9be7ff',24)}
-window.addEventListener('keydown',e=>{if(scene==='home'&&(e.key==='Enter'||e.key===' '))enterCosmos();if(scene==='interior'){if(e.key==='ArrowLeft')scroll=clampv(scroll-80,0,W);if(e.key==='ArrowRight')scroll=clampv(scroll+80,0,W)}if(e.key==='Escape'){if(scene==='planet')setScene('cosmos');else if(scene==='cosmos')setScene('home');else if(scene==='interior')finishInterior()}});
-function finishInterior(){const pl=state.planets[selPl];pl.home.msg=$('huiMsg').value.slice(0,30);save();setScene('planet');toast('집이 저장되었어요')}
-function bind(){
-$('tabs').innerHTML=TABS.map(([k,n])=>'<button class="btn" data-t="'+k+'">'+n+'</button>').join('');
-$('tabs').onclick=e=>{const t=e.target.dataset.t;if(t)setTab(t)};
-fillSel($('newType'),PLT,'해양');$('newType').onchange=()=>{state.newType=$('newType').value};
-fillSel($('labP'),PLT,'해양');fillSel($('labE'),ENV,'온난');fillSel($('labL'),LIFE,'수서종');['labP','labE','labL'].forEach(id=>$(id).onchange=labUpdate);
-$('btnStar').onclick=()=>{const o=costs().find(o=>o.k==='star');if(buy(o)){burst(180,100,'#ffe29a',16);checkGoals();renderDock(true);save()}};
-$('btnPlanet').onclick=()=>{state.newType=$('newType').value;const o=costs().find(o=>o.k==='new');if(o&&buy(o)){burst(180,100,'#9be7ff',24);checkGoals();renderDock(true);save()}};
-$('btnRec').onclick=()=>{const n=recommend();toast(n?n+'건 강화했습니다':'지금은 살 수 있는 것이 없습니다');if(n)burst(180,100,'#ffe29a',24);checkGoals();renderDock(true);save()};
-$('btnBack').onclick=()=>{if(scene==='planet')setScene('cosmos');else setScene('home')};
-$('logo').onclick=()=>{if(scene!=='home')setScene('home')};
-document.addEventListener('click',e=>{const t=e.target.closest?e.target.closest('[data-up],[data-open],[data-away],[data-speed],[data-act],[data-tool],[data-sky]'):null;if(!t)return;const d=t.dataset;
-if(d.up!==undefined){const i=+d.up,o=costs().find(o=>o.k==='up'&&o.i===i);if(o&&buy(o)){burst(180,100,'#ffe29a',14);renderDock(true);save()}}
-else if(d.open!==undefined){setScene('planet',+d.open)}
-else if(d.away){away(+d.away);checkGoals();renderDock(true);save()}
-else if(d.speed){state.speed=+d.speed;renderDock(true)}
-else if(d.act){const[k,v]=d.act.split(':'),pl=state.planets[selPl],L=pl&&pl.look,n=+v;if(k==='home'){setScene('interior');return}
-if(k==='design')L.design=DESIGNS[n][0];else if(k==='color')L.color=n;else if(k==='speed')L.speed=n;else if(k==='dir')L.dir=n===0?1:-1;else if(k==='ring')L.ring=n;else if(k==='rcol')L.rcol=n;else if(k==='rsize')L.rsize=n;else if(k==='moons')L.moons=n;
-renderPlanetPanel(true);save()}
-else if(d.tool&&scene==='interior'){interiorTool=d.tool;document.querySelectorAll('#hui [data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===interiorTool))}
-else if(d.sky!==undefined){const pl=state.planets[selPl];pl.home.sky=+d.sky;buildHui();save()}});
-$('plp').addEventListener('input',e=>{const t=e.target,pl=state.planets[selPl];if(!pl)return;
-if(t.dataset.k){pl.look[t.dataset.k]=+t.value;$(t.dataset.k==='tx'?'vTx':'vTy').textContent=t.value+'°'}
-else if(t.id==='plName')pl.look.name=t.value.slice(0,12)});
-$('plp').addEventListener('change',e=>{const t=e.target,pl=state.planets[selPl];if(!pl)return;
-if(t.id==='eP'||t.id==='eE'||t.id==='eL'){setCombo(selPl,$('eP').value,$('eE').value,$('eL').value);comboRefresh();renderPlanetPanel(true)}save()});
-$('huiUndo').onclick=()=>{const pl=state.planets[selPl];if(hist.length){pl.home.items=JSON.parse(hist.pop());$('huiCnt').textContent=pl.home.items.length+' / '+MAXITEM}};
-$('huiL').onclick=()=>scroll=clampv(scroll-W*.4,0,W);$('huiR').onclick=()=>scroll=clampv(scroll+W*.4,0,W);
-$('huiDone').onclick=finishInterior;
-$('huiMsg').oninput=()=>{const pl=state.planets[selPl];if(pl)pl.home.msg=$('huiMsg').value.slice(0,30)};
-$('btnReset').onclick=()=>{if(confirm('프로토타입 진행 상황을 모두 초기화할까요?')){reset(1);setScene('home');renderDock(true)}};
-window.addEventListener('resize',resize);
-document.addEventListener('visibilitychange',()=>{if(document.hidden){state.lastSeen=Date.now();save();paused=true}else{const gap=(Date.now()-state.lastSeen)/1000;paused=false;last=performance.now();if(gap>120)away(gap/3600)}})}
-function reset(seed){rand=rng(seed||1);state=newState();state.newType='해양';try{localStorage.removeItem(KEY)}catch(e){}memSave=null}
-function init(){state=load()||newState();state.newType=state.newType||'해양';initGalaxy();resize();bind();
-const gap=(Date.now()-state.lastSeen)/1000;if(gap>120&&state.gt>0)away(gap/3600);
-setScene('home');fxT0=performance.now()-2000;setTab('main');requestAnimationFrame(frame)}
-window.__game={get state(){return state},get scene(){return scene},CONFIG,effMult,setScene,enterCosmos,step(n){advance(n/60)},advance,away,buy,costs,recommend,setCombo,prodVec,rateE,comboVec,reset(s){reset(s);setScene('home')},press(){},input:{},checkGoals,nextProgress,teamBonus,setNewType(t){state.newType=t},
-setLook(i,o){Object.assign(state.planets[i].look,o)},placeItem(i,k,x,y){selPl=i;return placeItem(k,x,y)},drawPlanetTest(look,t){drawGlobe(cx,100,100,80,look,t||0)},get W(){return W},get H(){return H},openPlanet(i){setScene('planet',i)},openInterior(i){selPl=i;setScene('interior')},fit,DESIGNS,RINGS};
-init();
-</script>
-</body>
-</html>
+// ===== 유틸 =====
+function rng(seed){let s=seed>>>0;return()=>((s=Math.imul(s^s>>>15,s|1)),(s^=s+Math.imul(s^s>>>7,s|61)),((s^s>>>14)>>>0)/4294967296)}
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const gauss=r=>Math.sqrt(-2*Math.log(1-r()))*Math.cos(6.2832*r());
+const fmt=n=>{n=Math.floor(n*10)/10;return n>=1e9?(n/1e9).toFixed(2)+'B':n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e4?(n/1e3).toFixed(1)+'K':n<100?n.toFixed(1):''+Math.floor(n)};
+const rgba=(h,a)=>{const n=parseInt(h.slice(1),16);return`rgba(${n>>16},${n>>8&255},${n&255},${a})`};
+const $=id=>document.getElementById(id);
+const ease=t=>1-Math.pow(1-clamp(t,0,1),3);
+
+// ===== 저장 =====
+const mem={};
+const store={get(){try{return JSON.parse(localStorage.getItem(CONFIG.save))}catch(e){return mem.d||null}},
+set(d){try{localStorage.setItem(CONFIG.save,JSON.stringify(d))}catch(e){mem.d=d}},clear(){try{localStorage.removeItem(CONFIG.save)}catch(e){}mem.d=null}};
+
+// ===== 상태 =====
+const S={score:0,scene:'galaxy',st:0,T:0,G:null,shards:0,rerolls:0,mute:false,pend:null,pick:{temper:null,body:null,metab:null,color:0,name:''},parts:null,boomed:false,qty:1,acc:0,uiT:0,saveT:0,lights:0};
+function persist(){if(S.noSave)return;store.set({version:1,G:S.G,shards:S.shards,rerolls:S.rerolls,mute:S.mute})}
+
+// ===== 오디오(절차 생성) =====
+let ac=null;
+function unlockAudio(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume()}catch(e){}}
+function beep(f=440,d=.08,type='sine',v=.06,f2){if(S.mute)return;try{unlockAudio();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;if(f2)o.frequency.exponentialRampToValueAtTime(f2,ac.currentTime+d);g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+function boom(){beep(90,1.4,'sawtooth',.16,25);beep(300,.5,'triangle',.05,40)}
+
+// ===== 캔버스 =====
+const cv=$('c'),ctx=cv.getContext('2d');let W=360,H=640,dpr=1,bgc=null;
+function resize(){dpr=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+bgc=document.createElement('canvas');bgc.width=W;bgc.height=H;const g=bgc.getContext('2d'),r=rng(42);
+for(let i=0;i<Math.floor(W*H/2600);i++){const s=r();g.fillStyle=`rgba(${190+r()*65|0},${200+r()*55|0},255,${.15+r()*.55})`;g.fillRect(r()*W,r()*H,s<.9?1:1.8,s<.9?1:1.8)}}
+addEventListener('resize',resize);resize();
+
+// ===== 은하계 스프라이트 (LHY Space 은하 방식: 2개 팔·감김 5.4·눕힘·반시계 회전) =====
+let GAL=null;
+function makeGalaxy(){const Z=1024,c=document.createElement('canvas');c.width=c.height=Z;const g=c.getContext('2d'),r=rng(777),half=Z/2,up=half/1.12;
+const P=[[255,243,220],[191,216,255],[63,107,255],[143,107,255]],tw=5.4;g.globalCompositeOperation='lighter';
+const pt=()=>{const t=r();let x,y,rad,a;if(t<.12){rad=Math.sqrt(r())*1.05;a=r()*6.2832}else if(t<.3){rad=Math.abs(gauss(r))*.17;a=r()*6.2832}else{rad=Math.pow(r(),.8);a=(r()<.5?0:Math.PI)+rad*tw+gauss(r)*(.09+.3*rad)}return[Math.cos(a)*rad,Math.sin(a)*rad,rad]};
+for(let i=0;i<520;i++){const[x,y,rd]=pt();if(rd<.25)continue;const px=half+x*up,py=half+y*up,R=(.06+r()*.14)*up,col=P[rd<.5?1:2],gr=g.createRadialGradient(px,py,0,px,py,R);gr.addColorStop(0,`rgba(${col},${.05+r()*.05})`);gr.addColorStop(1,`rgba(${col},0)`);g.fillStyle=gr;g.fillRect(px-R,py-R,R*2,R*2)}
+const cg=g.createRadialGradient(half,half,0,half,half,up*.45);cg.addColorStop(0,'rgba(255,243,220,.7)');cg.addColorStop(.3,'rgba(191,216,255,.25)');cg.addColorStop(1,'rgba(63,107,255,0)');g.fillStyle=cg;g.fillRect(0,0,Z,Z);
+for(let i=0;i<60000;i++){const[x,y,rl]=pt(),q=r(),ci=q<.08?3:rl<.16?(q<.7?0:1):rl<.55?(q<.6?1:2):(q<.75?2:1),lv=r(),al=lv<.5?.35:lv<.86?.65:1,s=r(),sz=s<.85?1:s<.97?1.7:2.6;
+g.fillStyle=`rgba(${P[ci]},${al})`;g.fillRect(half+x*up,half+y*up,sz,sz)}
+GAL=c}
+
+// ===== 행성 렌더 =====
+function drawPlanet(g,cx,cy,R,P,t,o){o=o||{};const T=PL[P.type],rr=rng(P.seed);
+let ag=g.createRadialGradient(cx,cy,R*.85,cx,cy,R*1.4);ag.addColorStop(0,rgba(T.pal[0],.4));ag.addColorStop(1,rgba(T.pal[0],0));g.fillStyle=ag;g.fillRect(cx-R*1.5,cy-R*1.5,R*3,R*3);
+g.save();g.beginPath();g.arc(cx,cy,R,0,6.2832);g.clip();
+const bg=g.createLinearGradient(cx-R,cy-R,cx+R,cy+R);bg.addColorStop(0,T.pal[0]);bg.addColorStop(.5,T.pal[1]);bg.addColorStop(1,T.pal[2]);g.fillStyle=bg;g.fillRect(cx-R,cy-R,R*2,R*2);
+for(let k=0;k<38;k++){const bx=rr(),by=rr(),bs=rr(),col=T.blob[(rr()*T.blob.length)|0],u=((bx+t*.012*(.6+bs))%1+1)%1,x=cx+(u*2-1)*R*1.3,y=cy+(by*2-1)*R*.92,w=R*(.12+bs*.3),h=w*(.4+rr()*.5);
+g.globalAlpha=.55;g.fillStyle=col;g.beginPath();g.ellipse(x,y,w,h,0,0,6.2832);g.fill()}
+if(T.cloud){for(let k=0;k<16;k++){const bx=rr(),by=rr(),u=((bx+t*.03)%1+1)%1,x=cx+(u*2-1)*R*1.3,y=cy+(by*2-1)*R*.9,w=R*(.15+rr()*.22);g.globalAlpha=.22;g.fillStyle='#fff';g.beginPath();g.ellipse(x,y,w,w*.3,0,0,6.2832);g.fill()}}
+g.globalAlpha=1;const sh=g.createRadialGradient(cx-R*.4,cy-R*.4,R*.15,cx-R*.1,cy-R*.1,R*1.3);sh.addColorStop(0,'rgba(0,0,12,0)');sh.addColorStop(.55,'rgba(0,0,12,.25)');sh.addColorStop(1,'rgba(0,0,12,.88)');g.fillStyle=sh;g.fillRect(cx-R,cy-R,R*2,R*2);
+if(o.lights>0){const r2=rng(P.seed+99);let n=0,tries=0;g.fillStyle=o.lc||'#ffd36e';while(n<o.lights&&tries<4000){tries++;const a=r2()*6.2832,d=Math.sqrt(r2())*R*.95,x=cx+Math.cos(a)*d,y=cy+Math.sin(a)*d;if((x-cx)+(y-cy)<R*.1)continue;n++;g.globalAlpha=.55+.45*Math.sin(t*2+n);g.fillRect(x,y,R>60?2:1.5,R>60?2:1.5)}g.globalAlpha=1}
+g.restore();g.strokeStyle=rgba(T.pal[0],.35);g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,R,Math.PI*1.05,Math.PI*1.6);g.stroke();
+if(o.era>=2){const n=(o.era-1)*2;g.fillStyle='#cfe3ff';for(let i=0;i<n;i++){const a=t*(.35+i*.04)+i*6.28/n,rx=R*(1.28+(i%3)*.12),x=cx+Math.cos(a)*rx,y=cy+Math.sin(a)*rx*.28;if(Math.sin(a)<0&&Math.abs(x-cx)<R)continue;g.fillRect(x-1,y-1,2.4,2.4)}}
+if(o.era>=4){g.strokeStyle='rgba(160,200,255,.35)';g.beginPath();g.ellipse(cx,cy,R*1.5,R*.4,0,0,6.2832);g.stroke()}}
+
+// ===== 경제 =====
+const totalsOf=(pt,race)=>{const t={food:0,mineral:0,growth:0,research:0,combat:0,trade:0},add=m=>{for(const k in m)t[k]+=m[k]};add(PL[pt].mods);for(const g in race){if(TRM[g]&&TRM[g][race[g]])add(TRM[g][race[g]].mods)}return t};
+const mult=(t,k)=>Math.max(CONFIG.minMult,1+t[k]/100);
+const capOf=G=>Math.floor((CONFIG.capBase+CONFIG.capHouse*G.lv.house)*(1+CONFIG.capEra*G.era));
+function rates(G){const t=totalsOf(G.planet.type,G.race),cap=capOf(G),pf=CONFIG.popFloor+(1-CONFIG.popFloor)*Math.min(1,G.pop/cap),em=Math.pow(CONFIG.eraMult,G.era),b=CONFIG.b;
+return{t,cap,pf,em,F:b.farm.rate*G.lv.farm*mult(t,'food')*pf*em,M:b.mine.rate*G.lv.mine*mult(t,'mineral')*pf*em,R:b.lab.rate*G.lv.lab*mult(t,'research')*pf*em,g:CONFIG.popGrow*mult(t,'growth')}}
+function tickEcon(G,dt,k){k=k||1;while(dt>1e-9){const h=Math.min(dt,2),r=rates(G);G.res.F+=r.F*h*k;G.res.M+=r.M*h*k;G.res.R+=r.R*h*k;G.pop=Math.min(r.cap,G.pop+r.g*G.pop*(1-G.pop/r.cap)*h);G.playSec+=h;dt-=h}}
+const costOf=(id,L)=>{const b=CONFIG.b[id],o={};for(const c in b.base)o[c]=Math.ceil(b.base[c]*Math.pow(b.r,L));return o};
+function buy(G,id,n){let c=0;while(c<n){const o=costOf(id,G.lv[id]);let ok=true;for(const k in o)if(G.res[k]<o[k])ok=false;if(!ok)break;for(const k in o)G.res[k]-=o[k];G.lv[id]++;c++}return c}
+const canAdv=G=>G.era<4&&G.res.R>=CONFIG.req[G.era].R&&G.pop>=CONFIG.req[G.era].pop;
+function advance(G){if(!canAdv(G))return false;G.res.R-=CONFIG.req[G.era].R;G.era++;S.shards+=CONFIG.shardEra;if(G.era===4)G.launched=true;return true}
+function newG(planet,race){return{planet,race,res:{F:CONFIG.start.F,M:CONFIG.start.M,R:CONFIG.start.R},pop:CONFIG.popStart,lv:Object.assign({},CONFIG.start.lv),era:0,playSec:0,lastSeen:Date.now(),launched:false}}
+
+// ===== UI 헬퍼 =====
+const modLine=(k,v)=>`<span class="${v>0?'up':'dn'}">${v>0?'▲':'▼'} ${STAT[k]} ${v>0?'+':'−'}${Math.abs(v)}%</span>`;
+const modsHTML=m=>Object.entries(m).sort((a,b)=>a[1]-b[1]).map(([k,v])=>modLine(k,v)).join('');
+let toastT=0;function toast(m){const e=$('toast');e.textContent=m;e.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('on'),2200)}
+function modal(h){const m=$('modal');m.firstElementChild.innerHTML=h;m.classList.add('on')}
+function closeModal(){$('modal').classList.remove('on')}
+const SC={galaxy:'s-galaxy',planet:'s-planet',race:'s-race',play:'s-play',launch:'s-launch'};
+function setScene(n){S.scene=n;S.st=0;S.parts=null;S.boomed=false;for(const k in SC)$(SC[k]).classList.toggle('on',SC[k]===SC[n]&&!!SC[n]);$('top').classList.toggle('on',n==='play');$('s-launch').classList.remove('show')}
+
+// ===== 흐름 =====
+function enter(){if(S.scene!=='galaxy')return;unlockAudio();beep(220,.9,'sine',.05,880);setScene('zoom')}
+function rollPlanet(seed){seed=seed==null?Math.floor(Math.random()*1e9):seed;const r=rng(seed);const type=PLANETS[(r()*PLANETS.length)|0].id;S.pend={type,seed,name:'코스미아-'+seed.toString(36).slice(0,3).toUpperCase()}}
+function renderPlanet(){const P=S.pend,T=PL[P.type];$('s-planet').innerHTML=`<div class="wrap col"><div class="card"><div class="row"><b style="font-size:17px">${P.name}</b><span class="tag">${T.n}</span></div><div class="mut">${T.d}</div><div class="mods">${modsHTML(T.mods)}</div></div><div class="row gap"><button class="btn sub" data-act="reroll" style="flex:1">🎲 다시 뽑기</button><button class="btn" data-act="planet-ok" style="flex:2">이 행성으로 결정</button></div></div>`}
+function rerollCost(){return CONFIG.reroll.base+CONFIG.reroll.step*S.rerolls}
+function openReroll(){const c=rerollCost();modal(`<b style="font-size:16px">행성 다시 뽑기</b><div class="mut" style="margin:6px 0 10px">지금 행성은 사라지고 새 행성이 랜덤으로 생성됩니다.<br>다시 뽑을수록 필요량이 늘어납니다.</div><div class="col"><button class="btn" data-act="reroll-shard" ${S.shards<c?'disabled':''}>⭐ 별의 조각 ${c}개 사용 (보유 ${fmt(S.shards)})</button><button class="btn sub" data-act="reroll-cash">💳 ₩${CONFIG.reroll.cash.toLocaleString()} 결제로 뽑기<br><small class="mut">프로토타입: 실제 결제 없이 적용됩니다</small></button><button class="btn sub" data-act="close">닫기</button></div>`)}
+function doReroll(){S.rerolls++;closeModal();beep(300,.5,'triangle',.05,900);rollPlanet();S.flash=1;renderPlanet()}
+function initRace(){S.pick={temper:null,body:null,metab:null,color:0,name:NAMES[(Math.random()*NAMES.length)|0]};const P=S.pend,T=PL[P.type];
+$('s-race').innerHTML=`<div id="race-scroll"><div class="card" style="margin-top:10px"><div class="row"><b>${P.name}</b><span class="tag">${T.n}</span></div><div class="mods" style="font-size:12px">${modsHTML(T.mods)}</div></div>
+<h3>종족 이름</h3><input id="rname" maxlength="8" value="${S.pick.name}">
+${TR.map(g=>`<h3>${g.n}</h3><div class="grid">${g.list.map(o=>`<button class="opt" data-act="pick" data-g="${g.g}" data-id="${o.id}"><b>${o.ico} ${o.n}</b><div class="mods">${modsHTML(o.mods)}</div></button>`).join('')}</div>`).join('')}
+<h3>문명의 빛 색상 <span class="mut" style="font-weight:400">(능력치 영향 없음)</span></h3><div class="row" style="justify-content:flex-start">${COLORS.map((c,i)=>`<button class="sw" data-act="color" data-i="${i}" style="background:${c}"></button>`).join('')}</div><div style="height:8px"></div></div>
+<div id="sum" class="card" style="border-radius:14px 14px 0 0"></div>`;
+$('rname').addEventListener('input',e=>{S.pick.name=e.target.value.trim();updRace()});updRace()}
+function updRace(){const p=S.pick,race={temper:p.temper,body:p.body,metab:p.metab},t=totalsOf(S.pend.type,race);
+document.querySelectorAll('#s-race .opt').forEach(b=>b.classList.toggle('sel',p[b.dataset.g]===b.dataset.id));
+document.querySelectorAll('#s-race .sw').forEach(b=>b.classList.toggle('sel',+b.dataset.i===p.color));
+const dn=Object.entries(t).filter(e=>e[1]<0).sort((a,b)=>a[1]-b[1]),up=Object.entries(t).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
+const cell=(k,v)=>`<div><span class="mut">${STAT[k]}</span><b class="${v>0?'up':v<0?'dn':'mut'}">${v>0?'▲ +':v<0?'▼ −':''}${Math.abs(v)}%</b></div>`;
+const ok=p.temper&&p.body&&p.metab&&p.name.length>0;
+$('sum').innerHTML=`<div class="st">${Object.keys(STAT).map(k=>cell(k,t[k])).join('')}</div><div style="font-size:12px"><span class="dn">⚠ 패널티 합계: ${dn.length?dn.map(([k,v])=>`${STAT[k]} −${-v}%`).join(' · '):'없음'}</span><br><span class="up">✔ 보너스 합계: ${up.length?up.map(([k,v])=>`${STAT[k]} +${v}%`).join(' · '):'없음'}</span></div><button class="btn" data-act="race-ok" style="width:100%;margin-top:8px" ${ok?'':'disabled'}>${ok?'종족 확정 · 문명 시작':'성향·체형·생태를 모두 선택하세요'}</button>`}
+function startGame(){const p=S.pick;S.G=newG({type:S.pend.type,seed:S.pend.seed,name:S.pend.name},{name:p.name,color:p.color,temper:p.temper,body:p.body,metab:p.metab});S.rerolls=0;persist();enterPlay();beep(520,.3,'sine',.06,1040)}
+function enterPlay(){setScene('play');buildPlay();refreshPlay()}
+function buildPlay(){const G=S.G;$('top').firstElementChild.innerHTML=`<div class="row"><b id="who"></b><span><button class="btn sub sm" data-act="settings">⚙</button></span></div><div class="res"><div>🌾<span id="rF"></span><small id="rFs"></small></div><div>🪨<span id="rM"></span><small id="rMs"></small></div><div>🔬<span id="rR"></span><small id="rRs"></small></div><div>👥<span id="rP"></span><small id="rPs"></small></div><div>⭐<span id="rS"></span><small>별의 조각</small></div></div>`;
+$('sheet').innerHTML=`<div class="card" id="eraC"></div><div class="row" style="margin:8px 0 0"><span class="mut">강화 수량</span><span>${[1,10,'max'].map(q=>`<button class="btn sub sm" data-act="qty" data-q="${q}" style="margin-left:4px">${q==='max'?'최대':'×'+q}</button>`).join('')}</span></div>
+${Object.keys(CONFIG.b).map(id=>`<div class="card bld"><div><span class="nm">${CONFIG.b[id].ico} ${CONFIG.b[id].n}</span> <span class="tag" id="L_${id}"></span><div class="cost" id="E_${id}"></div></div><button class="btn sm" data-act="buy" data-id="${id}" id="B_${id}"></button></div>`).join('')}
+<details class="card" style="margin-top:8px"><summary>종족·행성 보정 보기</summary><div class="mods" id="modsum" style="margin-top:8px"></div></details>`;
+const r=G.race,t=totalsOf(G.planet.type,r),dn=Object.entries(t).filter(e=>e[1]!==0).sort((a,b)=>a[1]-b[1]);$('modsum').innerHTML=dn.map(([k,v])=>modLine(k,v)).join('')+'<div class="mut" style="font-weight:400;font-size:12px;margin-top:4px">전투력·교류 보상은 해당 콘텐츠가 열릴 때 적용됩니다.</div>'}
+function refreshPlay(){const G=S.G;if(!G)return;const r=rates(G),req=CONFIG.req[G.era],e=CONFIG.eras[G.era];
+$('who').textContent=`${G.race.name}족 · ${G.planet.name}`;$('rF').textContent=fmt(G.res.F);$('rM').textContent=fmt(G.res.M);$('rR').textContent=fmt(G.res.R);$('rP').textContent=Math.floor(G.pop);$('rS').textContent=fmt(S.shards);
+$('rFs').textContent='+'+fmt(r.F)+'/s';$('rMs').textContent='+'+fmt(r.M)+'/s';$('rRs').textContent='+'+fmt(r.R)+'/s';$('rPs').textContent='한계 '+r.cap;
+if(req){const pr=Math.min(1,G.res.R/req.R);$('eraC').innerHTML=`<div class="row"><b>${e.ico} ${e.n}</b><span class="mut">생산 ×${r.em.toFixed(2)}</span></div><div class="bar"><i style="width:${pr*100}%"></i></div><div class="row"><span class="cost">연구 ${fmt(G.res.R)}/${req.R} · 인구 ${Math.floor(G.pop)}/${req.pop}</span><button class="btn sm" data-act="advance" ${canAdv(G)?'':'disabled'}>${G.era===3?'🚀 우주 진출':'발전'}</button></div>`}
+else $('eraC').innerHTML=`<div class="row"><b>${e.ico} ${e.n}</b><span class="mut">생산 ×${r.em.toFixed(2)}</span></div><div class="cost" style="margin-top:4px">본진은 계속 성장합니다. 새 행성 탐색·교류는 다음 단계에서 열립니다.</div>`;
+document.querySelectorAll('[data-act=qty]').forEach(b=>b.style.outline=(''+S.qty===b.dataset.q)?'2px solid var(--ac)':'none');
+for(const id in CONFIG.b){const b=CONFIG.b[id],L=G.lv[id];$('L_'+id).textContent='Lv '+L;
+const unit=id==='house'?0:b.rate*mult(r.t,{F:'food',M:'mineral',R:'research'}[b.out])*r.pf*r.em;
+$('E_'+id).textContent=id==='house'?`인구 한계 ${r.cap} → ${Math.floor((CONFIG.capBase+CONFIG.capHouse*(L+1))*(1+CONFIG.capEra*G.era))}`:`${b.out==='F'?'식량':b.out==='M'?'광물':'연구'} ${fmt(L*unit)}/s → ${fmt((L+1)*unit)}/s`;
+let n=S.qty==='max'?999:S.qty,tot={},L2=L,cnt=0,av=Object.assign({},G.res);
+while(cnt<n){const o=costOf(id,L2);let ok=true;for(const k in o)if(av[k]<o[k])ok=false;if(!ok&&cnt>0)break;if(!ok&&cnt===0){for(const k in o)tot[k]=o[k];break}for(const k in o){av[k]-=o[k];tot[k]=(tot[k]||0)+o[k]}L2++;cnt++;if(n===999&&cnt>400)break}
+const aff=Object.keys(tot).every(k=>G.res[k]>=tot[k]);$('B_'+id).innerHTML=Object.entries(tot).map(([k,v])=>({F:'🌾',M:'🪨'}[k])+fmt(v)).join(' ');$('B_'+id).disabled=!aff||cnt===0&&!aff}}
+function offlineGain(G){const away=Math.min((Date.now()-G.lastSeen)/1000,CONFIG.offlineMax);if(away<60)return;const b=Object.assign({},G.res),p0=G.pop;tickEcon(G,away,CONFIG.offlineRate);
+modal(`<b style="font-size:16px">🌙 휴식 보너스</b><div class="mut" style="margin:6px 0 10px">자리를 비운 ${Math.floor(away/60)}분 동안 문명이 성장했습니다.</div><div class="col"><div class="row"><span>🌾 식량</span><b class="up">+${fmt(G.res.F-b.F)}</b></div><div class="row"><span>🪨 광물</span><b class="up">+${fmt(G.res.M-b.M)}</b></div><div class="row"><span>🔬 연구</span><b class="up">+${fmt(G.res.R-b.R)}</b></div><div class="row"><span>👥 인구</span><b class="up">+${Math.floor(G.pop-p0)}</b></div><button class="btn" data-act="close">확인</button></div>`)}
+function settings(){modal(`<b style="font-size:16px">설정</b><div class="col" style="margin-top:10px"><button class="btn sub" data-act="mute">${S.mute?'🔇 소리 꺼짐':'🔊 소리 켜짐'}</button><button class="btn sub" data-act="reset" id="rstb">🗑 처음부터 다시 시작</button><button class="btn" data-act="close">닫기</button></div>`)}
+
+// ===== 입력 =====
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;unlockAudio();const a=b.dataset.act;
+if(a==='enter')enter();else if(a==='close')closeModal();
+else if(a==='reroll')openReroll();
+else if(a==='reroll-shard'){const c=rerollCost();if(S.shards>=c){S.shards-=c;doReroll()}}
+else if(a==='reroll-cash')doReroll();
+else if(a==='planet-ok'){setScene('race');initRace();beep(440,.2,'sine',.05,660)}
+else if(a==='pick'){S.pick[b.dataset.g]=b.dataset.id;beep(520,.06,'sine',.04);updRace()}
+else if(a==='color'){S.pick.color=+b.dataset.i;updRace()}
+else if(a==='race-ok'){startGame()}
+else if(a==='qty'){S.qty=b.dataset.q==='max'?'max':+b.dataset.q;refreshPlay()}
+else if(a==='buy'){const n=S.qty==='max'?999:S.qty,c=buy(S.G,b.dataset.id,n);if(c)beep(600+c*10,.08,'triangle',.05);refreshPlay();persist()}
+else if(a==='advance'){if(advance(S.G)){boom();toast(S.G.era===4?'🚀 우주로 진출합니다':'✨ '+CONFIG.eras[S.G.era].n+' 도달! 생산량 증가');persist();if(S.G.era===4){setScene('launch');S.parts=[]}else refreshPlay()}}
+else if(a==='back-home'){enterPlay()}
+else if(a==='settings')settings();
+else if(a==='mute'){S.mute=!S.mute;persist();settings()}
+else if(a==='reset'){if(b.dataset.s){store.clear();S.G=null;S.shards=0;S.rerolls=0;closeModal();setScene('galaxy')}else{b.dataset.s=1;b.textContent='⚠ 한 번 더 누르면 모든 진행이 삭제됩니다'}}});
+cv.addEventListener('pointerdown',()=>{unlockAudio();if(S.scene==='galaxy')enter();else if(S.scene==='bang'&&S.st>1.4)S.st=Math.max(S.st,5.3)});
+
+// ===== 업데이트 =====
+function spawnBang(){const r=rng(S.pend.seed),T=PL[S.pend.type],cols=[...T.pal,...T.blob,'#ffffff','#ffe6b0'],k=Math.min(W,H)/700;S.parts=[];for(let i=0;i<420;i++){const a=r()*6.2832,v=(60+r()*520)*k;S.parts.push({x:0,y:0,vx:Math.cos(a)*v,vy:Math.sin(a)*v,c:cols[(r()*cols.length)|0],s:1+r()*2})}}
+function update(dt){S.st+=dt;S.T+=dt;
+if(S.scene==='zoom'&&S.st>1.8){rollPlanet(S.seedOverride);S.seedOverride=null;setScene('bang')}
+else if(S.scene==='bang'){const t=S.st;if(t>.95&&!S.boomed){S.boomed=true;boom();spawnBang()}
+if(S.parts){const pull=t>2.6?clamp((t-2.6)/1.6,0,1):0;for(const p of S.parts){p.x+=p.vx*dt;p.y+=p.vy*dt;const dm=Math.pow(.5,dt*1.6);p.vx*=dm;p.vy*=dm;if(pull){p.vx-=p.x*pull*9*dt;p.vy-=p.y*pull*9*dt}}}
+if(t>5.2){renderPlanet();setScene('planet')}}
+else if(S.scene==='launch'){if(S.st>5)$('s-launch').classList.add('show');if(S.st>.6&&S.st<3.2&&S.parts)for(let i=0;i<4;i++)S.parts.push({x:(Math.random()-.5)*8,y:0,vx:(Math.random()-.5)*40,vy:80+Math.random()*80,l:1,c:Math.random()<.5?'#ffb347':'#fff'});if(S.parts){for(let i=S.parts.length-1;i>=0;i--){const p=S.parts[i];p.y+=p.vy*dt;p.x+=p.vx*dt;p.l-=dt;if(p.l<=0)S.parts.splice(i,1)}}}
+if(S.flash)S.flash=Math.max(0,S.flash-dt*2);
+if((S.scene==='play'||S.scene==='launch')&&S.G){tickEcon(S.G,dt);const G=S.G;G.lastSeen=Date.now();S.shardAcc=(S.shardAcc||0)+dt;if(S.shardAcc>=60){S.shardAcc-=60;S.shards+=CONFIG.shardMin}
+S.uiT+=dt;if(S.uiT>.25&&S.scene==='play'){S.uiT=0;refreshPlay()}S.saveT+=dt;if(S.saveT>5){S.saveT=0;persist()}}}
+
+// ===== 렌더 =====
+function drawGalaxy(k,rotMul){const D=Math.min(W*1.02,H*.72)*k;ctx.save();ctx.translate(W/2,H*.5);ctx.globalCompositeOperation='lighter';ctx.scale(1,.58);ctx.rotate(-S.T*.06*rotMul);ctx.drawImage(GAL,-D/2,-D/2,D,D);ctx.restore()}
+function planetPos(){const top=96,bot=H*.5,R=clamp(Math.min(W*.28,(bot-top)*.42),50,150);return{x:W/2,y:(top+bot)/2+4,R}}
+function draw(){ctx.globalCompositeOperation='source-over';ctx.fillStyle='#04060f';ctx.fillRect(0,0,W,H);ctx.drawImage(bgc,0,0,W,H);
+const sc=S.scene,t=S.st;
+if(sc==='galaxy'){drawGalaxy(1+.015*Math.sin(S.T*.8),1)}
+else if(sc==='zoom'){const p=t/1.8;drawGalaxy(1+Math.pow(p,2.5)*20,1+p*6);ctx.fillStyle=`rgba(255,255,255,${clamp((p-.65)/.35,0,1)})`;ctx.fillRect(0,0,W,H)}
+else if(sc==='bang'){const cx=W/2,cy=H*.42,T=PL[S.pend.type],M=Math.min(W,H);
+if(t<1){const r=3+t*12+Math.sin(t*40)*1.5,g=ctx.createRadialGradient(cx,cy,0,cx,cy,r*5);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(1,'rgba(150,180,255,0)');ctx.fillStyle=g;ctx.fillRect(cx-r*5,cy-r*5,r*10,r*10)}
+if(t>.95){const e=t-.95;for(let k=0;k<3;k++){const rr=(e-k*.25)*M*.55;if(rr>0){ctx.strokeStyle=rgba(T.pal[0],clamp(.7-rr/M*.8,0,.7));ctx.lineWidth=3;ctx.beginPath();ctx.arc(cx,cy,rr,0,6.2832);ctx.stroke()}}
+const ng=ctx.createRadialGradient(cx,cy,0,cx,cy,M*.5*ease(e/2));ng.addColorStop(0,rgba(T.pal[1],.35*clamp(1-e/3.5,0,1)));ng.addColorStop(1,rgba(T.pal[2],0));ctx.fillStyle=ng;ctx.fillRect(0,0,W,H)}
+if(S.parts){ctx.globalCompositeOperation='lighter';for(const p of S.parts){ctx.fillStyle=p.c;ctx.globalAlpha=t>3.6?clamp(1-(t-3.6)/1.2,0,1):1;ctx.fillRect(cx+p.x,cy+p.y,p.s,p.s)}ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over'}
+if(t>3.2){const R=Math.min(W*.3,H*.17,150)*ease((t-3.2)/1.6);if(R>1)drawPlanet(ctx,cx,cy,R,S.pend,S.T)}
+if(t>.9&&t<1.6){ctx.fillStyle=`rgba(255,255,255,${1-(t-.9)/.7})`;ctx.fillRect(0,0,W,H)}}
+else if(sc==='planet'){const R=Math.min(W*.3,H*.17,150);drawPlanet(ctx,W/2,H*.3,R,S.pend,S.T);if(S.flash){ctx.fillStyle=`rgba(255,255,255,${S.flash})`;ctx.fillRect(0,0,W,H)}}
+else if(sc==='race'){drawPlanet(ctx,W-44,40,30,S.pend,S.T)}
+else if(sc==='play'&&S.G){const G=S.G,pp=planetPos(),r=rates(G);drawPlanet(ctx,pp.x,pp.y,pp.R,G.planet,S.T,{lights:Math.min(140,Math.floor(G.pop*.7+G.era*12)),lc:COLORS[G.race.color],era:G.era})}
+else if(sc==='launch'&&S.G){const G=S.G,pp=planetPos();
+if(t<3.4){drawPlanet(ctx,pp.x,pp.y,pp.R,G.planet,S.T,{lights:100,lc:COLORS[G.race.color],era:4});const ry=pp.y-pp.R*.7-Math.max(0,t-.6)*Math.max(0,t-.6)*120;ctx.save();ctx.translate(pp.x,ry);
+if(S.parts)for(const p of S.parts){ctx.globalAlpha=clamp(p.l,0,1);ctx.fillStyle=p.c;ctx.fillRect(p.x-2,p.y,4,4)}ctx.globalAlpha=1;
+ctx.fillStyle='#f4f6ff';ctx.beginPath();ctx.moveTo(0,-18);ctx.quadraticCurveTo(8,-4,6,14);ctx.lineTo(-6,14);ctx.quadraticCurveTo(-8,-4,0,-18);ctx.fill();ctx.fillStyle='#ff5b6e';ctx.beginPath();ctx.moveTo(0,-18);ctx.quadraticCurveTo(4,-12,4.5,-8);ctx.lineTo(-4.5,-8);ctx.quadraticCurveTo(-4,-12,0,-18);ctx.fill();
+ctx.fillStyle='#8fb4ff';ctx.beginPath();ctx.arc(0,0,2.6,0,6.2832);ctx.fill();ctx.restore()}
+if(t>2.6){const a=clamp((t-2.6)/1.2,0,1);ctx.globalAlpha=a;drawGalaxy(.9+.1*(1-ease((t-2.6)/3)),1);const R2=Math.min(W*1.02,H*.72)*.5,hx=W/2+R2*.34,hy=H*.5+R2*.12,pu=1+.5*Math.sin(S.T*3),g=ctx.createRadialGradient(hx,hy,0,hx,hy,14*pu);g.addColorStop(0,'rgba(120,230,255,1)');g.addColorStop(1,'rgba(120,230,255,0)');ctx.fillStyle=g;ctx.fillRect(hx-20,hy-20,40,40);
+ctx.fillStyle='#cfe3ff';ctx.font='12px system-ui,sans-serif';ctx.textAlign='left';ctx.fillText('본진',hx+12,hy+4);ctx.fillStyle='#6f7fb8';[[-.3,-.1],[.15,-.22],[-.1,.2],[.45,-.05]].forEach(([dx,dy])=>{ctx.fillText('?',W/2+R2*dx*1.8,H*.5+R2*dy*.8)});ctx.globalAlpha=1}}}
+
+// ===== 루프: 고정 타임스텝 =====
+const STEP=1/60;let acc=0,last=performance.now();
+function frame(now){acc+=Math.min((now-last)/1000,.1);last=now;while(acc>=STEP){update(STEP);acc-=STEP}draw();requestAnimationFrame(frame)}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)persist();else if(S.G&&S.scene==='play'){offlineGain(S.G);refreshPlay()}});
+addEventListener('pagehide',persist);
+
+// ===== 시작 =====
+makeGalaxy();
+(function boot(){const d=store.get();if(d&&d.version===1){S.shards=d.shards||0;S.rerolls=d.rerolls||0;S.mute=!!d.mute;if(d.G){S.G=d.G;enterPlay();offlineGain(S.G);refreshPlay();return}}setScene('galaxy')})();
+requestAnimationFrame(frame);
+
+// ===== 테스트 훅 (삭제 금지) =====
+window.__game={state:S,CONFIG,input:{_p:{}},core:{rates,tickEcon,costOf,buy,canAdv,advance,newG,totalsOf,capOf,PLANETS,TR,rollPlanet},
+step(n=1){for(let i=0;i<n;i++)update(STEP)},
+press(k){if(k==='action'){if(S.scene==='galaxy')enter();else if(S.scene==='bang')S.st=Math.max(S.st,5.3)}},
+reset(seed){S.noSave=false;store.clear();S.G=null;S.shards=0;S.rerolls=0;S.seedOverride=seed;closeModal();setScene('galaxy')}};
+</script></body></html>
